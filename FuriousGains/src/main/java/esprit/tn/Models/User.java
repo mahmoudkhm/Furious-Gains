@@ -15,7 +15,7 @@ public class User  {
 
     public User() {}
 
-    public User(int id_user, int cin, int num_tel, String nom, String prenom, String adresse, String email, String password, String role) {
+    public User(int id_user, int cin, String nom, String prenom, int num_tel, String adresse, String email, String password, String role) {
         this.id_user = id_user;
         this.cin = cin;
         this.num_tel = num_tel;
@@ -27,7 +27,17 @@ public class User  {
         this.role = role;
     }
 
-    public User(int cin, int num_tel, String nom, String prenom, String adresse, String email, String password, String role) {
+    public User(int cin,  String nom, String prenom,int num_tel, String adresse, String email, String password) {
+        this.cin = cin;
+        this.num_tel = num_tel;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(int cin, String nom, String prenom, int num_tel, String adresse, String email, String password, String role) {
         this.cin = cin;
         this.num_tel = num_tel;
         this.nom = nom;
@@ -37,6 +47,8 @@ public class User  {
         this.password = password;
         this.role = role;
     }
+
+
 
     public int getId_user() {
         return id_user;
