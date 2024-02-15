@@ -7,6 +7,7 @@ public interface InterfaceUser <T> {
     void ajouter(T t);
     void utilisateurCanBeAded(T t);
     void modifier(T t);
+    void modifier2(T t);
     void delete(int id);
     List<T> afficher();
     void delete2(int id);

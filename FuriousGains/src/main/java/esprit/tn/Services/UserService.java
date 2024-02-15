@@ -106,6 +106,44 @@ public class UserService implements InterfaceUser<User> {
     }
 
     @Override
+    public void modifier2(User user) {
+        String reqVerifier= "SELECT COUNT(*) FROM `user` WHERE `cin` = ?";
+        String req="UPDATE `user` SET `cin`=?,`nom`=?,`prenom`=?," +
+                "`num_tel`=?,`adresse`=?,`email`=?,`password`=?,`role`=? WHERE `cin`=?";
+        try {
+            PreparedStatement ps=cnx.prepareStatement(reqVerifier);
+            ps.setInt(1,user.getCin());
+            ResultSet resultatS =ps.executeQuery();
+            resultatS.next();
+            int check=resultatS.getInt(1); //valeur du 1ere colone
+
+            //verification
+            if (check==0){
+
+                System.out.println("User n'existe pas!");
+            }
+            else {
+                PreparedStatement ps2=cnx.prepareStatement(req);
+                ps2.setInt(1,user.getCin());
+                ps2.setString(2, user.getNom());
+                ps2.setString(3, user.getPrenom());
+                ps2.setInt(4,user.getNum_tel());
+                ps2.setString(5, user.getAdresse());
+                ps2.setString(6, user.getEmail());
+                ps2.setString(7,user.getPassword());
+                ps2.setString(8,user.getRole());
+                ps2.setInt(9,user.getCin());
+                ps2.executeUpdate();
+                System.out.println("User Updated Successfully!");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
     public void delete(int id) {
         String req ="DELETE FROM `user` WHERE id_user=?";
         try {

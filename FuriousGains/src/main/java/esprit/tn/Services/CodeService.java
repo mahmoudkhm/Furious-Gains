@@ -70,6 +70,40 @@ public class CodeService implements InterfaceUser<CodePromo> {
     }
 
     @Override
+    public void modifier2(CodePromo codePromo) {
+        String reqVerifier= "SELECT COUNT(*) FROM `codepromo` WHERE `id_code_promo` = ?";
+        String req="UPDATE `codepromo` SET `code`=?,`Montant_Reduction`=?,`Statut`=?,`Utilisations_Restantes`=? WHERE id_code_promo=?";
+
+        try {
+            PreparedStatement ps=cnx.prepareStatement(reqVerifier);
+            ps.setInt(1,codePromo.getId_code_promo());
+            ResultSet resultatS =ps.executeQuery();
+            resultatS.next();
+            int check=resultatS.getInt(1); //valeur du 1ere colone
+
+            //verification
+            if (check==0){
+
+                System.out.println("code promo n'existe pas!");
+            }
+            else {
+                PreparedStatement ps2 = cnx.prepareStatement(req);
+                ps2.setInt(1,codePromo.getCode());
+                ps2.setInt(2,codePromo.getMontant_Reduction());
+                ps2.setString(3,codePromo.getStatut());
+                ps2.setInt(4,codePromo.getUtilisations_Restantes());
+                ps2.setInt(5,codePromo.getId_code_promo());
+
+                ps.executeUpdate();
+                System.out.println("code promo Updated Successfully!");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void delete(int id) {
         String req ="DELETE FROM `codepromo` WHERE code=?";
         try {
