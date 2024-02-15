@@ -27,7 +27,11 @@ public class User  {
         this.role = role;
     }
 
-    public User(int cin,  String nom, String prenom,int num_tel, String adresse, String email, String password) {
+    public User(int cin) {
+        this.cin = cin;
+    }
+
+    public User(int cin, String nom, String prenom, int num_tel, String adresse, String email, String password) {
         this.cin = cin;
         this.num_tel = num_tel;
         this.nom = nom;

@@ -17,19 +17,11 @@ public class UserService implements InterfaceUser<User> {
         cnx= MyConnexion.getInstance().getCnx();
     }
     @Override
-    public void ajouter(User user) throws SQLException {
-        String req="INSERT INTO `user`( `cin`, `nom`, `prenom`, `num_tel`, `adresse`, `email`, `password`, `role`) " +
-                "VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')";
-        Statement st= cnx.createStatement();
-        st.executeUpdate(req);
-    }
-
-    @Override
-    public void ajouter2(User user) {
+    public void ajouter(User user) {
         String req="INSERT INTO `user`( `cin`, `nom`, `prenom`, `num_tel`, `adresse`, `email`, `password`) " +
                 "VALUES (?,?,?,?,?,?,?)";
         try {
-            PreparedStatement ps =this.cnx.prepareStatement(req);
+            PreparedStatement ps =cnx.prepareStatement(req);
             ps.setInt(1,user.getCin());
             ps.setString(2, user.getNom());
             ps.setString(3, user.getPrenom());
@@ -44,8 +36,13 @@ public class UserService implements InterfaceUser<User> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+ /*   @Override
+    public void ajouter2(User user) {
+
+
+    }*/
 
     @Override
     public void utilisateurCanBeAded(User user) {
@@ -116,8 +113,6 @@ public class UserService implements InterfaceUser<User> {
             ps.setInt(1,id);
             ps.executeUpdate();
             System.out.println("User deleted Successfully!");
-
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -151,6 +146,35 @@ public class UserService implements InterfaceUser<User> {
     }
 
     @Override
+    public void delete2(int id) {
+        String reqVerifier= "SELECT COUNT(*) FROM `user` WHERE `cin` = ?";
+        String req ="DELETE FROM `user` WHERE cin=?";
+
+        try {
+            PreparedStatement ps=cnx.prepareStatement(reqVerifier);
+            ps.setInt(1,id);
+            ResultSet resultatS =ps.executeQuery();
+            resultatS.next();
+            int check=resultatS.getInt(1); //valeur du 1ere colone
+
+            //verification
+            if (check==0){
+                System.out.println("User  n'existe pas!");
+
+            }
+            else {
+                PreparedStatement ps2=cnx.prepareStatement(req);
+                ps2.setInt(1,id);
+                ps2.executeUpdate();
+                System.out.println("User deleted Successfully!");            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
     public User getOneByCin(int cin) {
         User u = null;
         String req = "SELECT * FROM user WHERE cin = ?";
@@ -176,4 +200,6 @@ public class UserService implements InterfaceUser<User> {
         }
         return u;
     }
+
+
 }
