@@ -11,9 +11,14 @@ import esprit.tn.Utils.MyConnexion;
 public class Main {
     public static void main(String[] args) {
 
-        /*LivraisonService livraisons = new LivraisonService();
-        livraisons.ajouter(new Livraison(1, "", "", "", 3, "", 2));
-*/
+        LivraisonService livraisons = new LivraisonService();
+        //livraisons.ajouter(new Livraison(1, "15/01/1919", "en route", "", 3, "", 1));
+        //livraisons.ajouter(new Livraison(1, "15/01/1919", "en route", "", 3, "", 1));
+
+        System.out.println(livraisons.affichage());
+
         CommandeService commandeService =new CommandeService();
         commandeService.ajouter(new Commande(1,"",5,1));
-}}
+        System.out.println(commandeService.affichage());
+
+    }}
