@@ -6,14 +6,14 @@ public class Avis {
     private String titre_avis;
     private String description_avis;
 
-    public Avis(int id_avis, int id_user, String titre_avis, String description_avis) {
+    public Avis(int id_avis, String titre_avis, String description_avis, int id_user) {
         this.id_avis = id_avis;
         this.id_user = id_user;
         this.titre_avis = titre_avis;
         this.description_avis = description_avis;
     }
 
-    public Avis(int id_user, String titre_avis, String description_avis) {
+    public Avis(String titre_avis, String description_avis,int id_user) {
         this.id_user = id_user;
         this.titre_avis = titre_avis;
         this.description_avis = description_avis;
