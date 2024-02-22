@@ -4,6 +4,7 @@ import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Interfaces.InterfaceUser;
 import esprit.tn.Models.User;
 import esprit.tn.Utils.MyConnexion;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class UserService implements InterfaceUser<User> {
     }
     @Override
     public void ajouter(User user) {
-        String req="INSERT INTO `user`( `cin`, `nom`, `prenom`, `num_tel`, `adresse`, `email`, `password`) " +
-                "VALUES (?,?,?,?,?,?,?)";
+        String req="INSERT INTO `user`( `cin`, `nom`, `prenom`, `num_tel`, `adresse`, `email`, `password`, `id_code_promo`) " +
+                "VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps =cnx.prepareStatement(req);
             ps.setInt(1,user.getCin());
@@ -29,20 +30,24 @@ public class UserService implements InterfaceUser<User> {
             ps.setString(5, user.getAdresse());
             ps.setString(6, user.getEmail());
             ps.setString(7,user.getPassword());
+            ps.setInt(8,user.getId_code_promo());
             ps.executeUpdate();
             System.out.println("User Added Successfully!");
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succes");
+            alert.setContentText("Utilisateur ajouter avec succes!");
+            alert.showAndWait();
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec d'ajout");
+            alert.showAndWait();        }
     }
 
- /*   @Override
-    public void ajouter2(User user) {
 
 
-    }*/
 
     @Override
     public void utilisateurCanBeAded(User user) {
@@ -74,15 +79,17 @@ public class UserService implements InterfaceUser<User> {
               }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec d'ajout");
+            alert.showAndWait();        }
 
     }
 
     @Override
     public void modifier(User user) {
         String req="UPDATE `user` SET `cin`=?,`nom`=?,`prenom`=?," +
-                "`num_tel`=?,`adresse`=?,`email`=?,`password`=?,`role`=? WHERE `id_user`=?";
+                "`num_tel`=?,`adresse`=?,`email`=?,`password`=?,`role`=? ,`id_code_promo`=? WHERE `cin`=?";
         try {
             PreparedStatement ps=cnx.prepareStatement(req);
             ps.setInt(1,user.getCin());
@@ -93,14 +100,18 @@ public class UserService implements InterfaceUser<User> {
             ps.setString(6, user.getEmail());
             ps.setString(7,user.getPassword());
             ps.setString(8,user.getRole());
-            ps.setInt(9,user.getId_user());
+            ps.setInt(9,user.getId_code_promo());
+
+            ps.setInt(10,user.getCin());
             ps.executeUpdate();
             System.out.println("User Updated Successfully!");
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec de modifier");
+            alert.showAndWait();        }
 
 
     }
@@ -138,8 +149,10 @@ public class UserService implements InterfaceUser<User> {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec de modifer");
+            alert.showAndWait();        }
 
     }
 
@@ -151,6 +164,10 @@ public class UserService implements InterfaceUser<User> {
             ps.setInt(1,id);
             ps.executeUpdate();
             System.out.println("User deleted Successfully!");
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succes");
+            alert.setContentText("Utilisateursupprime avec succes!");
+            alert.showAndWait();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -198,13 +215,21 @@ public class UserService implements InterfaceUser<User> {
             //verification
             if (check==0){
                 System.out.println("User  n'existe pas!");
+                Alert alert =new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("error");
+                alert.setContentText("User  n'existe pas!");
+                alert.showAndWait();
 
             }
             else {
                 PreparedStatement ps2=cnx.prepareStatement(req);
                 ps2.setInt(1,id);
                 ps2.executeUpdate();
-                System.out.println("User deleted Successfully!");            }
+                System.out.println("User deleted Successfully!");
+                Alert alert =new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("error");
+                alert.setContentText("User deleted Successfully!");
+                alert.showAndWait();}
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

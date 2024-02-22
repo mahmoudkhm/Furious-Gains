@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface InterfaceUser <T> {
     void ajouter(T t);
+
     void utilisateurCanBeAded(T t);
     void modifier(T t);
     void modifier2(T t);

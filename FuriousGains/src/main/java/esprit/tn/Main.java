@@ -20,10 +20,10 @@ public class Main {
         System.out.println(db2);*/
         UserService users =new UserService();
         CodeService codes=new CodeService();
-       // users.ajouter(new User(1919193,"sousou ","nourr",50141688,"kalaatelandalous","n.esprit.tn","nadanada111"));
+        //users.ajouter2(new User(1919193,"sousou ","nourr",50141688,"kalaatelandalous","n.esprit.tn","nadanada111",1));
         System.out.println(users.afficher());
 
-       users.modifier2(new User(1111919,"nada","bha",50141688,"kalaatelandalous","n.esprit.tn","nadanada111","admin"));
+      users.modifier(new User(1515155,"rabrouba","rabrouba",50141688,"kalaatelandalous","n.esprit.tn","nadanada111","admin",1));
         //users.delete(2);
         //users.utilisateurCanBeAded(new User(151515,"rabrouba ","rabrouba",50141688,"kalaatelandalous","n.esprit.tn","nadanada111"));
         //System.out.println(users.getOneByCin(151515));
@@ -31,9 +31,9 @@ public class Main {
        //codes.modifier(new CodePromo(555,20, "active",15));
 
 
-       System.out.println(codes.afficher());
+      /* System.out.println(codes.afficher());
         codes.modifier2(new CodePromo(1752,555,20, "active",15));
-        System.out.println(codes.afficher());
+        System.out.println(codes.afficher());*/
        // System.out.println(users.afficher());
         //users.delete2(151515);
         //codes.delete2(5);

@@ -4,6 +4,7 @@ import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Commande;
 import esprit.tn.Models.User;
 import esprit.tn.Utils.MyConnexion;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,6 +25,11 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
         try {
             Statement st= cnx.createStatement();
             st.executeUpdate(req);
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succes");
+            alert.setContentText("User deleted Successfully!");
+            alert.showAndWait();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

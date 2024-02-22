@@ -5,15 +5,52 @@ package esprit.tn.Models;
 public class User  {
     private int id_user;
     private int cin;
-    private int num_tel;
     private String nom;
     private String prenom;
+    private int num_tel;
+
     private String adresse;
     private String email;
     private String password;
     private String role;
+    private int id_code_promo;
 
     public User() {}
+
+    public User(int id_user, int cin, String nom, String prenom, int num_tel, String adresse, String email, String password, int id_code_promo) {
+        this.id_user = id_user;
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.num_tel = num_tel;
+        this.adresse = adresse;
+        this.email = email;
+        this.password = password;
+        this.id_code_promo = id_code_promo;
+    }
+
+    public User(int cin, String nom, String prenom, int num_tel, String adresse, String email, String password, String role, int id_code_promo) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.num_tel = num_tel;
+        this.adresse = adresse;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.id_code_promo = id_code_promo;
+    }
+
+    public User(int cin, String nom, String prenom, int num_tel, String adresse, String email, String password, int id_code_promo) {
+        this.cin = cin;
+        this.num_tel = num_tel;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.email = email;
+        this.password = password;
+        this.id_code_promo = id_code_promo;
+    }
 
     public User(int id_user, int cin, String nom, String prenom, int num_tel, String adresse, String email, String password, String role) {
         this.id_user = id_user;
@@ -27,7 +64,7 @@ public class User  {
         this.role = role;
     }
 
-    public User(int cin) {
+    public User(int i, String nomTFText, String prenomTFText, int cin, String adresseTFText, String text) {
         this.cin = cin;
     }
 
@@ -126,6 +163,14 @@ public class User  {
         this.role = role;
     }
 
+    public int getId_code_promo() {
+        return id_code_promo;
+    }
+
+    public void setId_code_promo(int id_code_promo) {
+        this.id_code_promo = id_code_promo;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -138,6 +183,7 @@ public class User  {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", id_code_promo=" + id_code_promo +
                 '}';
     }
 }

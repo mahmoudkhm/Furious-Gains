@@ -4,6 +4,7 @@ import esprit.tn.Interfaces.InterfaceUser;
 import esprit.tn.Models.CodePromo;
 import esprit.tn.Models.User;
 import esprit.tn.Utils.MyConnexion;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,26 +26,17 @@ public class CodeService implements InterfaceUser<CodePromo> {
             st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Code promo Added Successfully!");
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succes");
+            alert.setContentText("Code promo ajouter avec succes!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec d'ajout");
+            alert.showAndWait();
         }
     }
-    /*
-    @Override
-    public void ajouter2(CodePromo codePromo) {
-        String req="INSERT INTO `codepromo`(`code`, `Montant_Reduction`, `Statut`, `Utilisations_Restantes`) " +
-                "VALUES ('"+codePromo.getCode()+"','"+codePromo.getMontant_Reduction()+"','"+codePromo.getStatut()+"','"+codePromo.getUtilisations_Restantes()+"')";
-        Statement st= null;
-        try {
-            st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Code promo Added Successfully!");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-*/
     @Override
     public void utilisateurCanBeAded(CodePromo codePromo) {
     }
@@ -63,12 +55,17 @@ public class CodeService implements InterfaceUser<CodePromo> {
 
             ps.executeUpdate();
             System.out.println("code promo Updated Successfully!");
-
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succes");
+            alert.setContentText("Code promo ajouter avec succes!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec de modifier");
+            alert.showAndWait();        }
     }
-
+    //modifier avec verification
     @Override
     public void modifier2(CodePromo codePromo) {
         String reqVerifier= "SELECT COUNT(*) FROM `codepromo` WHERE `id_code_promo` = ?";
@@ -83,7 +80,10 @@ public class CodeService implements InterfaceUser<CodePromo> {
 
             //verification
             if (check==0){
-
+                Alert alert =new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("error");
+                alert.setContentText("code promo n'existe pas!!");
+                alert.showAndWait();
                 System.out.println("code promo n'existe pas!");
             }
             else {
@@ -96,11 +96,17 @@ public class CodeService implements InterfaceUser<CodePromo> {
 
                 ps.executeUpdate();
                 System.out.println("code promo Updated Successfully!");
+                Alert alert =new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("succes");
+                alert.setContentText("Code promo modifier avec succes!");
+                alert.showAndWait();
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec de modifier");
+            alert.showAndWait();        }
     }
 
     @Override
@@ -111,9 +117,15 @@ public class CodeService implements InterfaceUser<CodePromo> {
             ps.setInt(1,id);
             ps.executeUpdate();
             System.out.println("codepromo deleted Successfully!");
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succes");
+            alert.setContentText("Code promo supprimer avec succes!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec de supprimer");
+            alert.showAndWait();        }
 
     }
 
@@ -153,17 +165,27 @@ public class CodeService implements InterfaceUser<CodePromo> {
             //verification
             if (check==0){
                 System.out.println("codepromo  n'existe pas!");
+                Alert alert =new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("error");
+                alert.setContentText("codepromo  n'existe pas!!!!");
+                alert.showAndWait();
 
             }
             else {
                 PreparedStatement ps2=cnx.prepareStatement(req);
                 ps2.setInt(1,id);
                 ps2.executeUpdate();
-                System.out.println("codepromo deleted Successfully!");            }
+                System.out.println("codepromo deleted Successfully!");
+                Alert alert =new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("succes");
+                alert.setContentText("Code promo supprimer avec succes!");
+                alert.showAndWait();}
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("echec d'ajout");
+            alert.showAndWait();        }
 
     }
 
