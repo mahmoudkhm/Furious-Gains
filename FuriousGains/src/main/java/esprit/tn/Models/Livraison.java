@@ -1,7 +1,5 @@
 package esprit.tn.Models;
 
-import java.util.Date;
-
 public class Livraison {
     private int id_livraison;
     private int id_commande;
@@ -25,7 +23,7 @@ public class Livraison {
         this.id_client = id_client;
     }
 
-    public Livraison(int id_commande, String date_livraison, String statut_livraison, String adresse_livraison,float montant_paiement, String mode_livraison, int id_client) {
+    public Livraison(int id_commande, String date_livraison, String statut_livraison, String adresse_livraison, float montant_paiement, String mode_livraison, int id_client) {
         this.id_commande = id_commande;
         this.date_livraison = date_livraison;
         this.statut_livraison = statut_livraison;

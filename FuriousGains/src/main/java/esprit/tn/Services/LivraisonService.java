@@ -4,6 +4,7 @@ import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Commande;
 import esprit.tn.Models.Livraison;
 import esprit.tn.Utils.MyConnexion;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,10 +25,17 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Livraison ajouter avec succés!");
+            alert.showAndWait();
 
             System.out.println("Livraison ajoutée avec succès !");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec d'ajout!");
+            alert.showAndWait();
         }
     }
 
@@ -47,10 +55,17 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
             ps.setInt(8, livraison.getId_livraison());
             ps.executeUpdate();
             System.out.println("Livraison mise à jour avec succès!");
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Commande Modifier avec succés!");
+            alert.showAndWait();
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec de la modification !");
+            alert.showAndWait();
         }
     }
 
@@ -61,9 +76,16 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
         try {
             ps = cnx.prepareStatement(req);
             ps.executeUpdate();
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Livraison supprimée avec succés!");
+            alert.showAndWait();
             System.out.println("User deleted Successfully!");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec de la suppression!");
+            alert.showAndWait();
         }
 
     }

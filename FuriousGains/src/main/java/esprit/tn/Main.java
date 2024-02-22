@@ -12,13 +12,13 @@ public class Main {
     public static void main(String[] args) {
 
         LivraisonService livraisons = new LivraisonService();
+        //livraisons.modifier(new Livraison(3,2, "20/04/1920", "weslet", "", 3, "", 1));
         //livraisons.ajouter(new Livraison(1, "15/01/1919", "en route", "", 3, "", 1));
-        //livraisons.ajouter(new Livraison(1, "15/01/1919", "en route", "", 3, "", 1));
-
+livraisons.supprimer(3);
         System.out.println(livraisons.affichage());
 
-        CommandeService commandeService =new CommandeService();
-        commandeService.ajouter(new Commande(1,"",5,1));
-        System.out.println(commandeService.affichage());
+        //CommandeService commandeService =new CommandeService();
+        //commandeService.ajouter(new Commande(1,"",5,1));
+        //System.out.println(commandeService.affichage());
 
     }}

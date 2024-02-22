@@ -4,6 +4,7 @@ import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Commande;
 import esprit.tn.Models.User;
 import esprit.tn.Utils.MyConnexion;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,12 +25,19 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
         try {
             Statement st= cnx.createStatement();
             st.executeUpdate(req);
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Commande ajouter avec succés!");
+            alert.showAndWait();
 
-            System.out.println("Commande added Successfully!");
+            System.out.println("Commande  ajouter avec succés!");
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec d'ajout!");
+            alert.showAndWait();
         }
 
 
@@ -48,11 +56,18 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
             ps.setInt(5,commande.getId_command());
 
             ps.executeUpdate();
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Commande Modifier avec succés!");
+            alert.showAndWait();
             System.out.println("Commande Updated Successfully!");
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec de modifier!");
+            alert.showAndWait();
         }
 
 
@@ -66,8 +81,15 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
             ps = cnx.prepareStatement(req);
             ps.executeUpdate();
             System.out.println("User deleted Successfully!");
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Commande supprimer avec succés!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec de suppression!");
+            alert.showAndWait();
         }
     }
 
