@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="532.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AjouterEvenement">
+   <children>
+      <AnchorPane prefHeight="532.0" prefWidth="284.0" style="-fx-background-color: #133946;">
+         <children>
+            <ImageView fitHeight="82.0" fitWidth="137.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/logo1-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutY="122.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Profil" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="5.0" layoutY="352.0" prefHeight="44.0" prefWidth="291.0" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="164.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Produit" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="208.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Evenement" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="252.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="nutrition " textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="296.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Livraison" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="340.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Blog" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="382.0" layoutY="55.0" prefHeight="18.0" prefWidth="66.0" text="Nom_event" />
+      <TextField fx:id="nom_eventTF" layoutX="484.0" layoutY="51.0" promptText="nom_evenement" />
+      <Label layoutX="382.0" layoutY="96.0" prefHeight="18.0" prefWidth="66.0" text="Lieu_event" />
+      <TextField fx:id="Lieu_eventTF" layoutX="484.0" layoutY="93.0" promptText="lieu_evenement" />
+      <Label layoutX="382.0" layoutY="136.0" prefHeight="18.0" prefWidth="66.0" text="Prix_event" />
+      <TextField fx:id="Prix_EventTF" layoutX="484.0" layoutY="132.0" promptText="prix_evenement" />
+      <Label layoutX="382.0" layoutY="182.0" prefHeight="18.0" prefWidth="86.0" text="Nb_participants" />
+      <TextField fx:id="Nb_participantsTF" layoutX="484.0" layoutY="179.0" promptText="nombre de participants" />
+      <Label layoutX="382.0" layoutY="224.0" prefHeight="18.0" prefWidth="86.0" text="Date_event" />
+      <TextField fx:id="Date_eventTF" layoutX="484.0" layoutY="220.0" promptText="date_evenements" />
+      <Label layoutX="382.0" layoutY="266.0" prefHeight="18.0" prefWidth="86.0" text="Heure_event" />
+      <TextField fx:id="Heure_eventTF" layoutX="484.0" layoutY="262.0" promptText="heure_evenements" />
+      <Label layoutX="382.0" layoutY="313.0" prefHeight="18.0" prefWidth="86.0" text="Description" />
+      <TextField fx:id="DescriptionTF" layoutX="484.0" layoutY="309.0" promptText="description" />
+      <Button layoutX="484.0" layoutY="390.0" mnemonicParsing="false" onAction="#AjouterTF" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #F1E967;" text="Ajouter">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="657.0" layoutY="389.0" mnemonicParsing="false" onAction="#afficherevenement" prefHeight="33.0" prefWidth="130.0" style="-fx-background-color: #F1E967;" text=" Evenements">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

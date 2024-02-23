@@ -1,17 +1,28 @@
 package esprit.tn;
 
-import esprit.tn.Utils.MyConnexion;
+import esprit.tn.Models.Evenement;
+import esprit.tn.Models.Reservation;
+import esprit.tn.Services.EvenementService;
+import esprit.tn.Services.ReservationService;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.sql.SQLException;
+
+
+
 public class Main {
     public static void main(String[] args) {
-        MyConnexion db= MyConnexion.getInstance();
-        MyConnexion db2= MyConnexion.getInstance();
+        EvenementService es = new EvenementService();
+          es.ajouter(new Evenement("roube", "ariana", 400, 55,"29/02/2002", "4h", "kk"));
+       // es.supprimer(1);
+      // System.out.println( es.affichage());
+       ReservationService rs = new ReservationService();
+        //rs.ajouter(new Reservation(22,"ttt",2,1));
+      //  rs.modifier(new Reservation(5,2222,"nadou",2,1));
+       // rs.supprimer(5);
+
+        System.out.println( rs.affichage());
 
 
-        System.out.println(db);
-        System.out.println(db2);
 
     }
 }

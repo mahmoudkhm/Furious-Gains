@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AfficherEvenement">
+   <children>
+      <TextField fx:id="id_supp" layoutX="421.0" layoutY="315.0" />
+      <Button layoutX="237.0" layoutY="315.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="72.0" text="supprimer" />
+      <ListView fx:id="ListEvenement" layoutX="70.0" layoutY="26.0" onMouseClicked="#on_click" prefHeight="214.0" prefWidth="426.0" />
+   </children>
+</AnchorPane>
