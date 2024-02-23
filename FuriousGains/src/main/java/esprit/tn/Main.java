@@ -1,28 +1,27 @@
 package esprit.tn;
 
-import esprit.tn.Models.Categorie;
-import esprit.tn.Models.Produit;
-import esprit.tn.Utils.MyConnexion;
-import services.CategorieService;
-import services.ProduitService;
+import esprit.tn.Models.Recette;
+import esprit.tn.Models.Regime;
+import services.RecetteService;
+import services.RegimeService;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        ProduitService ps= new ProduitService();
-        CategorieService cs= new CategorieService();
+        RegimeService r1s= new RegimeService();
+        RecetteService r2s= new RecetteService();
         //***Product***
-//ADD Poduct
-        //ps.ajouter(new Produit("Bum",10,150,"CBUM",3));
+//ADD Regime
+       // r1s.ajouter(new Regime("1","bulk","instructions.",1));
 
-//affichage Poducts
-       //System.out.println(ps.affichage());
-//Delete Poduct
+//affichage Regimes
+       //System.out.println(r1s.affichage());
+//Delete regime
 
-         //ps.supprimer(2);
-//Update Poduct
-          //Produit p =new Produit(7,"creatine",3,100,"behi",2);
+        // r1s.supprimer(4);
+//Update regime
+          //Regime r1 =new Regime(5,"2","cut","instruction",1);
           // ps.modifier(p);
 //Affichage GetByIdCategorie (jointure)
         //System.out.println(ps.getInnerJoinCategorie(1));
@@ -30,20 +29,19 @@ public class Main {
 
 
 
-        //***Categorie***
-//ADD Categorie
-       // cs.ajouter(new Categorie("wawa","mohamedali"));
+        //***Recette***
+//ADD Recette
+        //r2s.ajouter(new Recette(01,"NomRecette","xxx","15mins"));
 
-//affichage Categorie
-       // System.out.println(cs.affichage());
-//Delete Categorie
+//affichage Recette
+        //System.out.println(r2s.affichage());
+//Delete Recette
 
-        //cs.supprimer(2);
-//Update Categorie
-      //  Categorie c =new Categorie(3,"myprotein","creatine");
+        //r2s.supprimer(2);
+//Update Recette
+        //Recette r2 =new Recette((int) 01,"NomRecette","myprotein","creatine");
         // cs.modifier(c);
-// deleteJoin
-        //cs.supprimerJoin(2);
+
 
 
     }

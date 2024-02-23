@@ -1,4 +1,4 @@
-package tn.esprit.Models;
+package esprit.tn.Models;
 
 public class Recette {
     private int id_Recette;
