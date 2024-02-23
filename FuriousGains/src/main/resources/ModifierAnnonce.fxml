@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.ModifierAnnonce">
+   <children>
+      <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="532.0" prefWidth="811.0">
+         <children>
+            <AnchorPane prefHeight="532.0" prefWidth="300.0" style="-fx-background-color: #133946;">
+               <children>
+                  <ImageView fitHeight="82.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logo1-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutY="120.0" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Profil" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="2.0" layoutY="156.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Produit" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="-2.0" layoutY="200.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Evénement" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="-2.0" layoutY="244.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Nutrition" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="2.0" layoutY="287.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Livraison" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="2.0" layoutY="330.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Blog" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button layoutX="622.0" layoutY="404.0" mnemonicParsing="false" onAction="#AfficherAnnonce" prefHeight="33.0" prefWidth="108.0" style="-fx-background-color: #F1E967;" text="Annonces">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="407.0" layoutY="170.0" text="note">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="396.0" layoutY="210.0" text="id_user">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="377.0" layoutY="258.0" text="id_produit">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="noteTF" layoutX="464.0" layoutY="165.0" promptText="NOTE" />
+            <TextField fx:id="id_userTF" layoutX="464.0" layoutY="205.0" promptText="Id user" />
+            <TextField fx:id="id_produitTF" layoutX="464.0" layoutY="253.0" promptText="id produit" />
+            <Button layoutX="450.0" layoutY="404.0" mnemonicParsing="false" onAction="#ModifierTF" prefHeight="33.0" prefWidth="118.0" style="-fx-background-color: #F1E967;" text="MODIFER">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="385.0" layoutY="121.0" text="id_annonce">
+               <font>
+                  <Font name="Times New Roman Bold" size="13.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="idM" layoutX="463.0" layoutY="116.0" onAction="#handleComboBoxSelection" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

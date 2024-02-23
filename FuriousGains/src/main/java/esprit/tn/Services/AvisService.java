@@ -3,6 +3,7 @@ package esprit.tn.Services;
 import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Avis;
 import esprit.tn.Utils.MyConnexion;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,8 +22,16 @@ public class AvisService implements InterfaceFuriousGains <Avis> {
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succés");
+            alert.setContentText("avis ajoutée avec succés!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec d'ajout");
+            alert.showAndWait();
+
         }
     }
 
@@ -41,8 +50,16 @@ public class AvisService implements InterfaceFuriousGains <Avis> {
             as.setInt(4, avis.getId_avis());
 
             as.executeUpdate();
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succés");
+            alert.setContentText("annonce modifiée avec succés!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec d'ajout");
+            alert.showAndWait();
+
         }
 
 
@@ -59,9 +76,16 @@ public class AvisService implements InterfaceFuriousGains <Avis> {
             as = cnx.prepareStatement(req);
             as.setInt(1, id);
             as.executeUpdate();
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succés");
+            alert.setContentText("annonce supprimée avec succés!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec d'ajout");
+            alert.showAndWait();
+                }
 
     }
 

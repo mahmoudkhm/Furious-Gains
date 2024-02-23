@@ -4,6 +4,7 @@ import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Annonces;
 import esprit.tn.Models.Avis;
 import esprit.tn.Utils.MyConnexion;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,8 +25,15 @@ public class AnnonceService  implements InterfaceFuriousGains <Annonces> {
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succés");
+            alert.setContentText("annonce ajoutée avec succés!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec d'ajout");
+            alert.showAndWait();
         }
     }
 
@@ -39,11 +47,18 @@ public class AnnonceService  implements InterfaceFuriousGains <Annonces> {
             ass.setInt(2, annonces.getId_user());
             ass.setInt(3, annonces.getId_produit());
             ;
-            ass.setInt(4, annonces.getId_annonces());
+            ass.setInt(4, annonces.getId_annonces()); Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succés");
+            alert.setContentText("annonce modifiée avec succés!");
+            alert.showAndWait();
+
 
             ass.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("error");
+            alert.setContentText("echec de modification!");
+            alert.showAndWait();
         }
 
 
@@ -59,7 +74,10 @@ public class AnnonceService  implements InterfaceFuriousGains <Annonces> {
             ass.setInt(1, id);
             ass.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("succés");
+            alert.setContentText("annonce supprimée avec succés!");
+            alert.showAndWait();
         }
 
 
