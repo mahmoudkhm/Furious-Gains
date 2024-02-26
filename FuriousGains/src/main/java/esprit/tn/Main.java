@@ -13,13 +13,13 @@ public class Main {
         RecetteService r2s= new RecetteService();
         //***Product***
 //ADD Regime
-       // r1s.ajouter(new Regime("1","bulk","instructions.",1));
+        //r1s.ajouter(new Regime("1","bulk","instructions.",1));
 
 //affichage Regimes
        //System.out.println(r1s.affichage());
 //Delete regime
 
-        // r1s.supprimer(4);
+         //r1s.supprimer(5);
 //Update regime
           //Regime r1 =new Regime(5,"2","cut","instruction",1);
           // ps.modifier(p);
