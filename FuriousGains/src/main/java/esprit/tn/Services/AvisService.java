@@ -9,113 +9,93 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AvisService implements InterfaceFuriousGains <Avis> {
+public class AvisService implements InterfaceFuriousGains<Avis> {
     private Connection cnx;
 
     public AvisService() {
         cnx = MyConnexion.getInstance().getCnx();
-}
-
+    }
     @Override
     public void ajouter(Avis avis) {
-        String req = "INSERT INTO avis ( titre_avis, description_avis, id_user) VALUES ('" + avis.getTitre_avis() + "', '" + avis.getDescription_avis() + "', '" + avis.getId_user() +   "')";
+        String req = "INSERT INTO avis ( note, id_user, id_produit) VALUES ('" + avis.getNote() + "', '" + avis.getId_user() + "', '" + avis.getId_produit() + "')";
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             Alert alert =new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("succés");
-            alert.setContentText("avis ajoutée avec succés!");
+            alert.setContentText("annonce ajoutée avec succés!");
             alert.showAndWait();
         } catch (SQLException e) {
             Alert alert =new Alert(Alert.AlertType.ERROR);
             alert.setTitle("error");
             alert.setContentText("Echec d'ajout");
             alert.showAndWait();
-
         }
+
     }
-
-
 
     @Override
     public void modifier(Avis avis) {
-        String req = "UPDATE avis set titre_avis = ?, description_avis =? , id_user =?  where id_avis= ?";
-        PreparedStatement as = null;
+        String req = "UPDATE avis set note = ?, id_user =? , id_produit =?  where id_avis= ?";
+        PreparedStatement ass = null;
         try {
-           as = cnx.prepareStatement(req);
-            as.setString(1, avis.getTitre_avis());
-            as.setString(2, avis.getDescription_avis());
-            as.setFloat(3, avis.getId_user());
-           ;
-            as.setInt(4, avis.getId_avis());
-
-            as.executeUpdate();
+            ass = cnx.prepareStatement(req);
+            ass.setInt(1,avis.getNote());
+            ass.setInt(2, avis.getId_user());
+            ass.setInt(3, avis.getId_produit());
+            ;
+            ass.setInt(4, avis.getId_avis());
             Alert alert =new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("succés");
             alert.setContentText("annonce modifiée avec succés!");
             alert.showAndWait();
+
+
+            ass.executeUpdate();
         } catch (SQLException e) {
-            Alert alert =new Alert(Alert.AlertType.ERROR);
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("error");
-            alert.setContentText("Echec d'ajout");
+            alert.setContentText("echec de modification!");
             alert.showAndWait();
-
         }
-
-
 
     }
 
     @Override
     public void supprimer(int id) {
-
-
         String req = "DELETE FROM avis where id_avis = ?";
-        PreparedStatement as = null;
+        PreparedStatement ass = null;
         try {
-            as = cnx.prepareStatement(req);
-            as.setInt(1, id);
-            as.executeUpdate();
+            ass = cnx.prepareStatement(req);
+            ass.setInt(1, id);
+            ass.executeUpdate();
+        } catch (SQLException e) {
             Alert alert =new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("succés");
             alert.setContentText("annonce supprimée avec succés!");
             alert.showAndWait();
-        } catch (SQLException e) {
-            Alert alert =new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("error");
-            alert.setContentText("Echec d'ajout");
-            alert.showAndWait();
-                }
-
+        }
     }
 
     @Override
     public List<Avis> affichage() {
-
-            List<Avis> listavis = new ArrayList<>();
-            String req = "Select * FROM avis";
-            try {
-                Statement as = cnx.createStatement();
-                ResultSet rs = as.executeQuery(req);
-                while (rs.next()) {
-                    Avis avis = new Avis();
-                    avis.setId_avis(rs.getInt("id_avis"));
-                   avis.setTitre_avis(rs.getString("Titre_avis"));
-                    avis.setDescription_avis(rs.getString("Description_avis"));
-                    avis.setId_user(rs.getInt("Id_user"));
-
-listavis.add(avis);
-
-
-
-                }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+        List<Avis> listavis = new ArrayList<>();
+        String req = "Select * FROM avis";
+        try {
+            Statement ass = cnx.createStatement();
+            ResultSet rs = ass.executeQuery(req);
+            while (rs.next()) {
+                Avis avis = new Avis();
+                avis.setId_avis(rs.getInt("id_avis"));
+                avis.setNote(rs.getInt("note"));
+                avis.setId_user(rs.getInt("Id_user"));
+                avis.setId_produit(rs.getInt("Id_produit"));
+                listavis.add(avis);
             }
-            return listavis;
-
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+        return listavis;
 
-    }
-
+    }    }
 

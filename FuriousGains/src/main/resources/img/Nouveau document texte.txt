@@ -1,0 +1,28 @@
+QPushButton {
+    -fx-background-color: linear-gradient(to bottom, #aa00ff, #ffffff);
+    -fx-text-fill: #fff;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 15px 0 0 15px;
+    -fx-padding: 10px;
+}
+
+QPushButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #500078, #e0c6ff);
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 15px 0 0 15px;
+    -fx-padding: 10px;
+    -fx-font: 10pt "Algerian";
+    -fx-text-fill: #fff;
+}
+
+QPushButton:pressed {
+    -fx-background-color: linear-gradient(to bottom, #500078, #e0c6ff);
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 15px 0 0 15px;
+    -fx-padding: 10px;
+    -fx-font: 10pt "Algerian";
+    -fx-text-fill: #fff;
+}
