@@ -112,6 +112,6 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <ComboBox fx:id="idM" layoutX="493.0" layoutY="20.0" prefWidth="150.0" />
+      <ComboBox fx:id="idM" layoutX="493.0" layoutY="20.0" onAction="#comboE" prefWidth="150.0" />
    </children>
 </AnchorPane>

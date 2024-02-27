@@ -2,6 +2,7 @@ package esprit.tn.Services;
 
 import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Evenement;
+import esprit.tn.Models.Reservation;
 import esprit.tn.Utils.MyConnexion;
 import javafx.scene.control.Alert;
 
@@ -108,10 +109,49 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
 
 
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return evenements;
 
+
     }
+
+
+    public Evenement getOneByCin(int id) {
+        Evenement ev = null;
+        String req = "SELECT * FROM evenement WHERE id_event = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setInt(1, id);
+            try (ResultSet es = stmt.executeQuery()) {
+                if (es.next()) {
+                    ev = new Evenement(
+                            es.getInt("id_event"),
+                            es.getString("nom_event"),
+                            es.getString("lieu_event"),
+                            es.getFloat("prix_event"),
+                            es.getInt("nb_participation"),
+
+
+
+
+                            es.getString("date_event"),
+                            es.getString("heure_event"),
+
+
+                            es.getString("description"));
+
+
+                    // rs.getString("prenom");
+
+                    //);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ev;
+    }
+
 }

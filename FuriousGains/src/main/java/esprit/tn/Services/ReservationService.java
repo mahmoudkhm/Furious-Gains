@@ -114,5 +114,27 @@ public class ReservationService implements InterfaceFuriousGains <Reservation> {
         return reservations;
 
     }
+    public Reservation getOneByCin(int id) {
+        Reservation r = null;
+        String req = "SELECT * FROM reservation WHERE id_Res = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    r = new Reservation(
+                            rs.getInt("Nb_place"),
+                            rs.getString("Status_Res"),
+                            rs.getInt("id_event"),
+                            rs.getInt("id_client"));
+                           // rs.getString("prenom");
+
+                    //);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return r;
+    }
 
 }

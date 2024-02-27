@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="533.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.ModifierReservation">
+   <children>
+      <AnchorPane layoutY="5.0" prefHeight="532.0" prefWidth="284.0" style="-fx-background-color: #133946;">
+         <children>
+            <ImageView fitHeight="82.0" fitWidth="137.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/logo1-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutY="122.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Profil" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="5.0" layoutY="352.0" prefHeight="44.0" prefWidth="291.0" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="164.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Produit" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="208.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Evenement" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="252.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="nutrition " textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="296.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Livraison" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutY="340.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Blog" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="id_eventTF" layoutX="498.0" layoutY="238.0" />
+      <Label layoutX="343.0" layoutY="76.0" prefHeight="18.0" prefWidth="115.0" text="id_Res" />
+      <Label layoutX="343.0" layoutY="150.0" prefHeight="18.0" prefWidth="115.0" text="nb_place" />
+      <Label layoutX="322.0" layoutY="229.0" prefHeight="18.0" prefWidth="115.0" text="id_event" />
+      <Label layoutX="322.0" layoutY="297.0" prefHeight="18.0" prefWidth="115.0" text="id_client" />
+      <ComboBox fx:id="idR" layoutX="498.0" layoutY="72.0" onAction="#combo" prefWidth="150.0" />
+      <TextField fx:id="nb_placeTF" layoutX="508.0" layoutY="147.0" />
+      <TextField fx:id="id_clientTF" layoutX="498.0" layoutY="302.0" />
+      <Button layoutX="658.0" layoutY="421.0" mnemonicParsing="false" onAction="#afficherRFT" prefHeight="33.0" prefWidth="130.0" style="-fx-background-color: #F1E967;" text="Reservations">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="531.0" layoutY="421.0" mnemonicParsing="false" onAction="#modifierRFT" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #F1E967;" text="Modifier">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="343.0" layoutY="201.0" prefHeight="18.0" prefWidth="82.0" text="status_Res" />
+      <TextField fx:id="status_resTF" layoutX="498.0" layoutY="198.0" />
+   </children>
+</AnchorPane>

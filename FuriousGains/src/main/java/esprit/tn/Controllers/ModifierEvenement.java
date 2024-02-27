@@ -1,6 +1,7 @@
 package esprit.tn.Controllers;
 
 import esprit.tn.Models.Evenement;
+import esprit.tn.Models.Reservation;
 import esprit.tn.Services.EvenementService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -89,7 +90,7 @@ public class ModifierEvenement {
                                 Evenement evenement = new Evenement(id_event, nom_event, lieu_event, prix_event, nb_participation, date, heure, description);
                                 EvenementService es = new EvenementService();
                                 es.modifier(evenement);
-                                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/AfficherUser.fxml"));
+                                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/AfficherEvenement.fxml"));
 
 
                                 Parent root = null;
@@ -147,5 +148,25 @@ public class ModifierEvenement {
             idList.add(Integer.toString(evenement.getId_event()));
         }
         idM.setItems(idList);
+    }
+    @FXML
+    void comboE(ActionEvent event) {
+        String selectedValue = String.valueOf(idM.getValue());
+        if (selectedValue != null) {
+            int idr=Integer.parseInt(selectedValue);
+            Evenement e = es.getOneByCin(idr);
+            nom_eventTF.setText(String.valueOf(e.getNom_event()));
+            lieu_eventTF.setText(String.valueOf(e.getLieu_event()));
+            prix_eventTF.setText(String.valueOf(e.getPrix_event()));
+            nb_participantsTF.setText(String.valueOf(e.getNb_participation()));
+            dateTF.setText(String.valueOf(e.getDate_event()));
+            heureTF.setText(String.valueOf(e.getHeure_event()));
+            descriptionTF.setText(String.valueOf(e.getDescription()));
+
+
+
+
+        }
+
     }
 }
