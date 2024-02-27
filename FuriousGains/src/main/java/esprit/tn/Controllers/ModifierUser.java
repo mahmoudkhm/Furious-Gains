@@ -7,12 +7,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.RotateEvent;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -46,7 +50,15 @@ public class ModifierUser {
     void handleComboBoxSelection(ActionEvent event) {
         String selectedValue = cinM.getValue();
         if (selectedValue != null) {
-            int cin = Integer.parseInt(selectedValue);}
+            int cin = Integer.parseInt(selectedValue);
+            User users = us.getOneByCin(cin);
+            nomTF.setText(users.getNom());
+            prenomTF.setText(users.getPrenom());
+            num_telTF.setText(String.valueOf(users.getNum_tel()));
+            adresseTF.setText(users.getAdresse());
+            emailTF.setText(users.getEmail());
+            passwordTF.setText(users.getPassword());
+            roleTF.setText(users.getRole());}
     }
 
     @FXML
@@ -133,6 +145,19 @@ public class ModifierUser {
 
     @FXML
     void affichage(ActionEvent event) {
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(this.getClass().getResource("/AfficherUser.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
     @FXML

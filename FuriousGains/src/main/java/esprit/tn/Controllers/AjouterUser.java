@@ -39,7 +39,7 @@ public class AjouterUser {
 
     @FXML
     void AjouterTF(ActionEvent event) {
-        us.ajouter(new User(Integer.parseInt(cinTF.getText()), nomTF.getText(), prenomTF.getText(),Integer.parseInt(num_telTF.getText()), adresseTF.getText(), emailTF.getText(),passwordTF.getText(),1));
+        us.utilisateurCanBeAded(new User(Integer.parseInt(cinTF.getText()), nomTF.getText(), prenomTF.getText(),Integer.parseInt(num_telTF.getText()), adresseTF.getText(), emailTF.getText(),passwordTF.getText(),1));
     }
     @FXML
     void affichage(ActionEvent event) {
@@ -52,4 +52,5 @@ public class AjouterUser {
         }
 
     }
+
 }

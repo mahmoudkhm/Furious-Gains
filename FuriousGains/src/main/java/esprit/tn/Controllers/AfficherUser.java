@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -23,8 +24,39 @@ public class AfficherUser {
 
     @FXML
     private TextField sup_cin;
+    @FXML
+    private TextField chercherparnom;
 
+    @FXML
+    void cherhcre(KeyEvent event) {
+        String cinText = chercherparnom.getText();
+        if (!cinText.isEmpty()) {
+            int cin = Integer.parseInt(cinText);
+            User user = us.getOneByCin(cin);
+            if (user != null) {
+                ObservableList<User> observableList = FXCollections.observableArrayList(user);
+                listUser.setItems(observableList);
+            } else {
+                listUser.setItems(FXCollections.emptyObservableList());
+            }
+        } else {
+            List<User> users1= null;
+            users1 = us.afficher();
+            ObservableList<User> observableList = FXCollections.observableList(users1);
+            listUser.setItems(observableList);
+        }
+    }
+    @FXML
+    void affichmod(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/ModifierUser.fxml"));
+            sup_cin.getScene().setRoot(root);
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void on_click(MouseEvent event) {
         int  selectedItem = listUser.getSelectionModel().getSelectedItem().getCin();
@@ -32,6 +64,17 @@ public class AfficherUser {
     }
 
     @FXML
+    void retour(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/AjouterUser.fxml"));
+            sup_cin.getScene().setRoot(root);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     private final UserService us =new UserService();
     @FXML
@@ -51,23 +94,11 @@ public class AfficherUser {
     }
     @FXML
     void initialize(){
-        /*List<User> users= null;
-        users = us.afficher();
-        ObservableList<User> observableList= FXCollections.observableList(users);
-        tableUser.setItems(observableList);
-        cinCol.setCellValueFactory(new PropertyValueFactory<>("cin"));
-        nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        num_telCol.setCellValueFactory(new PropertyValueFactory<>("num_tel"));
-        adresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        roleCole.setCellValueFactory(new PropertyValueFactory<>("role"));*/
+
         List<User> users1= null;
         users1 = us.afficher();
         ObservableList<User> observableList = FXCollections.observableList(users1);
         listUser.setItems(observableList);
     }
-
-
 
 }

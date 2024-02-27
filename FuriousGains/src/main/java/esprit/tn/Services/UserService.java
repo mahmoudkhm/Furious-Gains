@@ -52,8 +52,8 @@ public class UserService implements InterfaceUser<User> {
     @Override
     public void utilisateurCanBeAded(User user) {
         String reqVerifier= "SELECT COUNT(*) FROM `user` WHERE `cin` = ?";
-        String req="INSERT INTO `user`( `cin`, `nom`, `prenom`, `num_tel`, `adresse`, `email`, `password`) " +
-                "VALUES (?,?,?,?,?,?,?)";
+        String req="INSERT INTO `user`( `cin`, `nom`, `prenom`, `num_tel`, `adresse`, `email`, `password`, `id_code_promo`) " +
+                "VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps=cnx.prepareStatement(reqVerifier);
             ps.setInt(1,user.getCin());
@@ -71,11 +71,17 @@ public class UserService implements InterfaceUser<User> {
                   ps2.setString(5, user.getAdresse());
                   ps2.setString(6, user.getEmail());
                   ps2.setString(7,user.getPassword());
+                  ps2.setInt(8,user.getId_code_promo());
+
                   ps2.executeUpdate();
                   System.out.println("User Added Successfully!");
               }
               else {
                   System.out.println("User already exists!");
+                  Alert alert =new Alert(Alert.AlertType.ERROR);
+                  alert.setTitle("error");
+                  alert.setContentText("utilisateur exist deja!");
+                  alert.showAndWait();
               }
 
         } catch (SQLException e) {
@@ -240,9 +246,9 @@ public class UserService implements InterfaceUser<User> {
     @Override
     public User getOneByCin(int cin) {
         User u = null;
-        String req = "SELECT * FROM user WHERE cin = ?";
+        String req = "SELECT * FROM user WHERE cin LIKE  ? ";
         try (PreparedStatement stmt = cnx.prepareStatement(req)) {
-            stmt.setInt(1, cin);
+            stmt.setString(1, "%" + cin + "%");
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     u = new User(
@@ -263,6 +269,60 @@ public class UserService implements InterfaceUser<User> {
         }
         return u;
     }
+    public User getOneBy(String att,String rechercher) {
+        User u = null;
+        String req = "SELECT * FROM user WHERE ? = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setString(1, att);
+            stmt.setString(2, rechercher);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    u = new User(
+                            rs.getInt("id_user"),
+                            rs.getInt("cin"),
+                            rs.getString("nom"),
+                            rs.getString("prenom"),
+                            rs.getInt("num_tel"),
+                            rs.getString("adresse"),
+                            rs.getString("email"),
+                            rs.getString("password"),
+                            rs.getString("role")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return u;
+    }
+    public User verifierEmailMdp(String email, String mdp) {
+        User u = null;
 
+        try {
+            String requete = "SELECT * FROM user WHERE email = ? AND password = ?";
+            PreparedStatement statement = this.cnx.prepareStatement(requete);
+            statement.setString(1, email);
+            statement.setString(2, mdp);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    u = new User(
+                            rs.getInt("id_user"),
+                            rs.getInt("cin"),
+                            rs.getString("nom"),
+                            rs.getString("prenom"),
+                            rs.getInt("num_tel"),
+                            rs.getString("adresse"),
+                            rs.getString("email"),
+                            rs.getString("password"),
+                            rs.getString("role")
+                    );
+                }
+            }
+        } catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+        }
+
+        return u;
+    }
 
 }

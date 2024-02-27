@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="544.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.Login">
+   <children>
+      <ImageView fitHeight="544.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Login.png" />
+         </image>
+      </ImageView>
+      <ImageView cache="true" fitHeight="373.0" fitWidth="331.0" layoutX="135.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Login1.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="153.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse ">
+         <font>
+            <Font name="Bell MT Bold" size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="153.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" wrappingWidth="123.46728515625">
+         <font>
+            <Font name="Bell MT Bold" size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="adresse" layoutX="290.0" layoutY="190.0" styleClass="textfield" stylesheets="@img/style.css">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </TextField>
+      <PasswordField fx:id="password" layoutX="290.0" layoutY="262.0" styleClass="textfield" stylesheets="@img/style.css">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </PasswordField>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Loginicon.png" />
+         </image>
+      </ImageView>
+      <Button contentDisplay="CENTER" layoutX="186.0" layoutY="342.0" mnemonicParsing="false" onAction="#connecter" prefHeight="27.0" prefWidth="240.0" style="-fx-background-color: linear-gradient(to bottom right,#1A2A49,#143668);" text="Connecter" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="19.0" />
+         </font>
+      </Button>
+      <Button contentDisplay="CENTER" layoutX="186.0" layoutY="387.0" mnemonicParsing="false" onAction="#inscrireUser" prefHeight="27.0" prefWidth="240.0" style="-fx-background-color: linear-gradient(to bottom right,#1A2A49,#143668);" text="S'inscrir" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="19.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
