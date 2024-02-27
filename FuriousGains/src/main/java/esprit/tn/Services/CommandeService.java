@@ -118,4 +118,25 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
 
         return commondes;
     }
+    public Commande getOneByiD(int id) {
+        Commande c = null;
+        String req = "SELECT * FROM commande WHERE id_command LIKE  ? ";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setString(1, "%" + id + "%");
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    c = new Commande(
+                            rs.getInt("id_command"),
+                            rs.getInt("id_client"),
+                            rs.getString("statut_commande"),
+                            rs.getFloat("montant_total"),
+                            rs.getInt("id_produit")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return c;
+    }
 }

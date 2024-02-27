@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="532.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.ModifierLivraison">
    <children>
       <AnchorPane prefHeight="532.0" prefWidth="284.0" style="-fx-background-color: #133946;">
@@ -108,7 +107,7 @@
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <ComboBox fx:id="IdM" layoutX="475.0" layoutY="97.0" prefWidth="150.0" />
+      <ComboBox fx:id="IdM" layoutX="475.0" layoutY="97.0" onAction="#on_click" prefWidth="150.0" />
       <Label layoutX="384.0" layoutY="51.0" text="Modifier une Livraison" textFill="#133946">
          <font>
             <Font name="Monospaced Bold Italic" size="24.0" />

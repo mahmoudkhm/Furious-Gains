@@ -1,5 +1,6 @@
 package esprit.tn.Controllers;
 
+import esprit.tn.Models.Commande;
 import esprit.tn.Models.Livraison;
 import esprit.tn.Services.LivraisonService;
 import javafx.collections.FXCollections;
@@ -120,7 +121,27 @@ public class ModifierLivraison {
 
     @FXML
     void afficherlivraison(ActionEvent event) {
+        try {
+            Parent root= FXMLLoader.load(getClass().getResource("/AfficherLivraison.fxml"));
+            IdCommandeTF.getScene().setRoot(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
+    }
+    @FXML
+    void on_click(ActionEvent event) {
+        String selectedValue = IdM.getValue();
+        if (selectedValue != null) {
+            int liv = Integer.parseInt(selectedValue);
+            Livraison livraison = ls.getOneByiD(liv);
+            IdClientTF.setText(String.valueOf(livraison.getId_client()));
+            StatutLivraisonTF.setText(livraison.getStatut_livraison());
+            MontantTF.setText(String.valueOf(livraison.getMontant_paiement()));
+            AdresseLivraisonTF.setText(livraison.getAdresse_livraison());
+            DateLivraisonTF.setText(livraison.getDate_livraison());
+            IdCommandeTF.setText(String.valueOf(livraison.getId_commande()));
+            ModeLivraisonTF.setText(livraison.getMode_livraison());}
     }
     @FXML
     void initialize() {
