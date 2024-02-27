@@ -2,6 +2,7 @@ package esprit.tn.Services;
 
 import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Commande;
+import esprit.tn.Models.Livraison;
 import esprit.tn.Models.User;
 import esprit.tn.Utils.MyConnexion;
 import javafx.scene.control.Alert;
@@ -123,6 +124,27 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
         String req = "SELECT * FROM commande WHERE id_command LIKE  ? ";
         try (PreparedStatement stmt = cnx.prepareStatement(req)) {
             stmt.setString(1, "%" + id + "%");
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    c = new Commande(
+                            rs.getInt("id_command"),
+                            rs.getInt("id_client"),
+                            rs.getString("statut_commande"),
+                            rs.getFloat("montant_total"),
+                            rs.getInt("id_produit")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return c;
+    }
+    public Commande getOneByiD(String statut) {
+        Commande c = null;
+        String req = "SELECT * FROM `commande`  WHERE statut_commande like ? ";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setString(1, "%"+statut+"%");
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     c = new Commande(

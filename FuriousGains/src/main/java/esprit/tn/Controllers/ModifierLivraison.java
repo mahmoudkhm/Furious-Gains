@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,6 +28,9 @@ public class ModifierLivraison {
 
     @FXML
     private TextField IdClientTF;
+
+    @FXML
+    private TextField rechercherlivraison;
 
     @FXML
     private TextField IdCommandeTF;
@@ -133,7 +137,7 @@ public class ModifierLivraison {
     void on_click(ActionEvent event) {
         String selectedValue = IdM.getValue();
         if (selectedValue != null) {
-            int liv = Integer.parseInt(selectedValue);
+            String liv = selectedValue;
             Livraison livraison = ls.getOneByiD(liv);
             IdClientTF.setText(String.valueOf(livraison.getId_client()));
             StatutLivraisonTF.setText(livraison.getStatut_livraison());
@@ -143,6 +147,7 @@ public class ModifierLivraison {
             IdCommandeTF.setText(String.valueOf(livraison.getId_commande()));
             ModeLivraisonTF.setText(livraison.getMode_livraison());}
     }
+
     @FXML
     void initialize() {
         List<Livraison> livraisons = ls.affichage();

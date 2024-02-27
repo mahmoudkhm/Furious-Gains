@@ -8,12 +8,13 @@
 
 <AnchorPane prefHeight="532.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AfficherLivraison">
    <children>
-      <TextField fx:id="id_sup" layoutX="419.0" layoutY="395.0" />
-      <Button layoutX="273.0" layoutY="395.0" mnemonicParsing="false" onAction="#Supprimer" style="-fx-background-color: #F1E967;" text="Supprimer">
+      <TextField fx:id="id_sup" layoutX="316.0" layoutY="469.0" />
+      <Button layoutX="181.0" layoutY="466.0" mnemonicParsing="false" onAction="#Supprimer" style="-fx-background-color: #F1E967;" text="Supprimer">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Button>
-      <ListView fx:id="ListLivraison" layoutX="36.0" layoutY="20.0" onMouseClicked="#on_click" prefHeight="350.0" prefWidth="684.0" />
+      <ListView fx:id="ListLivraison" layoutX="49.0" layoutY="91.0" onMouseClicked="#on_click" prefHeight="350.0" prefWidth="684.0" />
+      <TextField fx:id="rechercherlivraison" layoutX="350.0" layoutY="29.0" onKeyTyped="#chercher" />
    </children>
 </AnchorPane>

@@ -5,11 +5,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="532.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AfficherCommande">
    <children>
-      <ListView fx:id="ListCommande" layoutX="48.0" layoutY="37.0" onMouseClicked="#on_click" prefHeight="289.0" prefWidth="714.0" />
+      <ListView fx:id="ListCommande" layoutX="54.0" layoutY="80.0" onMouseClicked="#on_click" prefHeight="289.0" prefWidth="714.0" />
       <TextField fx:id="SuppCommande" layoutX="385.0" layoutY="397.0" />
       <Button layoutX="269.0" layoutY="397.0" mnemonicParsing="false" onAction="#SupprimerCommande" text="Supprimer" />
+      <TextField fx:id="rechercherParS" layoutX="247.0" layoutY="39.0" onKeyTyped="#rechercher" prefHeight="26.0" prefWidth="237.0" />
    </children>
 </AnchorPane>

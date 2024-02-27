@@ -119,11 +119,11 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
 
         return livraisonList;
     }
-    public Livraison getOneByiD(int id) {
+    public Livraison getOneByiD(String statut) {
         Livraison c = null;
-        String req = "SELECT * FROM `livraison`  WHERE id_livraison like ? ";
+        String req = "SELECT * FROM `livraison`  WHERE statut_livraison like ? ";
         try (PreparedStatement stmt = cnx.prepareStatement(req)) {
-            stmt.setString(1, String.valueOf(id));
+            stmt.setString(1, "%"+statut+"%");
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     c = new Livraison(
@@ -143,6 +143,30 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
         }
         return c;
     }
-
-
+    /*
+    public Livraison getOneByCin(int cin) {
+        Livraison u = null;
+        String req = "SELECT * FROM livraison WHERE cin LIKE  ? ";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setString(1, "%" + cin + "%");
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    u = new Livraison(
+                            rs.getInt("id_livraison"),
+                            rs.getInt("id_commande"),
+                            rs.getString("date_livraison"),
+                            rs.getString("statut_livraison"),
+                            rs.getString("adresse_livraison"),
+                            rs.getFloat("montant_paiement"),
+                            rs.getString("mode_livraison"),
+                            rs.getInt("id_client")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return u;
+    }
+*/
 }

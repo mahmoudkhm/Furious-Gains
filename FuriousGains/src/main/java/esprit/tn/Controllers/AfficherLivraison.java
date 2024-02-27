@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -28,6 +29,27 @@ public class AfficherLivraison {
 
 
 
+    @FXML
+    private TextField rechercherlivraison;
+    @FXML
+    void chercher(KeyEvent event) {
+        String statut = rechercherlivraison.getText();
+        if (!statut.isEmpty()) {
+            Livraison livraison = ls.getOneByiD(statut);
+            if (livraison != null) {
+                ObservableList<Livraison> observableList = FXCollections.observableArrayList(livraison);
+                ListLivraison.setItems(observableList);
+            } else {
+                ListLivraison.setItems(FXCollections.emptyObservableList());
+            }
+        } else {
+            List<Livraison> users1= null;
+            users1 = ls.affichage();
+            ObservableList<Livraison> observableList = FXCollections.observableList(users1);
+            ListLivraison.setItems(observableList);
+        }
+
+    }
     @FXML
     void on_click(MouseEvent event) {
         int  selectedItem = ListLivraison.getSelectionModel().getSelectedItem().getId_livraison();
