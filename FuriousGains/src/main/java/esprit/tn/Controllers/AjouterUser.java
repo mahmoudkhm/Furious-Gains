@@ -37,9 +37,57 @@ public class AjouterUser {
 
     private final UserService us = new UserService();
 
-    @FXML
+   /* @FXML
     void AjouterTF(ActionEvent event) {
         us.utilisateurCanBeAded(new User(Integer.parseInt(cinTF.getText()), nomTF.getText(), prenomTF.getText(),Integer.parseInt(num_telTF.getText()), adresseTF.getText(), emailTF.getText(),passwordTF.getText(),1));
+    }*/
+   @FXML
+   void AjouterTF(ActionEvent event) {
+       int cin = 0;
+       String nom = nomTF.getText();
+       String prenom = prenomTF.getText();
+       int numTel = 0;
+       String adresse = adresseTF.getText();
+       String email = emailTF.getText();
+       String password = passwordTF.getText();
+       int typeUtilisateur = 1;
+
+       // Vérification du champ cinTF
+       try {
+           cin = Integer.parseInt(cinTF.getText());
+       } catch (NumberFormatException e) {
+           showErrorMessage("Le champ CIN doit être un nombre entier.");
+           return;
+       }
+       // Vérification du champ num_telTF
+       try {
+           numTel = Integer.parseInt(num_telTF.getText());
+       } catch (NumberFormatException e) {
+           showErrorMessage("Le champ Numéro de téléphone doit être un nombre entier.");
+           return;
+       }
+
+       // Vérification du champ emailTF
+       if (!isValidEmail(email)) {
+           showErrorMessage("L'adresse e-mail n'est pas valide.");
+           return;
+       }
+
+       // Ajouter l'utilisateur seulement si toutes les vérifications sont réussies
+       us.utilisateurCanBeAded(new User(cin, nom, prenom, numTel, adresse, email, password, typeUtilisateur));
+   }
+
+    private boolean isValidEmail(String email) {
+        // Vérification de la validité de l'adresse e-mail en utilisant une expression régulière
+        // Cette expression régulière est un exemple simple, vous pouvez l'ajuster selon vos besoins
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        return email.matches(emailRegex);
+    }
+
+    private void showErrorMessage(String message) {
+        // Afficher le message d'erreur dans une boîte de dialogue ou une autre méthode appropriée
+        // Par exemple : AlertUtil.showErrorDialog("Erreur", message);
+        System.out.println("Erreur : " + message);
     }
     @FXML
     void affichage(ActionEvent event) {

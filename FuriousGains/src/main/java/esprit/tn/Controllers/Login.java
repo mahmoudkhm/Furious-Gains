@@ -43,7 +43,6 @@ public class Login {
                     String  role = user.getRole();
                     String nom = user.getNom();
                     String prenom = user.getPrenom();
-
                     if (role.equals("Admin")) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Erreur");
@@ -51,17 +50,16 @@ public class Login {
                         alert.setContentText("Connecter en tant qu'admin!.");
                         alert.show();
                         prefs.putInt("iduser", user.getId_user());
+                        Parent root = null;
                         try {
-                            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("AfficherUser.fxml"));
-                            Parent root = (Parent)loader.load();
-                            Scene scene = new Scene(root);
+                            root = FXMLLoader.load(getClass().getResource("/AjouterUser.fxml"));
                             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                            Scene scene = new Scene(root);
                             stage.setScene(scene);
                             stage.show();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-
                     } else if (role.equals("Client") ) {
 
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -72,12 +70,11 @@ public class Login {
                         prefs.putInt("iduser", user.getId_user());
                         User u = new User();
                         u.getId_user();
-                        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("AfficherUser.fxml"));
-
+                        Parent root = null;
                         try {
-                            Parent root = (Parent)loader.load();
-                            Scene scene = new Scene(root);
+                            root = FXMLLoader.load(getClass().getResource("/AjouterUser.fxml"));
                             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                            Scene scene = new Scene(root);
                             stage.setScene(scene);
                             stage.show();
                         } catch (IOException e) {
@@ -104,10 +101,14 @@ public class Login {
     @FXML
     void inscrireUser(ActionEvent event) {
         Parent root = null;
+
+
         try {
             root = FXMLLoader.load(getClass().getResource("/AjouterUser.fxml"));
-            adresse.getScene().setRoot(root);
-
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

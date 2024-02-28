@@ -43,8 +43,7 @@ public class AfficherUser {
             List<User> users1= null;
             users1 = us.afficher();
             ObservableList<User> observableList = FXCollections.observableList(users1);
-            listUser.setItems(observableList);
-        }
+            listUser.setItems(observableList);}
     }
     @FXML
     void affichmod(ActionEvent event) {
