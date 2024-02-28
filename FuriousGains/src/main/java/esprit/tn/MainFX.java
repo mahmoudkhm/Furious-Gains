@@ -16,7 +16,7 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/ModifierAnnonce.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/AfficherAvis.fxml"));
         try {
             Parent route=loader.load();
             Scene scene=new Scene(route);

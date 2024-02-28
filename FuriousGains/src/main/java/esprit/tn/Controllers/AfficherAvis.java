@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -24,6 +25,26 @@ public class AfficherAvis {
     private final AvisService as=new AvisService();
 
 
+    @FXML
+    private TextField rechercher;
+    @FXML
+    void rechercherpar(KeyEvent event) {
+        String cinText = rechercher.getText();
+        if (!cinText.isEmpty()) {
+            List<Avis> avis=as.verifierEmailMdp(cinText);
+            if (avis != null) {
+                ObservableList<Avis> observableList = FXCollections.observableArrayList(avis);
+                listeAvis.setItems(observableList);
+            } else {
+                listeAvis.setItems(FXCollections.emptyObservableList());
+            }
+        } else {
+            List<Avis> users1= null;
+            users1 = as.affichage();
+            ObservableList<Avis> observableList = FXCollections.observableList(users1);
+            listeAvis.setItems(observableList);}
+
+    }
     @FXML
     void on_click(MouseEvent event) {
         int  selectedItem = listeAvis.getSelectionModel().getSelectedItem().getId_avis();

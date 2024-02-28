@@ -67,6 +67,7 @@
                   <ListView fx:id="listeAvis" layoutX="59.0" layoutY="142.0" onMouseClicked="#on_click" prefHeight="200.0" prefWidth="488.0" />
                   <Button layoutX="134.0" layoutY="380.0" mnemonicParsing="false" onAction="#supprimerAvis" text="Suppimer" />
                   <TextField fx:id="suppAvis" layoutX="268.0" layoutY="380.0" />
+                  <TextField fx:id="rechercher" layoutX="298.0" layoutY="106.0" onKeyTyped="#rechercherpar" promptText="rechercher" />
                </children>
             </AnchorPane>
          </center>

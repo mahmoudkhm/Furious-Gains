@@ -6,6 +6,7 @@ public class Avis {
     private int id_user;
     private int id_produit;
     private int note;
+    private String nom;
 
     public Avis() {}
 
@@ -14,6 +15,21 @@ public class Avis {
         this.id_user = id_user;
         this.id_produit = id_produit;
         this.note = note;
+    }
+
+    public Avis(int id_avis, String nom, int id_produit, int note) {
+        this.id_avis = id_avis;
+        this.id_produit = id_produit;
+        this.note = note;
+        this.nom = nom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public Avis(int id_user, int id_produit, int note) {
@@ -58,9 +74,9 @@ public class Avis {
     public String toString() {
         return "Avis{" +
                 "id_avis=" + id_avis +
-                ", id_user=" + id_user +
                 ", id_produit=" + id_produit +
                 ", note=" + note +
+                ", nom User='" + nom + '\'' +
                 '}';
     }
 }
