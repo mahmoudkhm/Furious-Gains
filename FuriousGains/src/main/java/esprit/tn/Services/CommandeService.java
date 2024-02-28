@@ -119,7 +119,7 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
 
         return commondes;
     }
-    public Commande getOneByiD(int id) {
+    public Commande getOneByiDd(int id) {
         Commande c = null;
         String req = "SELECT * FROM commande WHERE id_command LIKE  ? ";
         try (PreparedStatement stmt = cnx.prepareStatement(req)) {

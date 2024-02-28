@@ -9,13 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,7 +26,8 @@ public class AfficherLivraison {
     @FXML
     private TextField id_sup;
 
-
+    @FXML
+    private Button button_stat;
 
     @FXML
     private TextField rechercherlivraison;
@@ -58,6 +58,22 @@ public class AfficherLivraison {
     }
 
     private final LivraisonService ls =new LivraisonService();
+    @FXML
+    void statliv(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/staliv.fxml"));
+            javafx.scene.Parent root = loader.load();
+
+
+            Stage stage = (Stage) button_stat.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void Supprimer(ActionEvent event) {

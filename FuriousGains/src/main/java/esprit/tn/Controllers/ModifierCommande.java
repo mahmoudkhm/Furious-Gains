@@ -54,7 +54,7 @@ public class ModifierCommande {
         String selectedValue = IdComM.getValue();
         if (selectedValue != null) {
             int liv = Integer.parseInt(selectedValue);
-            Commande commande = cs.getOneByiD(liv);
+            Commande commande = cs.getOneByiDd(liv);
             IdclientTF.setText(String.valueOf(commande.getId_client()));
             MontantTF.setText(String.valueOf(commande.getMontant_total()));
             StatutCommandeTF.setText(commande.getStatut_commande());

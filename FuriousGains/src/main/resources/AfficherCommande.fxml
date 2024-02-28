@@ -10,6 +10,6 @@
       <ListView fx:id="ListCommande" layoutX="54.0" layoutY="80.0" onMouseClicked="#on_click" prefHeight="289.0" prefWidth="714.0" />
       <TextField fx:id="SuppCommande" layoutX="385.0" layoutY="397.0" />
       <Button layoutX="269.0" layoutY="397.0" mnemonicParsing="false" onAction="#SupprimerCommande" text="Supprimer" />
-      <TextField fx:id="rechercherParS" layoutX="247.0" layoutY="39.0" onKeyTyped="#rechercher" prefHeight="26.0" prefWidth="237.0" />
+      <TextField fx:id="rechercherParS" layoutX="247.0" layoutY="39.0" prefHeight="26.0" prefWidth="237.0" />
    </children>
 </AnchorPane>

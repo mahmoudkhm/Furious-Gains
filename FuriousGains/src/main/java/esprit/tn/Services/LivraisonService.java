@@ -143,10 +143,9 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
         }
         return c;
     }
-    /*
-    public Livraison getOneByCin(int cin) {
+    public Livraison getOneByid(String cin) {
         Livraison u = null;
-        String req = "SELECT * FROM livraison WHERE cin LIKE  ? ";
+        String req = "SELECT * FROM livraison WHERE id_livraison LIKE  ? ";
         try (PreparedStatement stmt = cnx.prepareStatement(req)) {
             stmt.setString(1, "%" + cin + "%");
             try (ResultSet rs = stmt.executeQuery()) {
@@ -168,5 +167,5 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
         }
         return u;
     }
-*/
+
 }

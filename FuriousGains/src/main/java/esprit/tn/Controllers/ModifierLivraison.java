@@ -138,7 +138,7 @@ public class ModifierLivraison {
         String selectedValue = IdM.getValue();
         if (selectedValue != null) {
             String liv = selectedValue;
-            Livraison livraison = ls.getOneByiD(liv);
+            Livraison livraison = ls.getOneByid(liv);
             IdClientTF.setText(String.valueOf(livraison.getId_client()));
             StatutLivraisonTF.setText(livraison.getStatut_livraison());
             MontantTF.setText(String.valueOf(livraison.getMontant_paiement()));
