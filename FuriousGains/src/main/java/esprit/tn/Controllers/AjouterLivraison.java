@@ -36,11 +36,53 @@ public class AjouterLivraison {
 
 
     private final LivraisonService ls =new LivraisonService();
-    @FXML
+   /* @FXML
     void AjouterTF(ActionEvent event) {
         ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),DateLivraisonTF.getText(),StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
 
-    }
+    }*/
+   @FXML
+   void AjouterTF(ActionEvent event) {
+       Alert alertType;
+       if (!IdCommandeTF.getText().isEmpty() && !DateLivraisonTF.getText().isEmpty() && !StatutLivraisonTF.getText().isEmpty() && !AdresseLivraisonTF.getText().isEmpty()  && !ModeLivraisonTF.getText().isEmpty() && !IdClientTF.getText().isEmpty()&& !MontantTF.getText().isEmpty()  ) {
+           if (this.IdCommandeTF.getText().matches("[a-z]+")) {
+               alertType = new Alert(Alert.AlertType.ERROR);
+               alertType.setTitle("Error");
+               alertType.setHeaderText("id client doit être un num et non une chaine!");
+               alertType.show();
+           }else if (IdClientTF.getText().matches("[a-z]+")) {
+               alertType = new Alert(Alert.AlertType.ERROR);
+               alertType.setTitle("Error");
+               alertType.setHeaderText("id commande doit être un num et non une chaine! !");
+               alertType.show();
+           }
+           else if (this.ModeLivraisonTF.getText().matches("[0-9]+")) {
+               alertType = new Alert(Alert.AlertType.ERROR);
+               alertType.setTitle("Error");
+               alertType.setHeaderText("mode de livraison must be string not number !");
+               alertType.show();
+           } else if (this.StatutLivraisonTF.getText().matches("[0-9]+")) {
+               alertType = new Alert(Alert.AlertType.ERROR);
+               alertType.setTitle("Error");
+               alertType.setHeaderText("statut doit être une chaîne et non un numéro !");
+               alertType.show();
+           } else if (this.MontantTF.getText().matches("[a-z]+")||MontantTF.getText().matches("[A-Z]+")) {
+               alertType = new Alert(Alert.AlertType.ERROR);
+               alertType.setTitle("Error");
+               alertType.setHeaderText("Montant doit être un numero et non une chaine !");
+               alertType.show();
+           }else
+               {ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),DateLivraisonTF.getText(),StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
+               }
+       }
+       else
+               {alertType = new Alert(Alert.AlertType.ERROR);
+                   alertType.setTitle("Champs vide!!! ");
+                   alertType.show();
+               }
+
+
+   }
     @FXML
     void afficherlivraison(ActionEvent event) {
         try {
