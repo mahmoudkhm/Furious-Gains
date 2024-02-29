@@ -75,15 +75,25 @@
       <TextField fx:id="StatutCommandeTF" layoutX="478.0" layoutY="198.0" promptText="StatutCommande" />
       <TextField fx:id="MontantTF" layoutX="479.0" layoutY="267.0" promptText="Montant" />
       <TextField fx:id="IdProduitTF" layoutX="480.0" layoutY="339.0" promptText="IdProduit" />
-      <Button layoutX="362.0" layoutY="423.0" mnemonicParsing="false" onAction="#modifierC" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #F1E967;" text="Modifier">
+      <Button layoutX="414.0" layoutY="471.0" mnemonicParsing="false" onAction="#modifierC" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #F1E967;" text="Modifier">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font></Button>
-      <Button layoutX="572.0" layoutY="421.0" mnemonicParsing="false" onAction="#afficherc" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #F1E967;" text="Commandes">
+      <Button layoutX="572.0" layoutY="470.0" mnemonicParsing="false" onAction="#afficherc" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #F1E967;" text="Commandes">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font></Button>
       <Label layoutX="361.0" layoutY="317.0" text="Id Client" />
       <TextField fx:id="IdclientTF" layoutX="480.0" layoutY="304.0" promptText="IdClient" />
+      <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="444.0" layoutY="416.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/modifier.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="608.0" layoutY="416.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/commercialisation.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

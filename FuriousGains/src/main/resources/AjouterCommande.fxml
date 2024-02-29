@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="532.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AjouterCommande">
    <children>
       <AnchorPane prefHeight="532.0" prefWidth="284.0" style="-fx-background-color: #133946;">
@@ -50,7 +49,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button layoutX="438.0" layoutY="412.0" mnemonicParsing="false" onAction="#AjouterCommandeTF" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #F1E967;" text="Ajouter">
+      <Button layoutX="438.0" layoutY="462.0" mnemonicParsing="false" onAction="#AjouterCommandeTF" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #F1E967;" text="Ajouter">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
@@ -60,7 +59,7 @@
       <TextField fx:id="MontantTF" layoutX="538.0" layoutY="254.0" />
       <Label layoutX="392.0" layoutY="138.0" text="Id Client">
          <font>
-            <Font name="Times New Roman" size="13.0" />
+            <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
       <Label layoutX="392.0" layoutY="197.0" text="Statut Commande">
@@ -73,12 +72,30 @@
             <Font name="Times New Roman" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="406.0" layoutY="330.0" text="Id Produit" />
+      <Label layoutX="406.0" layoutY="330.0" text="Id Produit">
+         <font>
+            <Font name="Times New Roman Bold" size="13.0" />
+         </font></Label>
       <TextField fx:id="IdProduitTF" layoutX="539.0" layoutY="326.0" />
-      <Button layoutX="627.0" layoutY="412.0" mnemonicParsing="false" onAction="#AfficherCommandeTF" prefHeight="34.0" prefWidth="122.0" style="-fx-background-color: #F1E967;" text="Commandes">
+      <Button layoutX="627.0" layoutY="461.0" mnemonicParsing="false" onAction="#AfficherCommandeTF" prefHeight="34.0" prefWidth="122.0" style="-fx-background-color: #F1E967;" text="Commandes">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Button>
+      <ImageView fitHeight="26.0" fitWidth="45.0" layoutX="472.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/ajouter-un-bouton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="50.0" layoutX="671.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/commercialisation.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="392.0" layoutY="65.0" prefHeight="28.0" prefWidth="322.0" text="Ajouter une Commande" textFill="#133946">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
