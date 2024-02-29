@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -28,6 +29,19 @@ public class AfficherAvis {
     @FXML
     private TextField rechercher;
     @FXML
+    void calculerTotalAvis(ActionEvent event) {
+        ObservableList<Avis> avisList = listeAvis.getItems();
+        int nombreAvis = avisList.size();
+
+       // System.out.println("Nombre d'avis : " + nombreAvis);
+        Alert alert =new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Nombre d'avis : " + nombreAvis);
+        alert.setContentText("Nombre d'avis : " + nombreAvis);
+        alert.showAndWait();
+    }
+
+
+        @FXML
     void rechercherpar(KeyEvent event) {
         String cinText = rechercher.getText();
         if (!cinText.isEmpty()) {
@@ -68,4 +82,18 @@ public class AfficherAvis {
         listeAvis.setItems(observableList);
 
     }
+    @FXML
+    public void calculerTotalAvis() {
+        ObservableList<Avis> avisList = listeAvis.getItems();
+        int totalAvis = 0;
+
+        for (Avis avis : avisList) {
+            totalAvis += avis.getNote();
+
+
+        }
+
+        System.out.println("Total des avis : " + totalAvis);
+    }
+
 }

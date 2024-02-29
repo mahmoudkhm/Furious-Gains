@@ -91,6 +91,7 @@
                         <Font name="Times New Roman Bold" size="18.0" />
                      </font>
                   </Button>
+                  <Label fx:id="remplir" layoutX="176.0" layoutY="325.0" prefHeight="18.0" prefWidth="273.0" />
                </children>
             </AnchorPane>
          </center>

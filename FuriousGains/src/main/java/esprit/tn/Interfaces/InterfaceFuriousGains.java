@@ -8,4 +8,5 @@ public interface InterfaceFuriousGains<T> {
    void modifier(T t);
    void supprimer(int id);
    List<T> affichage();
+
 }
