@@ -1,4 +1,4 @@
-package services;
+package esprit.tn.services;
 
 import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Recette;
@@ -18,11 +18,12 @@ public class RecetteService implements InterfaceFuriousGains<Recette> {
     @Override
     public void ajouter(Recette r2) {
         try {
-            String req = "INSERT INTO recette (nom_Recette, ingredients, temps_preparation) VALUES (?, ?, ?)";
+            String req = "INSERT INTO recette (nom_Recette, ingredients, temps_preparation,id_regime) VALUES (?, ?, ?,?)";
             PreparedStatement preparedStatement = cnx.prepareStatement(req);
             preparedStatement.setString(1, r2.getNom_Recette());
             preparedStatement.setString(2, r2.getIngredients());
             preparedStatement.setString(3, r2.getTemps_preparation());
+            preparedStatement.setInt(4, 8);
 
             preparedStatement.executeUpdate();
             System.out.println("Recette Added successfully!");
@@ -32,12 +33,14 @@ public class RecetteService implements InterfaceFuriousGains<Recette> {
     }
 
     public void modifier(Recette r2) {
-        String sql = "UPDATE recette SET nom_Recette = ?, ingredients = ?, temps_preparation = ? WHERE id_Recette = ?";
+        String sql = "UPDATE recette SET nom_Recette = ?, ingredients = ?, temps_preparation = ?   WHERE id_Recette = ?";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
             preparedStatement.setString(1, r2.getNom_Recette());
             preparedStatement.setString(2, r2.getIngredients());
             preparedStatement.setString(3, r2.getTemps_preparation());
+
             preparedStatement.setInt(4, r2.getId_Recette());
+
 
             preparedStatement.executeUpdate();
             System.out.println("Recette updated successfully!");
@@ -49,11 +52,22 @@ public class RecetteService implements InterfaceFuriousGains<Recette> {
 
     @Override
     public void supprimer(int id) {
-        String sql = "DELETE FROM recette WHERE id_Recette = ?";
-        try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
-            System.out.println("Recette Deleted successfully!");
+        try {
+            // First, delete associated ratings from the Rating table
+            String deleteRatingsQuery = "DELETE FROM ratings WHERE id_Recette = ?";
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(deleteRatingsQuery)) {
+                preparedStatement.setInt(1, id);
+                preparedStatement.executeUpdate();
+                System.out.println("Ratings associated with the recipe deleted successfully!");
+            }
+
+            // Then, delete the recipe from the Recette table
+            String deleteRecetteQuery = "DELETE FROM recette WHERE id_Recette = ?";
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(deleteRecetteQuery)) {
+                preparedStatement.setInt(1, id);
+                preparedStatement.executeUpdate();
+                System.out.println("Recette Deleted successfully!");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,6 +85,7 @@ public class RecetteService implements InterfaceFuriousGains<Recette> {
                 r2.setNom_Recette(rs.getString("nom_Recette"));
                 r2.setIngredients(rs.getString("ingredients"));
                 r2.setTemps_preparation(rs.getString("temps_preparation"));
+                r2.setId_regime(rs.getInt("id_regime"));
                 recettes.add(r2);
             }
         } catch (SQLException ex) {

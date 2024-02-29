@@ -5,24 +5,21 @@ public class Regime {
     private String type_regime;
     private String nom_regime;
     private String instruction;
-    private int id_recette;
 
     public Regime() {
     }
 
-    public Regime(int id_regime, String type_regime, String nom_regime, String instruction, int id_recette) {
+    public Regime(int id_regime, String type_regime, String nom_regime, String instruction) {
         this.id_regime = id_regime;
         this.type_regime = type_regime;
         this.nom_regime = nom_regime;
         this.instruction = instruction;
-        this.id_recette = id_recette;
     }
 
-    public Regime(String type_regime, String nom_regime, String instruction, int id_recette) {
+    public Regime(String type_regime, String nom_regime, String instruction) {
         this.type_regime = type_regime;
         this.nom_regime = nom_regime;
         this.instruction = instruction;
-        this.id_recette = id_recette;
     }
 
     public int getId_regime() {
@@ -57,13 +54,7 @@ public class Regime {
         this.instruction = instruction;
     }
 
-    public int getId_recette() {
-        return id_recette;
-    }
 
-    public void setId_recette(int id_recette) {
-        this.id_recette = id_recette;
-    }
 
     @Override
     public String toString() {
@@ -72,7 +63,7 @@ public class Regime {
                 ", type_regime='" + type_regime + '\'' +
                 ", nom_regime='" + nom_regime + '\'' +
                 ", instruction='" + instruction + '\'' +
-                ", id_recette=" + id_recette +
+
                 '}';
     }
 }
