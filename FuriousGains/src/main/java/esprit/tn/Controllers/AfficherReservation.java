@@ -1,6 +1,6 @@
 package esprit.tn.Controllers;
 
-import esprit.tn.Models.Evenement;
+
 import esprit.tn.Models.Reservation;
 import esprit.tn.Services.ReservationService;
 import javafx.collections.FXCollections;
@@ -53,4 +53,6 @@ public class AfficherReservation {
         listRes.setItems(observableList);
 
     }
+
 }
+

@@ -73,21 +73,25 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
         try {
             es = cnx.prepareStatement(req);
             es.setInt(1, id);
-            es.executeUpdate();
-            Alert alert =new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("succes");
-            alert.setContentText("evenement supprimer!");
-            alert.showAndWait();
+            int rowCount = es.executeUpdate();
+            if (rowCount > 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succès");
+                alert.setContentText("Événement supprimé !");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setContentText("L'ID de l'événement n'existe pas !");
+                alert.showAndWait();
+            }
         } catch (SQLException e) {
-            Alert alert =new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("error");
-            alert.setContentText("echec de suppression!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Échec de suppression !");
             alert.showAndWait();
         }
-
-
     }
-
     @Override
     public List<Evenement> affichage() {
         List<Evenement> evenements = new ArrayList<>();
@@ -132,14 +136,8 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
                             es.getString("lieu_event"),
                             es.getFloat("prix_event"),
                             es.getInt("nb_participation"),
-
-
-
-
                             es.getString("date_event"),
                             es.getString("heure_event"),
-
-
                             es.getString("description"));
 
 
@@ -153,5 +151,36 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
         }
         return ev;
     }
+    public List<Evenement> verifierEmailMdp(String par) {
+        List<Evenement> listevenement = new ArrayList<>();
+
+        try {
+            String requete = "SELECT * FROM evenement WHERE id_event like ?";
+            PreparedStatement statement = this.cnx.prepareStatement(requete);
+            statement.setString(1, "%"+par+"%");
+
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Evenement evenement = new Evenement();
+                    evenement.setId_event(rs.getInt("id_event"));
+                    evenement.setNom_event(rs.getString("nom_event"));
+                    evenement.setLieu_event(rs.getString("lieu_event"));
+                    evenement.setPrix_event(rs.getFloat("lieu_event"));
+                    evenement.setNb_participation(rs.getInt("nb_participation"));
+                    evenement.setDate_event(rs.getString("date_event"));
+                    evenement.setHeure_event(rs.getString("heure_event"));
+                    evenement.setDescription(rs.getString("description"));
+
+                    listevenement.add(evenement);
+
+                }
+            }
+        } catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+        }
+
+        return listevenement;
+    }
+
 
 }

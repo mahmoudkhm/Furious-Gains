@@ -1,5 +1,6 @@
 package esprit.tn.Models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class
@@ -12,7 +13,7 @@ Evenement {
     private int nb_participation;
     private String date_event;
     private String heure_event;
-    private String image_event;
+    //private String image_event;
     private String description;
 
     public Evenement() {}
@@ -72,6 +73,7 @@ Evenement {
         this.prix_event = prix_event;
     }
 
+
     public int getNb_participation() {
         return nb_participation;
     }
@@ -80,6 +82,7 @@ Evenement {
         this.nb_participation = nb_participation;
     }
 
+
     public String getDate_event() {
         return date_event;
     }
@@ -87,6 +90,7 @@ Evenement {
     public void setDate_event(String date_event) {
         this.date_event = date_event;
     }
+
 
     public String getHeure_event() {
         return heure_event;

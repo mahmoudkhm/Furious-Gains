@@ -76,18 +76,24 @@ public class ReservationService implements InterfaceFuriousGains <Reservation> {
         try {
             rs = cnx.prepareStatement(req);
             rs.setInt(1, id);
-            rs.executeUpdate();
-            Alert alert =new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("succes");
-            alert.setContentText("reservation asupprimer!");
-            alert.showAndWait();
+            int rowCount = rs.executeUpdate();
+            if (rowCount > 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succès");
+                alert.setContentText("Réservation supprimée !");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setContentText("L'ID de réservation n'existe pas !");
+                alert.showAndWait();
+            }
         } catch (SQLException e) {
-            Alert alert =new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("error");
-            alert.setContentText("echec de suppression!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Échec de suppression !");
             alert.showAndWait();
         }
-
     }
 
     @Override
