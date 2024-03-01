@@ -7,18 +7,42 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.UUID;
 
 public class AjouterUser {
     @FXML
     private TextField adresseTF;
+    private File selectedImageFile;
+    @FXML
+    private DatePicker daten;
+    String pic;
 
     @FXML
     private TextField cinTF;
+    @FXML
+    private Button uploadb;
+    @FXML
+    private PasswordField passwordTF;
+
+    @FXML
+    private ImageView imagevi;
 
     @FXML
     private TextField emailTF;
@@ -29,8 +53,6 @@ public class AjouterUser {
     @FXML
     private TextField num_telTF;
 
-    @FXML
-    private TextField passwordTF;
 
     @FXML
     private TextField prenomTF;
@@ -50,13 +72,13 @@ public class AjouterUser {
        String adresse = adresseTF.getText();
        String email = emailTF.getText();
        String password = passwordTF.getText();
-       int typeUtilisateur = 1;
-
-       // Vérification du champ cinTF
+       String typeUtilisateur = "Client";
+       LocalDate localDate = (LocalDate)this.daten.getValue();
        try {
            cin = Integer.parseInt(cinTF.getText());
        } catch (NumberFormatException e) {
            showErrorMessage("Le champ CIN doit être un nombre entier.");
+
            return;
        }
        // Vérification du champ num_telTF
@@ -66,15 +88,31 @@ public class AjouterUser {
            showErrorMessage("Le champ Numéro de téléphone doit être un nombre entier.");
            return;
        }
-
        // Vérification du champ emailTF
        if (!isValidEmail(email)) {
            showErrorMessage("L'adresse e-mail n'est pas valide.");
            return;
        }
+       if (localDate == null) {
+           Alert date = new Alert(Alert.AlertType.ERROR);
+           date.setTitle("Erreur de saisie: champ DATE est vide");
+           date.setHeaderText((String)null);
+           date.setContentText("Il est obligatoire de mettre la date de la compétition !");
+           date.showAndWait();
+           return;
+       }
 
-       // Ajouter l'utilisateur seulement si toutes les vérifications sont réussies
-       us.utilisateurCanBeAded(new User(cin, nom, prenom, numTel, adresse, email, password, typeUtilisateur));
+       Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+       Date datenuser = Date.from(instant);
+       us.utilisateurCanBeAded(new User(cin, nom, prenom,datenuser, numTel, adresse, email, password,typeUtilisateur,this.pic,1));
+       Parent root = null;
+       try {
+           root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+           nomTF.getScene().setRoot(root);
+
+       } catch (IOException e) {
+           throw new RuntimeException(e);
+       }
    }
 
     private boolean isValidEmail(String email) {
@@ -99,6 +137,27 @@ public class AjouterUser {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @FXML
+    void ajouterImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter[]{new FileChooser.ExtensionFilter("Images", new String[]{"*.png", "*.jpg", "*.jpeg", "*.gif"})});
+        selectedImageFile = fileChooser.showOpenDialog(this.imagevi.getScene().getWindow());
+        if (this.selectedImageFile != null) {
+            Image image = new Image(this.selectedImageFile.toURI().toString());
+            this.imagevi.setImage(image);
+            String uniqueID = UUID.randomUUID().toString();
+            String extension = this.selectedImageFile.getName().substring(this.selectedImageFile.getName().lastIndexOf("."));
+            this.pic = uniqueID + extension;
+            Path destination = Paths.get(System.getProperty("user.dir"), "src", "Images", "uploads", this.pic);
+            try {
+                Files.copy(this.selectedImageFile.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 }

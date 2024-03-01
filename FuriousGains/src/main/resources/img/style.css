@@ -270,16 +270,16 @@
     -fx-border-style: solid;
     -fx-border-color: #FD9999;
 
-}
-.pane_1111{
-    -fx-background-color:#353A56;
+}*/
+.afficherB{
+    -fx-background-color:#133946;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 16px;
     -fx-background-radius: 16px;
     -fx-border-style: solid;
-    -fx-border-color: #353A56;
+    -fx-border-color: #133946;
 }
-*/
+
 .root{
     -fx-background-color:#EAEEF4;
 }
@@ -344,6 +344,11 @@
     -fx-background-radius:8px;
     -fx-cursor:hand;
 }
+.profilB {
+    -fx-background-color: #f2f2f2; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+}
 .pane_1{
     -fx-background-color:#748CF1;
     -fx-border-width: 2px 2px 2px 2px;
@@ -396,8 +401,5 @@
 .textfield:focused{
     -fx-border-color: #3c4931;
     -fx-border-width:0px 0px 2px .0px;
-
-
-
 
 }
