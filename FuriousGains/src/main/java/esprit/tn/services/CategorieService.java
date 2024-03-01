@@ -1,8 +1,7 @@
-package services;
+package esprit.tn.services;
 
 import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Categorie;
-import esprit.tn.Models.Produit;
 import esprit.tn.Utils.MyConnexion;
 
 import java.sql.*;

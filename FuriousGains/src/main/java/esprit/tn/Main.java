@@ -1,10 +1,8 @@
 package esprit.tn;
 
-import esprit.tn.Models.Categorie;
 import esprit.tn.Models.Produit;
-import esprit.tn.Utils.MyConnexion;
-import services.CategorieService;
-import services.ProduitService;
+import esprit.tn.services.CategorieService;
+import esprit.tn.services.ProduitService;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -17,13 +15,13 @@ public class Main {
         //ps.ajouter(new Produit("Bum",10,150,"CBUM",3));
 
 //affichage Poducts
-       //System.out.println(ps.affichage());
+      // System.out.println(ps.affichage());
 //Delete Poduct
 
          //ps.supprimer(2);
 //Update Poduct
-          //Produit p =new Produit(7,"creatine",3,100,"behi",2);
-          // ps.modifier(p);
+          Produit p =new Produit("creatine",3,100,"behi",2);
+           ps.modifier(p);
 //Affichage GetByIdCategorie (jointure)
         //System.out.println(ps.getInnerJoinCategorie(1));
 

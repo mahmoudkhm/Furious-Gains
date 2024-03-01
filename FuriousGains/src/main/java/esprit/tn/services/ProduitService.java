@@ -1,7 +1,6 @@
-package services;
+package esprit.tn.services;
 
 import esprit.tn.Interfaces.InterfaceFuriousGains;
-import esprit.tn.Models.Categorie;
 import esprit.tn.Models.Produit;
 import esprit.tn.Utils.MyConnexion;
 
@@ -33,10 +32,7 @@ public class ProduitService implements InterfaceFuriousGains <Produit> {
 
     public void modifier(Produit p) {
         String sql = "UPDATE produit SET nom_produit= ?,quantite=?,prix_produit=?,description=?,id_categorie=? WHERE id_produit = ?";
-        try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
-
-            PreparedStatement ps = cnx.prepareStatement(sql);
-            //ps.setString(1, p.getNom_produit());
+        try (PreparedStatement ps = cnx.prepareStatement(sql)) {
             ps.setString(1, p.getNom_produit());
             ps.setInt(2,p.getQuantite());
             ps.setFloat(3,p.getPrix_produit());
@@ -44,14 +40,12 @@ public class ProduitService implements InterfaceFuriousGains <Produit> {
             ps.setInt(5,p.getId_categorie());
             ps.setInt(6,p.getId_produit());
 
-
             ps.executeUpdate();
             System.out.println("Product updated successfully!");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
 
@@ -114,6 +108,48 @@ public class ProduitService implements InterfaceFuriousGains <Produit> {
         }
         return produits;
     }
-
-
+    public Produit getOneById(int id) {
+        Produit p = null;
+        String req = "SELECT * FROM produit WHERE id_produit = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                     p = new Produit(rs.getString("nom_produit"),
+                    rs.getInt("quantite"),
+                    rs.getFloat("prix_produit"),
+                    rs.getString("description"),
+                    rs.getInt("id_categorie"));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return p;
+    }
+  /*  public User getOneByCin(int cin) {
+        User u = null;
+        String req = "SELECT * FROM user WHERE cin = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setInt(1, cin);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    u = new User(
+                            rs.getInt("id_user"),
+                            rs.getInt("cin"),
+                            rs.getString("nom"),
+                            rs.getString("prenom"),
+                            rs.getInt("num_tel"),
+                            rs.getString("adresse"),
+                            rs.getString("email"),
+                            rs.getString("password"),
+                            rs.getString("role")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return u;
+    }*/
 }
