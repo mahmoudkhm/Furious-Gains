@@ -27,7 +27,7 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
             st.executeUpdate(req);
             Alert alert =new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succés");
-            alert.setContentText("Livraison ajouter avec succés!");
+            alert.setContentText("Livraison ajouteé avec succés!");
             alert.showAndWait();
 
             System.out.println("Livraison ajoutée avec succès !");
@@ -57,7 +57,7 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
             System.out.println("Livraison mise à jour avec succès!");
             Alert alert =new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succés");
-            alert.setContentText("Commande Modifier avec succés!");
+            alert.setContentText("Commande Modifieé avec succés!");
             alert.showAndWait();
 
 

@@ -48,18 +48,18 @@ public class AjouterLivraison {
            if (this.IdCommandeTF.getText().matches("[a-z]+")) {
                alertType = new Alert(Alert.AlertType.ERROR);
                alertType.setTitle("Error");
-               alertType.setHeaderText("id client doit être un num et non une chaine!");
+               alertType.setHeaderText("id client doit être un numero et non une chaine!");
                alertType.show();
            }else if (IdClientTF.getText().matches("[a-z]+")) {
                alertType = new Alert(Alert.AlertType.ERROR);
                alertType.setTitle("Error");
-               alertType.setHeaderText("id commande doit être un num et non une chaine! !");
+               alertType.setHeaderText("id commande doit être un numero et non une chaine! !");
                alertType.show();
            }
            else if (this.ModeLivraisonTF.getText().matches("[0-9]+")) {
                alertType = new Alert(Alert.AlertType.ERROR);
                alertType.setTitle("Error");
-               alertType.setHeaderText("mode de livraison must be string not number !");
+               alertType.setHeaderText("mode de livraison doit etre une chaine et non et numero !");
                alertType.show();
            } else if (this.StatutLivraisonTF.getText().matches("[0-9]+")) {
                alertType = new Alert(Alert.AlertType.ERROR);
