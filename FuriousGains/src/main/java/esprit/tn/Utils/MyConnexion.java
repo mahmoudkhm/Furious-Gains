@@ -34,4 +34,7 @@ public class MyConnexion {
 
     }
 
+    public void setCnx(Connection cnx) {
+        this.cnx = cnx;
+    }
 }

@@ -43,9 +43,9 @@ public class AfficherAvis {
 
         @FXML
     void rechercherpar(KeyEvent event) {
-        String cinText = rechercher.getText();
-        if (!cinText.isEmpty()) {
-            List<Avis> avis=as.verifierEmailMdp(cinText);
+        String noteText = rechercher.getText();
+        if (!noteText.isEmpty()) {
+            List<Avis> avis=as.recherche(noteText);
             if (avis != null) {
                 ObservableList<Avis> observableList = FXCollections.observableArrayList(avis);
                 listeAvis.setItems(observableList);

@@ -101,7 +101,7 @@ public class AvisService implements InterfaceFuriousGains<Avis> {
 
     }
 
-        public List<Avis> verifierEmailMdp(String par) {
+        public List<Avis> recherche(String par) {
         List<Avis> listavis = new ArrayList<>();
 
         try {

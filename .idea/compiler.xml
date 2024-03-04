@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="FuriousGains" />
+        <module name="Furious-Gains" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FuriousGains" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
