@@ -28,6 +28,11 @@ public class AfficherLivraison {
 
     @FXML
     private Button button_stat;
+    @FXML
+    private Button bouttonPDF;
+
+    @FXML
+    private Button bouttonSMS;
 
     @FXML
     private TextField rechercherlivraison;

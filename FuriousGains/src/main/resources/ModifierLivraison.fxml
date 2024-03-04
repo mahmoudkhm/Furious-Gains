@@ -87,7 +87,7 @@
          </font>
       </Label>
       <TextField fx:id="StatutLivraisonTF" layoutX="482.0" layoutY="200.0" promptText="Statut Livraison" />
-      <TextField fx:id="MontantTF" layoutX="488.0" layoutY="276.0" promptText="Montant " />
+      <TextField fx:id="MontantTF" disable="true" layoutX="488.0" layoutY="276.0" promptText="Montant " />
       <TextField fx:id="AdresseLivraisonTF" layoutX="486.0" layoutY="238.0" promptText="Adresse Livraison" />
       <TextField fx:id="ModeLivraisonTF" layoutX="488.0" layoutY="322.0" promptText="Mode Livraison" />
       <Label layoutX="375.0" layoutY="362.0" prefHeight="18.0" prefWidth="94.0" text="Id Client">
@@ -95,13 +95,13 @@
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="IdCommandeTF" layoutX="479.0" layoutY="131.0" promptText="Id Commande" />
+      <TextField fx:id="IdCommandeTF" disable="true" layoutX="479.0" layoutY="131.0" promptText="Id Commande" />
       <Label layoutX="328.0" layoutY="136.0" prefHeight="18.0" prefWidth="94.0" text="Id Commande">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="IdClientTF" layoutX="489.0" layoutY="358.0" promptText="Id Client" />
+      <TextField fx:id="IdClientTF" disable="true" layoutX="489.0" layoutY="358.0" promptText="Id Client" />
       <Label layoutX="339.0" layoutY="101.0" prefHeight="18.0" prefWidth="71.0" text="Id Livraison">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />

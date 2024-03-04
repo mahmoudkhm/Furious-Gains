@@ -1,6 +1,7 @@
 package esprit.tn.Controllers;
 
 import esprit.tn.Models.Livraison;
+import esprit.tn.Models.sms;
 import esprit.tn.Services.LivraisonService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,7 +73,9 @@ public class AjouterLivraison {
                alertType.setHeaderText("Montant doit être un numero et non une chaine !");
                alertType.show();
            }else
-               {ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),DateLivraisonTF.getText(),StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
+               {Livraison livraison= new Livraison(Integer.parseInt(IdCommandeTF.getText()),DateLivraisonTF.getText(),StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText()));
+                   ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),DateLivraisonTF.getText(),StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
+                   sms.sms(livraison,"votre reservation commence:","+21621174221");
                }
        }
        else
