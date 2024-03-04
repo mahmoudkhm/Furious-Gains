@@ -64,7 +64,7 @@ public class Smail {
         props.put("mail.smtp.starttls.enable", "true");
 
         String username = "nadabha135@gmail.com";
-        String password = "wkqe peai lmbx qdvx";
+        String password = "..............";
 
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
