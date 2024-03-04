@@ -183,7 +183,7 @@ generatePDF();
             float startY = yStart - headerHeight - 15;
             contentStream.beginText();
             contentStream.newLineAtOffset(startX, startY);
-            contentStream.showText("La liste des Livraison");
+            contentStream.showText("La liste des Livraisons");
             yStart -= headerHeight + 50;
             contentStream.endText();
 
