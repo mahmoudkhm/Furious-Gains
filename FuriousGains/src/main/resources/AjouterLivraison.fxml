@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -54,7 +55,6 @@
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="DateLivraisonTF" layoutX="434.0" layoutY="154.0" promptText="Date Livraison" />
       <Label layoutX="318.0" layoutY="314.0" prefHeight="18.0" prefWidth="94.0" text="Mode Livraison">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
@@ -116,5 +116,6 @@
             <Image url="@img/commercialisation.png" />
          </image>
       </ImageView>
+      <DatePicker fx:id="DateLivraisonTF" layoutX="436.0" layoutY="155.0" prefHeight="26.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

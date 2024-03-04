@@ -1,4 +1,11 @@
 package esprit.tn.Controllers;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
 
 import esprit.tn.Models.Livraison;
 import esprit.tn.Services.LivraisonService;
@@ -16,6 +23,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -103,5 +112,135 @@ public class AfficherLivraison {
         ListLivraison.setItems(observableList);
 
 
+    }
+    @FXML
+    void PDF(ActionEvent event) {
+generatePDF();
+    }
+    @FXML
+    private void generatePDF() {
+        try {
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage(PDRectangle.A4);
+            document.addPage(page);
+
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+            float margin = 50;
+            float yStart = page.getMediaBox().getHeight() - margin;
+            float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
+            float tableHeight = 20f;
+            float cellMargin = 5f;
+            float fontSize = 12f;
+
+            // Draw border for the entire page
+            contentStream.setLineWidth(1.5f);
+            contentStream.moveTo(margin, margin);
+            contentStream.lineTo(margin, yStart);
+            contentStream.lineTo(margin + tableWidth, yStart);
+            contentStream.lineTo(margin + tableWidth, margin);
+            contentStream.lineTo(margin, margin);
+            contentStream.stroke();
+
+            // Add a rectangle for the page header
+            float headerHeight = 50f;
+            contentStream.setLineWidth(1.5f);
+            contentStream.moveTo(margin, yStart);
+            contentStream.lineTo(margin + tableWidth, yStart);
+            contentStream.stroke();
+
+            // Add your organization's logo or text in the header
+            // Example: Add text "Your Organization Logo" at the center of the header
+            //contentStream.setFont(PDType0Font.load(document, new File("C:/Users/REGAIEG Mahdi/Desktop/Roboto/Roboto-BoldItalic.ttf")), 16);
+            contentStream.beginText();
+            contentStream.newLineAtOffset(margin + (tableWidth - 150) / 2, yStart - (headerHeight - 20) / 2);
+            contentStream.endText();
+
+            // Set up page title
+            /*contentStream.setFont(PDType0Font.load(document, new File("C:/Users/21621/OneDrive/Bureau/Furious-Gains/FuriousGains/src/Be-Natural1/Be-Natural.ttf")), 16);
+            contentStream.beginText();
+            contentStream.newLineAtOffset(margin + cellMargin, yStart - headerHeight - 15);
+            contentStream.showText("La liste des Livraison");
+            contentStream.endText();
+            yStart -= headerHeight + 50;*/
+            // Définir la police et la taille de police
+            PDType0Font font = PDType0Font.load(document, new File("C:/Users/21621/OneDrive/Bureau/Furious-Gains/FuriousGains/src/Be-Natural1/Be-Natural.ttf"));
+            float fontSize2 = 16;
+            contentStream.setFont(font, fontSize2);
+
+// Définir la couleur du texte en rouge
+            float red = 1.0f;
+            float green = 0.0f;
+            float blue = 0.0f;
+            contentStream.setNonStrokingColor(red, green, blue);
+
+// Centrer le texte horizontalement
+            float pageWidth = document.getPage(0).getMediaBox().getWidth();
+            float textWidth = font.getStringWidth("La liste des Livraison") / 1000 * fontSize;
+            float startX = (pageWidth - textWidth) / 2;
+
+// Afficher le texte au milieu de la page
+            float startY = yStart - headerHeight - 15;
+            contentStream.beginText();
+            contentStream.newLineAtOffset(startX, startY);
+            contentStream.showText("La liste des Livraison");
+            yStart -= headerHeight + 50;
+            contentStream.endText();
+
+            // Draw table headers
+            contentStream.setLineWidth(1.5f);
+            contentStream.moveTo(margin, yStart);
+            contentStream.lineTo(margin + tableWidth, yStart);
+            contentStream.stroke();
+
+            contentStream.setFont(PDType0Font.load(document, new File("C:/Users/21621/OneDrive/Bureau/Furious-Gains/FuriousGains/src/Be-Natural1/Be-Natural.ttf")), 16);
+            contentStream.beginText();
+            contentStream.newLineAtOffset(margin + cellMargin, yStart - 15);
+            contentStream.showText("Date");
+            contentStream.newLineAtOffset(tableWidth / 4, 0);
+            contentStream.showText("Adresse");
+            contentStream.newLineAtOffset(tableWidth / 4, 0);
+            contentStream.showText("Montant");
+            contentStream.newLineAtOffset(tableWidth / 4, 0);
+            contentStream.showText("Statut");
+            contentStream.endText();
+            yStart -= 30;
+
+            // Draw table content
+            List<Livraison> livraisons = ListLivraison.getItems();
+            for (Livraison l : livraisons) {
+                contentStream.setLineWidth(1.0f);
+                contentStream.moveTo(margin, yStart);
+                contentStream.lineTo(margin + tableWidth, yStart);
+                contentStream.stroke();
+
+                contentStream.beginText();
+                contentStream.setFont(PDType0Font.load(document, new File("C:/Users/21621/OneDrive/Bureau/Furious-Gains/FuriousGains/src/Be-Natural1/Be-Natural.ttf")), 16);
+                contentStream.newLineAtOffset(margin + cellMargin, yStart - 15);
+                contentStream.showText(String.valueOf(l.getDate_livraison()));
+                contentStream.newLineAtOffset(tableWidth / 4, 0);
+                contentStream.showText(l.getAdresse_livraison());
+                contentStream.newLineAtOffset(tableWidth / 4, 0);
+                contentStream.showText(String.valueOf(l.getMontant_paiement()));
+                contentStream.newLineAtOffset(tableWidth / 4, 0);
+                contentStream.showText(l.getStatut_livraison());
+                contentStream.endText();
+                yStart -= tableHeight + cellMargin;
+            }
+
+            contentStream.close();
+
+            // Save and open the document
+            File file = new File("Livraisons.pdf");
+            document.save(file);
+            document.close();
+            Desktop.getDesktop().open(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alertType = new Alert(Alert.AlertType.ERROR);
+            alertType.setTitle("Error");
+            alertType.setHeaderText("An error occurred while generating the PDF.");
+            alertType.show();
+        }
     }
 }

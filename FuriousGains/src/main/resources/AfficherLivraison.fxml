@@ -44,25 +44,15 @@
             <Image url="@img/supprimer.png" />
          </image>
       </ImageView>
-      <Button fx:id="bouttonSMS" layoutX="693.0" layoutY="474.0" mnemonicParsing="false" onAction="#smsliv" style="-fx-background-color: #0F3442;" text="SMS" textFill="WHITE">
-         <font>
-            <Font name="Times New Roman Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="bouttonPDF" layoutX="548.0" layoutY="474.0" mnemonicParsing="false" onAction="#pdfliv" style="-fx-background-color: #F1E967;" text="PDF">
-         <font>
-            <Font name="Times New Roman Bold" size="18.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="40.0" fitWidth="41.0" layoutX="637.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@img/sms.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="486.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/pdf.png" />
          </image>
       </ImageView>
+      <Button layoutX="537.0" layoutY="473.0" mnemonicParsing="false" onAction="#PDF" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: #F1E967;" text="PDF">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

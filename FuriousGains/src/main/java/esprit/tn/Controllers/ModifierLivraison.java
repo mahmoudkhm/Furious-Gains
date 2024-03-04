@@ -9,13 +9,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +26,7 @@ public class ModifierLivraison {
     private TextField AdresseLivraisonTF;
 
     @FXML
-    private TextField DateLivraisonTF;
+    private DatePicker DateLivraisonTF;
 
     @FXML
     private TextField IdClientTF;
@@ -51,7 +53,10 @@ public class ModifierLivraison {
     @FXML
     void ModifierTF(ActionEvent event) {
         Alert alertType;
-        if (!IdCommandeTF.getText().isEmpty() && !DateLivraisonTF.getText().isEmpty() && !StatutLivraisonTF.getText().isEmpty() && !AdresseLivraisonTF.getText().isEmpty() && !IdM.getValue().isEmpty() && !ModeLivraisonTF.getText().isEmpty() && !IdClientTF.getText().isEmpty()&& !MontantTF.getText().isEmpty()  ) {
+        LocalDate localDate = (LocalDate)this.DateLivraisonTF.getValue();
+        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        Date datenliv= Date.from(instant);
+        if (!IdCommandeTF.getText().isEmpty() &&  !StatutLivraisonTF.getText().isEmpty() && !AdresseLivraisonTF.getText().isEmpty() && !IdM.getValue().isEmpty() && !ModeLivraisonTF.getText().isEmpty() && !IdClientTF.getText().isEmpty()&& !MontantTF.getText().isEmpty()  ) {
             if (this.StatutLivraisonTF.getText().matches("[0-9]+")) {
                 alertType = new Alert(Alert.AlertType.ERROR);
                 alertType.setTitle("Error");
@@ -69,14 +74,13 @@ public class ModifierLivraison {
                 alertType.setHeaderText("statut doit être une chaîne et non un numéro !");
                 alertType.show();
             } else if (!IdM.getValue().matches("[A-Z]+") && !this.IdM.getValue().matches("[a-z]+"))   {
-                if (!DateLivraisonTF.getText().matches("[A-Z]+") && !DateLivraisonTF.getText().matches("[a-z]+") )
+                if (!AdresseLivraisonTF.getText().matches("[A-Z]+") && !AdresseLivraisonTF.getText().matches("[a-z]+") )
                     {
                         alertType = new Alert(Alert.AlertType.CONFIRMATION);
                         alertType.setTitle("CONFIRMATION !");
                         alertType.setHeaderText("Voulez-vous vraiment mettre à jour à cet utilisateur ?");
                         Optional<ButtonType> result = alertType.showAndWait();
                         if (result.get() == ButtonType.OK) {
-                            String date = DateLivraisonTF.getText();
                             String statut = StatutLivraisonTF.getText();
                             int idCom = Integer.parseInt(IdCommandeTF.getText());
                             String mode = ModeLivraisonTF.getText();
@@ -84,7 +88,7 @@ public class ModifierLivraison {
                             float montant = Float.parseFloat(MontantTF.getText());
                             int idClient =Integer.parseInt(IdClientTF.getText());
                             String adresse = AdresseLivraisonTF.getText();
-                            Livraison livraison = new Livraison( idL,  idCom, date,statut, adresse, montant, mode,idClient);
+                            Livraison livraison = new Livraison( idL,  idCom, datenliv,statut, adresse, montant, mode,idClient);
                             LivraisonService ls = new LivraisonService();
                             ls.modifier(livraison);
                             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/AfficherLivraison.fxml"));
@@ -143,7 +147,11 @@ public class ModifierLivraison {
             StatutLivraisonTF.setText(livraison.getStatut_livraison());
             MontantTF.setText(String.valueOf(livraison.getMontant_paiement()));
             AdresseLivraisonTF.setText(livraison.getAdresse_livraison());
-            DateLivraisonTF.setText(livraison.getDate_livraison());
+            Date date = livraison.getDate_livraison();
+            Instant instant = Instant.ofEpochMilli(date.getTime());
+            ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
+            LocalDate localDate = zdt.toLocalDate();
+            this.DateLivraisonTF.setValue(localDate);
             IdCommandeTF.setText(String.valueOf(livraison.getId_commande()));
             ModeLivraisonTF.setText(livraison.getMode_livraison());}
     }

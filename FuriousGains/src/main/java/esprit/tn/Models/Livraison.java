@@ -1,9 +1,11 @@
 package esprit.tn.Models;
 
+import java.util.Date;
+
 public class Livraison {
     private int id_livraison;
     private int id_commande;
-    private String date_livraison;
+    private Date date_livraison;
     private String statut_livraison;
     private String adresse_livraison;
     private float montant_paiement;
@@ -12,7 +14,7 @@ public class Livraison {
 
     public Livraison() {}
 
-    public Livraison(int id_livraison, int id_commande, String date_livraison, String statut_livraison, String adresse_livraison, float montant_paiement, String mode_livraison, int id_client) {
+    public Livraison(int id_livraison, int id_commande, Date date_livraison, String statut_livraison, String adresse_livraison, float montant_paiement, String mode_livraison, int id_client) {
         this.id_livraison = id_livraison;
         this.id_commande = id_commande;
         this.date_livraison = date_livraison;
@@ -23,7 +25,7 @@ public class Livraison {
         this.id_client = id_client;
     }
 
-    public Livraison(int id_commande, String date_livraison, String statut_livraison, String adresse_livraison, float montant_paiement, String mode_livraison, int id_client) {
+    public Livraison(int id_commande, Date date_livraison, String statut_livraison, String adresse_livraison, float montant_paiement, String mode_livraison, int id_client) {
         this.id_commande = id_commande;
         this.date_livraison = date_livraison;
         this.statut_livraison = statut_livraison;
@@ -49,11 +51,11 @@ public class Livraison {
         this.id_commande = id_commande;
     }
 
-    public String getDate_livraison() {
+    public Date getDate_livraison() {
         return date_livraison;
     }
 
-    public void setDate_livraison(String date_livraison) {
+    public void setDate_livraison(Date date_livraison) {
         this.date_livraison = date_livraison;
     }
 

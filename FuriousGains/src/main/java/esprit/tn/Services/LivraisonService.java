@@ -20,7 +20,7 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
     @Override
     public void ajouter(Livraison livraison) {
         String req = "INSERT INTO `livraison` (id_commande, date_livraison, statut_livraison, adresse_livraison, montant_paiement, mode_livraison, id_client) " +
-                "VALUES ('" + livraison.getId_commande() + "', '" + livraison.getDate_livraison() + "', '" + livraison.getStatut_livraison() + "', '" + livraison.getAdresse_livraison() + "', '" + livraison.getMontant_paiement() + "', '" + livraison.getMode_livraison() + "', '" + livraison.getId_client() + "')";
+                "VALUES ('" + livraison.getId_commande() + "', '" + new java.sql.Date(livraison.getDate_livraison().getTime()) + "', '" + livraison.getStatut_livraison() + "', '" + livraison.getAdresse_livraison() + "', '" + livraison.getMontant_paiement() + "', '" + livraison.getMode_livraison() + "', '" + livraison.getId_client() + "')";
 
         try {
             Statement st = cnx.createStatement();
@@ -46,7 +46,7 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
         try {
             ps = cnx.prepareStatement(req);
             ps.setInt(1, livraison.getId_commande());
-            ps.setString(2, livraison.getDate_livraison());
+            ps.setDate(2, new java.sql.Date(livraison.getDate_livraison().getTime()));
             ps.setString(3, livraison.getStatut_livraison());
             ps.setString(4, livraison.getAdresse_livraison());
             ps.setFloat(5, livraison.getMontant_paiement());
@@ -102,7 +102,7 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
                 Livraison livraison =new Livraison();
                 livraison.setId_livraison(result.getInt("id_livraison"));
                 livraison.setId_commande(result.getInt("id_commande"));
-                livraison.setDate_livraison(result.getString("date_livraison"));
+                livraison.setDate_livraison(result.getDate("date_livraison"));
                 livraison.setStatut_livraison(result.getString("statut_livraison"));
                 livraison.setAdresse_livraison(result.getString("adresse_livraison"));
                 livraison.setMontant_paiement(result.getFloat("montant_paiement"));
@@ -129,7 +129,7 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
                     c = new Livraison(
                             rs.getInt("id_livraison"),
                             rs.getInt("id_commande"),
-                            rs.getString("date_livraison"),
+                            rs.getDate("date_livraison"),
                             rs.getString("statut_livraison"),
                             rs.getString("adresse_livraison"),
                             rs.getFloat("montant_paiement"),
@@ -153,7 +153,7 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
                     u = new Livraison(
                             rs.getInt("id_livraison"),
                             rs.getInt("id_commande"),
-                            rs.getString("date_livraison"),
+                            rs.getDate("date_livraison"),
                             rs.getString("statut_livraison"),
                             rs.getString("adresse_livraison"),
                             rs.getFloat("montant_paiement"),

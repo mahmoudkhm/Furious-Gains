@@ -8,17 +8,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class AjouterLivraison {
     @FXML
-    private TextField AdresseLivraisonTF;
+    private DatePicker DateLivraisonTF;
 
     @FXML
-    private TextField DateLivraisonTF;
+    private TextField AdresseLivraisonTF;
 
     @FXML
     private TextField IdClientTF;
@@ -44,8 +49,11 @@ public class AjouterLivraison {
     }*/
    @FXML
    void AjouterTF(ActionEvent event) {
+       LocalDate localDate = (LocalDate)this.DateLivraisonTF.getValue();
+       Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+       Date dateliv = Date.from(instant);
        Alert alertType;
-       if (!IdCommandeTF.getText().isEmpty() && !DateLivraisonTF.getText().isEmpty() && !StatutLivraisonTF.getText().isEmpty() && !AdresseLivraisonTF.getText().isEmpty()  && !ModeLivraisonTF.getText().isEmpty() && !IdClientTF.getText().isEmpty()&& !MontantTF.getText().isEmpty()  ) {
+       if (!IdCommandeTF.getText().isEmpty() && !StatutLivraisonTF.getText().isEmpty() && !AdresseLivraisonTF.getText().isEmpty()  && !ModeLivraisonTF.getText().isEmpty() && !IdClientTF.getText().isEmpty()&& !MontantTF.getText().isEmpty()  ) {
            if (this.IdCommandeTF.getText().matches("[a-z]+")) {
                alertType = new Alert(Alert.AlertType.ERROR);
                alertType.setTitle("Error");
@@ -73,8 +81,8 @@ public class AjouterLivraison {
                alertType.setHeaderText("Montant doit être un numero et non une chaine !");
                alertType.show();
            }else
-               {Livraison livraison= new Livraison(Integer.parseInt(IdCommandeTF.getText()),DateLivraisonTF.getText(),StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText()));
-                   ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),DateLivraisonTF.getText(),StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
+               {Livraison livraison= new Livraison(Integer.parseInt(IdCommandeTF.getText()),dateliv,StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText()));
+                   ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),dateliv,StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
                    sms.sms(livraison,"votre reservation commence:","+21621174221");
                }
        }
