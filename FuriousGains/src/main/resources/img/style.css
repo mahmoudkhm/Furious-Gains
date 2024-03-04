@@ -291,6 +291,13 @@
     -fx-background-radius: 20px;
     -fx-border-style: solid;
 }
+.profil{
+    -fx-background-color:#353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
 .inner_pane{
     -fx-background-color:#748CF1;
     -fx-border-width: 2px 2px 2px 2px;
@@ -345,9 +352,15 @@
     -fx-cursor:hand;
 }
 .profilB {
-    -fx-background-color: #f2f2f2; /* Couleur de fond */
-    -fx-border-color: #cccccc; /* Couleur de la bordure */
-    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-background-color:#F1E967;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color:  #F1E967;
+    -fx-font-family: "Times New Roman Bold";
+    -fx-font-size: 18.0;
+    -fx-cursor:hand;
 }
 .pane_1{
     -fx-background-color:#748CF1;
@@ -402,4 +415,31 @@
     -fx-border-color: #3c4931;
     -fx-border-width:0px 0px 2px .0px;
 
+}
+
+.titled-pane > .title {
+    -fx-text-fill: white;
+    -fx-border-style: solid;
+    -fx-font-family: "Times New Roman Bold";
+    -fx-font-size: 18.0;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color:  #121212;
+    -fx-border-color: #133946;
+
+}
+
+.titled-pane > .content > .button {
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-background-color: transparent;
+}
+
+.titled-pane > .content > .button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.titled-pane > .content > .button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
 }

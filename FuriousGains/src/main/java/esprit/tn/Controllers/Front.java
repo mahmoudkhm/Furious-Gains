@@ -115,7 +115,7 @@ public class Front {
     @FXML
     void afficherM(ActionEvent event) {
         try {
-            Parent fxml = (Parent) FXMLLoader.load(getClass().getResource("/ModifierUser.fxml"));
+            Parent fxml = (Parent) FXMLLoader.load(getClass().getResource("/ModClient.fxml"));
             viewPages.getChildren().removeAll(new Node[0]);
             viewPages.getChildren().setAll(new Node[]{fxml});
         } catch (IOException e) {

@@ -8,7 +8,7 @@ public class SMS {
 
 
         public static final String ACCOUNT_SID = "AC128f8bff1f1f36ae0846e555ced7ee14";
-        public static final String AUTH_TOKEN = "3db224cad73299ce82ef3d31acb7e765";
+        public static final String AUTH_TOKEN = "b3beb670b647691f811b9b77aef4c678";
 
 
         public void sendSMS(String phoneNumber,String nom,String mdp) {
@@ -21,7 +21,6 @@ public class SMS {
 
             System.out.println(message.getSid());
         }
-
 
 
     }

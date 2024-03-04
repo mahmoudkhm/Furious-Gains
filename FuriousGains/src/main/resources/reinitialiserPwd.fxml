@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="540.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.ReinitialiserPwd">
    <children>
       <ImageView fitHeight="544.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
@@ -24,7 +23,7 @@
             <Image url="@img/ic1.png" />
          </image>
       </ImageView>
-      <TextField fx:id="adresse" layoutX="144.0" layoutY="272.0" prefHeight="36.0" prefWidth="312.0" promptText="entrer mdp" />
+      <TextField fx:id="adresse" layoutX="144.0" layoutY="272.0" prefHeight="36.0" prefWidth="312.0" promptText="entrer mail" />
       <Button layoutX="144.0" layoutY="356.0" mnemonicParsing="false" onAction="#Send" prefHeight="27.0" prefWidth="312.0" text="envoyer" />
    </children>
 </AnchorPane>

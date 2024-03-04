@@ -79,6 +79,7 @@ public class Login {
                 alertType.setTitle("Error");
                 alertType.setHeaderText("L'adresse email est invalide. Veuillez saisir une adresse email valide (ex: nom_utilisateur@domaine.com) !");
                 alertType.show();
+                return;
             } else {
                 String req = "SELECT * from user";
                 PreparedStatement pst = null;
@@ -111,7 +112,7 @@ public class Login {
                         prefs.putInt("iduser", user.getId_user());
                         Parent root = null;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("/Front.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("/Admin.fxml"));
                             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
@@ -147,6 +148,7 @@ public class Login {
                     alert.setContentText("Email ou mot de passe invalide !.");
                     alert.show();
                 }
+                return;
             }
         } else {
             alertType = new Alert(Alert.AlertType.WARNING);

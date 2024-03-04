@@ -36,6 +36,18 @@ public class User  {
         this.id_code_promo = id_code_promo;
     }
 
+    public User(int cin, String nom, String prenom, Date dateuser, int num_tel, String adresse, String email, String image, int id_code_promo) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateuser = dateuser;
+        this.num_tel = num_tel;
+        this.adresse = adresse;
+        this.email = email;
+        this.image = image;
+        this.id_code_promo = id_code_promo;
+    }
+
     public User(int cin, String nom, String prenom, Date dateuser, int num_tel, String adresse, String email, String password, String role, String image, int id_code_promo) {
         this.cin = cin;
         this.nom = nom;

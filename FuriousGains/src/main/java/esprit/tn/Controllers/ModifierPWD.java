@@ -58,11 +58,9 @@ public class ModifierPWD {
                 alertType.show();
                 Parent root = null;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("/login.fxml"));
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+                    root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+                    pwd1.getScene().setRoot(root);
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

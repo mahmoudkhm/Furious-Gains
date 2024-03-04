@@ -105,34 +105,42 @@ public class UserService implements InterfaceUser<User> {
 
         @Override
     public void modifier(User user) {
-        String req="UPDATE `user` SET `cin`=?,`nom`=?,`prenom`=?,`dateuser`= ?," +
-                "`num_tel`=?,`adresse`=?,`email`=?,`password`=?,`role`=? ,`image`= ?,`id_code_promo`=? WHERE `cin`=?";
-        try {
-            PreparedStatement ps=cnx.prepareStatement(req);
-            ps.setInt(1,user.getCin());
-            ps.setString(2, user.getNom());
-            ps.setString(3, user.getPrenom());
-            ps.setDate(4,new java.sql.Date(user.getDateuser().getTime()));
-            ps.setInt(5,user.getNum_tel());
-            ps.setString(6, user.getAdresse());
-            ps.setString(7, user.getEmail());
-            ps.setString(8,user.getPassword());
-            ps.setString(9,user.getRole());
-            ps.setString(10,user.getRole());
-            ps.setInt(11,user.getId_code_promo());
+            String reqVerifier= "SELECT COUNT(*) FROM `user` WHERE `cin` = ?";
+            String req="UPDATE `user` SET `cin`=?,`nom`=?,`prenom`=?,`dateuser`= ?," +
+                    "`num_tel`=?,`adresse`=?,`email`=? ,`image`= ?,`id_code_promo`=? WHERE `cin`=?";
+            try {
+                PreparedStatement ps=cnx.prepareStatement(reqVerifier);
+                ps.setInt(1,user.getCin());
+                ResultSet resultatS =ps.executeQuery();
+                resultatS.next();
+                int check=resultatS.getInt(1); //valeur du 1ere colone
 
-            ps.setInt(12,user.getCin());
-            ps.executeUpdate();
-            System.out.println("User Updated Successfully!");
+                //verification
+                if (check==0){
 
+                    System.out.println("User n'existe pas!");
+                }
+                else {
+                    PreparedStatement ps2=cnx.prepareStatement(req);
+                    ps2.setInt(1,user.getCin());
+                    ps2.setString(2, user.getNom());
+                    ps2.setString(3, user.getPrenom());
+                    ps2.setDate(4,new java.sql.Date(user.getDateuser().getTime()));
+                    ps2.setInt(5,user.getNum_tel());
+                    ps2.setString(6, user.getAdresse());
+                    ps2.setString(7, user.getEmail());
+                    ps2.setString(8,user.getImage());
+                    ps2.setInt(9,user.getId_code_promo());
+                    ps2.setInt(10,user.getCin());
+                    ps2.executeUpdate();
+                    System.out.println("User Updated Successfully!");
+                }
 
-        } catch (SQLException e) {
-            Alert alert =new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("error");
-            alert.setContentText("echec de modifier");
-            alert.showAndWait();        }
-
-
+            } catch (SQLException e) {
+                Alert alert =new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("error");
+                alert.setContentText("echec de modifer");
+                alert.showAndWait();        }
     }
 
     @Override

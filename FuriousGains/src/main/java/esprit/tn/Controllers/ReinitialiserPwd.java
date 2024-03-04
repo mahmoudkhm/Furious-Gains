@@ -38,6 +38,8 @@ private static String code;
     public void setCode(String code) {
         this.code = code;
     }
+    Smail mail =new Smail();
+
 
     public ReinitialiserPwd(Connection cnx) {
         this.cnx =  MyConnexion.getInstance().getCnx();
@@ -75,75 +77,41 @@ private static String code;
 
     @FXML
     void Send(ActionEvent event) throws SQLException {
+        UserService userService = new UserService();
+        String req = "SELECT user.*, codepromo.code FROM user JOIN codepromo ON user.id_code_promo = codepromo.id_code_promo  WHERE email = ?";
+        cnx= MyConnexion.getInstance().getCnx();
+        PreparedStatement statement = cnx.prepareStatement(req);
+        statement.setString(1, adresse.getText());
+        ResultSet rs = statement.executeQuery();
+        if (rs.next()) {
+            User u = new User(
+                    rs.getInt("id_user" ),
+                    rs.getInt("cin" ),
+                    rs.getString("nom" ),
+                    rs.getString("prenom" ),
+                    rs.getDate("dateuser" ),
+                    rs.getInt("num_tel" ),
+                    rs.getString("adresse" ),
+                    rs.getString("email" ),
+                    rs.getString("password" ),
+                    rs.getString("image" ),
+                    rs.getString("role" ),
+                    rs.getInt("code" )
 
-       /* Smail s = new Smail();
-        if (this.adresse.getText().equals("" )) {
-            Alert alertType = new Alert(Alert.AlertType.ERROR);
-            alertType.setTitle("Error" );
-            alertType.setHeaderText("feregh." );
-            alertType.show();
-        } else {
-            String req = "SELECT user.*, codepromo.code FROM user JOIN codepromo ON user.id_code_promo = codepromo.id_code_promo  WHERE email = ?";
-            cnx= MyConnexion.getInstance().getCnx();
-            PreparedStatement statement = cnx.prepareStatement(req);
-            statement.setString(1, adresse.getText());
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                User u = new User(
-                        rs.getInt("id_user" ),
-                        rs.getInt("cin" ),
-                        rs.getString("nom" ),
-                        rs.getString("prenom" ),
-                        rs.getDate("dateuser" ),
-                        rs.getInt("num_tel" ),
-                        rs.getString("adresse" ),
-                        rs.getString("email" ),
-                        rs.getString("password" ),
-                        rs.getString("image" ),
-                        rs.getString("role" ),
-                        rs.getInt("code" )
-
-                );
-                if (u.getEmail().equals(adresse.getText()))
-                {
-                String reqs = "INSERT INTO forgetpwd( code,time, email) VALUES (?, ?, ?)";
-                PreparedStatement psts = cnx.prepareStatement(reqs);
-                psts.setString(3, adresse.getText());
-                psts.setInt(1, number);
-                psts.setString(2, sTime);
-                psts.executeUpdate();}
-                sEmail = this.adresse.getText();
-                s.sendMail(this.Subject, this.adresse.getText());
-                Parent page2 = null;
-                try {
-                    page2 = (Parent) FXMLLoader.load(this.getClass().getResource("/Profil.fxml" ));
-                    Scene scene2 = new Scene(page2);
-                    Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    app_stage.setScene(scene2);
-                    app_stage.show();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                this.adresse.setText("Compte N'existe Pas !!" );
-            }
+            );
+            cin =u.getCin();
         }
 
-         */
-        UserService userService = new UserService();
-        User utilisateur = userService.readByPhoneNumber(adresse.getText());
-        if (!adresse.getText().isEmpty() && Integer.parseInt(adresse.getText())==(utilisateur.getNum_tel())) {
+        if (!adresse.getText().isEmpty()) {
             String nouveauMotDePasse = genererMotDePasseAleatoire(8);
             System.out.println("le nouveaux mdp est : "+nouveauMotDePasse);
-            //String hashedPassword = BCrypt.hashpw(nouveauMotDePasse, BCrypt.gensalt());
-            //User utilisateur = userService.readByPhoneNumber(adresse.getText());
-            //userService.setMotDePasse(utilisateur.getId_user(), hashedPassword);
-            /*SMS send=new SMS();
-            send.sendSMS(adresse.getText(),utilisateur.getNom(),nouveauMotDePasse);*/
+            //SMS send=new SMS();
+            //send.sendSMS(adresse.getText(),utilisateur.getNom(),nouveauMotDePasse);
+
+            mail.sendEmail(adresse.getText(),"Réinitialiser Votre mot de passe","Votre Code est :  " + nouveauMotDePasse + "\n S'il te plait ne passe pas 5 min De maintenant");
             System.out.println("mdp envoyer");
             setCode(nouveauMotDePasse);
             code=nouveauMotDePasse;
-            cin =utilisateur.getCin();
             ForgetPwd f=new ForgetPwd(nouveauMotDePasse);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/VerifCode.fxml"));
             Parent signInRoot = null;
@@ -163,9 +131,6 @@ private static String code;
             Alert alert = new Alert(Alert.AlertType.WARNING);
 
         }
-       /* if (forgetnum.getText().isEmpty()){
-        }*/
-
         }
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     private String genererMotDePasseAleatoire(int longueur) {

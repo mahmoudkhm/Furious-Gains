@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="164.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.Menu">
+    <Accordion>
+      <panes>
+          <TitledPane text="Dashboard">
+              <VBox spacing="2">
+                  <Button onAction="#handleMenuItemClick" text="Dashboard" />
+              </VBox>
+          </TitledPane>
+
+          <TitledPane text="Email">
+              <VBox spacing="2">
+                  <Button onAction="#handleMenuItemClick" text="Inbox" />
+                  <Button onAction="#handleMenuItemClick" text="Read" />
+                  <Button onAction="#handleMenuItemClick" text="Compose" />
+              </VBox>
+          </TitledPane>
+
+          <TitledPane text="Chat">
+              <VBox spacing="2">
+                  <Button onAction="#handleMenuItemClick" text="Chat" />
+              </VBox>
+          </TitledPane>
+      </panes></Accordion>
+<!-- Ajoutez les autres éléments du menu ici -->
+</VBox>
