@@ -15,6 +15,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -23,7 +24,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -146,16 +148,37 @@ public class AfficherRecette {
     void ModifierRecette(ActionEvent event) {
         // Get the selected item from the TableView
         Recette selectedRecette = tableview.getSelectionModel().getSelectedItem();
+
         if (selectedRecette != null) {
-            // Populate the necessary fields with the selected recipe's data
+            // Validate input
+            String nomRecette = nomRecetteUpdate.getText().trim();
+            String prepTime = prepRecetteUpdate.getText().trim();
+            String ingredients = ingredientsRecetteUpdate.getText().trim();
 
-            selectedRecette.setNom_Recette( nomRecetteUpdate.getText());
-            selectedRecette.setTemps_preparation(prepRecetteUpdate.getText());
-            selectedRecette.setIngredients(ingredientsRecetteUpdate.getText());
+            if (!nomRecette.isEmpty() && !prepTime.isEmpty() && !ingredients.isEmpty()) {
+                // Display confirmation dialog
+                Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmationAlert.setTitle("Confirmation");
+                confirmationAlert.setHeaderText("Modify Recipe");
+                confirmationAlert.setContentText("Are you sure you want to modify this recipe?");
 
-            recetteService.modifier(selectedRecette);
-            tableview.refresh();
+                Optional<ButtonType> result = confirmationAlert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    // Update the selected recipe with the new values
+                    selectedRecette.setNom_Recette(nomRecette);
+                    selectedRecette.setTemps_preparation(prepTime);
+                    selectedRecette.setIngredients(ingredients);
 
+                    // Call the update method in the service
+                    recetteService.modifier(selectedRecette);
+
+                    // Optionally, you can refresh the table to reflect the changes
+                    tableview.refresh();
+                }
+            } else {
+                // Show an error message if any of the fields are empty
+                showAlert("Error", "Please fill in all fields.");
+            }
         }
     }
 
@@ -163,15 +186,34 @@ public class AfficherRecette {
     void SupprimerRecette(ActionEvent event) {
         // Get the selected item from the TableView
         Recette selectedRecette = tableview.getSelectionModel().getSelectedItem();
-        if (selectedRecette != null) {
-            // Remove the selected recipe from the TableView
-            tableview.getItems().remove(selectedRecette);
 
-            // Also, delete the recipe from the database using your service
-            recetteService.supprimer(selectedRecette.getId_Recette());
+        if (selectedRecette != null) {
+            // Display confirmation dialog
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmation");
+            confirmationAlert.setHeaderText("Delete Recipe");
+            confirmationAlert.setContentText("Are you sure you want to delete this recipe?");
+
+            Optional<ButtonType> result = confirmationAlert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Remove the selected recipe from the TableView
+                tableview.getItems().remove(selectedRecette);
+
+                // Also, delete the recipe from the database using your service
+                recetteService.supprimer(selectedRecette.getId_Recette());
+            }
         } else {
-            // No recipe selected, display a message or handle it accordingly
+            // No recipe selected, display an error message
+            showAlert("Error", "Please select a recipe to delete.");
         }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML

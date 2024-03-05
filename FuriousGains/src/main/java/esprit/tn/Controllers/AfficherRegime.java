@@ -1,22 +1,16 @@
 package esprit.tn.Controllers;
 
 import esprit.tn.Models.Regime;
-import esprit.tn.services.RatingService;
 import esprit.tn.services.RegimeService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
 import java.util.List;
+import java.util.Optional;
 
 public class AfficherRegime {
 
@@ -74,36 +68,68 @@ public class AfficherRegime {
     @FXML
     void ajouterRup(ActionEvent event) {
         Regime selectedRegime = tableview.getSelectionModel().getSelectedItem();
+
         if (selectedRegime != null) {
-            // Update the selected regime with the new values
-            selectedRegime.setNom_regime(nomTFup.getText());
-            selectedRegime.setInstruction(instructionTFup.getText());
-            selectedRegime.setType_regime(typeTFup.getText());
+            // Validate input
+            String nom = nomTFup.getText().trim();
+            String instruction = instructionTFup.getText().trim();
+            String type = typeTFup.getText().trim();
 
-            // Call the update method in the service
-            rs.modifier(selectedRegime);
+            if (!nom.isEmpty() && !instruction.isEmpty() && !type.isEmpty()) {
+                // Update the selected regime with the new values
+                selectedRegime.setNom_regime(nom);
+                selectedRegime.setInstruction(instruction);
+                selectedRegime.setType_regime(type);
 
-            // Optionally, you can refresh the table to reflect the changes
-            tableview.refresh();
+                // Call the update method in the service
+                rs.modifier(selectedRegime);
+
+                // Optionally, you can refresh the table to reflect the changes
+                tableview.refresh();
+            } else {
+                // Show an error message if any of the fields are empty
+                showAlert("Error", "Please fill in all fields.");
+            }
         }
     }
+
+
     @FXML
     void SupprimerR(ActionEvent event) {
         // Get the selected regime from the tableview
         Regime selectedRegime = tableview.getSelectionModel().getSelectedItem();
 
         if (selectedRegime != null) {
-            // Call the delete method in the RegimeService
-            rs.supprimer(selectedRegime.getId_regime());
+            // Show a confirmation dialog before deletion
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Delete Regime");
+            alert.setContentText("Are you sure you want to delete this regime?");
 
-            // Remove the selected regime from the TableView
-            tableview.getItems().remove(selectedRegime);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Call the delete method in the RegimeService
+                rs.supprimer(selectedRegime.getId_regime());
 
-            // Optionally, you can clear the text fields
-            nomTFup.clear();
-            instructionTFup.clear();
-            typeTFup.clear();
+                // Remove the selected regime from the TableView
+                tableview.getItems().remove(selectedRegime);
+
+                // Optionally, you can clear the text fields
+                nomTFup.clear();
+                instructionTFup.clear();
+                typeTFup.clear();
+            }
+        } else {
+            // If no item is selected, show an error message
+            showAlert("Error", "Please select a regime to delete.");
         }
     }
 
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

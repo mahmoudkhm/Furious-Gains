@@ -23,7 +23,7 @@ public class RecetteService implements InterfaceFuriousGains<Recette> {
             preparedStatement.setString(1, r2.getNom_Recette());
             preparedStatement.setString(2, r2.getIngredients());
             preparedStatement.setString(3, r2.getTemps_preparation());
-            preparedStatement.setInt(4, 8);
+            preparedStatement.setInt(4, 14);
 
             preparedStatement.executeUpdate();
             System.out.println("Recette Added successfully!");
