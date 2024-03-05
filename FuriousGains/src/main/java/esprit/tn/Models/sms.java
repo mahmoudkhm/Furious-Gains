@@ -23,7 +23,7 @@ public class sms {
         ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
         LocalDate localDate = zdt.toLocalDate();
         String localDate2=localDate.toString();
-        messages=messages+localDate2+"id:"+l.getMontant_paiement();
+        messages=messages+localDate2+"Montant:"+l.getMontant_paiement();
         Message message = Message.creator(
                 new com.twilio.type.PhoneNumber(num),
                 new com.twilio.type.PhoneNumber("+12137722671"),

@@ -117,5 +117,6 @@
          </image>
       </ImageView>
       <DatePicker fx:id="DateLivraisonTF" layoutX="436.0" layoutY="155.0" prefHeight="26.0" prefWidth="150.0" />
+      <Button fx:id="payer_button" layoutX="695.0" layoutY="487.0" mnemonicParsing="false" onAction="#payer" text="payer" />
    </children>
 </AnchorPane>

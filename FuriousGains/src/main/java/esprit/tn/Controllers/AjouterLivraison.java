@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,6 +20,8 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class AjouterLivraison {
+    @FXML
+    private Button payer_button;
     @FXML
     private DatePicker DateLivraisonTF;
 
@@ -103,4 +106,15 @@ public class AjouterLivraison {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    void payer(ActionEvent event) {
+        try {
+            Parent root= FXMLLoader.load(getClass().getResource("/PaymentController.fxml"));
+            payer_button.getScene().setRoot(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }
