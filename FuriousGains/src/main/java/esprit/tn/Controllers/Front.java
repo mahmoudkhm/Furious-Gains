@@ -52,6 +52,14 @@ public class Front {
     @FXML
     private TitledPane butt;
     int clickCount ;
+    @FXML
+    private Button commandajout;
+
+    @FXML
+    private Button commandeAffichage;
+
+    @FXML
+    private Button livraisonAff;
 
     @FXML
     private Button ajres;
@@ -128,6 +136,33 @@ public class Front {
         if (event.getSource() == this.AjouterAnnonce1) {
             try {
                 fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterAnnonce.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.commandeAffichage) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AfficherCommande.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.livraisonAff) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AfficherLivraison.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e){
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.commandajout) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterCommande.fxml"));
                 viewPages.getChildren().removeAll(new Node[0]);
                 viewPages.getChildren().setAll(new Node[]{fxml});
             } catch (IOException e) {

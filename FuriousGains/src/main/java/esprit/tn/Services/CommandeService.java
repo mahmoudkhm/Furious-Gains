@@ -2,6 +2,7 @@ package esprit.tn.Services;
 
 import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Commande;
+import esprit.tn.Models.Livraison;
 import esprit.tn.Models.User;
 import esprit.tn.Utils.MyConnexion;
 import javafx.scene.control.Alert;
@@ -26,12 +27,18 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
             Statement st= cnx.createStatement();
             st.executeUpdate(req);
             Alert alert =new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("succes");
-            alert.setContentText("User deleted Successfully!");
+            alert.setTitle("Succés");
+            alert.setContentText("Commande ajouter avec succés!");
             alert.showAndWait();
 
+            System.out.println("Commande  ajouter avec succés!");
+
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec d'ajout!");
+            alert.showAndWait();
         }
 
 
@@ -50,11 +57,18 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
             ps.setInt(5,commande.getId_command());
 
             ps.executeUpdate();
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Commande Modifier avec succés!");
+            alert.showAndWait();
             System.out.println("Commande Updated Successfully!");
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec de modifier!");
+            alert.showAndWait();
         }
 
 
@@ -68,8 +82,15 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
             ps = cnx.prepareStatement(req);
             ps.executeUpdate();
             System.out.println("User deleted Successfully!");
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succés");
+            alert.setContentText("Commande supprimer avec succés!");
+            alert.showAndWait();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText("Echec de suppression!");
+            alert.showAndWait();
         }
     }
 
@@ -97,5 +118,47 @@ public class CommandeService implements InterfaceFuriousGains<Commande> {
 
 
         return commondes;
+    }
+    public Commande getOneByiDd(int id) {
+        Commande c = null;
+        String req = "SELECT * FROM commande WHERE id_command LIKE  ? ";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setString(1, "%" + id + "%");
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    c = new Commande(
+                            rs.getInt("id_command"),
+                            rs.getInt("id_client"),
+                            rs.getString("statut_commande"),
+                            rs.getFloat("montant_total"),
+                            rs.getInt("id_produit")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return c;
+    }
+    public Commande getOneByiD(String statut) {
+        Commande c = null;
+        String req = "SELECT * FROM `commande`  WHERE statut_commande like ? ";
+        try (PreparedStatement stmt = cnx.prepareStatement(req)) {
+            stmt.setString(1, "%"+statut+"%");
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    c = new Commande(
+                            rs.getInt("id_command"),
+                            rs.getInt("id_client"),
+                            rs.getString("statut_commande"),
+                            rs.getFloat("montant_total"),
+                            rs.getInt("id_produit")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return c;
     }
 }

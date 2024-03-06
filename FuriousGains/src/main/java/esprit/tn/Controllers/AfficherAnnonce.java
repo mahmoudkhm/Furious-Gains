@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -42,11 +43,23 @@ public class AfficherAnnonce {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void stat(ActionEvent event) {
+
+        // Create an instance of the Piechart class
+        Piechart piechart = new Piechart();
+
+        // Call the start method to display the pie chart
+        Stage stage = new Stage();
+        piechart.start(stage);
+    }
     @FXML void initialize(){
         List<Annonce> annonces=null;
         annonces=ass.affichage();
         ObservableList<Annonce> observableList= FXCollections.observableList(annonces);
         listeAnnonce.setItems(observableList);
+
 
     }
 }

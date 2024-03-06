@@ -144,12 +144,17 @@
                                  <children>
                                     <VBox layoutX="-4.0" layoutY="-1.0" prefHeight="143.0" prefWidth="218.0">
                                        <children>
-                                          <Button fx:id="livraisonB" mnemonicParsing="false" onAction="#afficher" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="  Livraison" textFill="WHITE">
+                                          <Button fx:id="livraisonAff" mnemonicParsing="false" onAction="#afficher" prefHeight="37.0" prefWidth="262.0" style="-fx-background-color: #133946;" text="  Livraison" textFill="WHITE">
                                              <font>
                                                 <Font name="Times New Roman Bold" size="20.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="nutritionB1" mnemonicParsing="false" onAction="#afficher" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="commande" textFill="WHITE">
+                                          <Button fx:id="commandeAffichage" mnemonicParsing="false" onAction="#afficher" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="commande" textFill="WHITE">
+                                             <font>
+                                                <Font name="Times New Roman Bold" size="20.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="commandajout" mnemonicParsing="false" onAction="#afficher" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="Ajouter Commande" textFill="WHITE">
                                              <font>
                                                 <Font name="Times New Roman Bold" size="20.0" />
                                              </font>

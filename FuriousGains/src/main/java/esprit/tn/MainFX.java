@@ -25,7 +25,7 @@ public class MainFX extends Application implements Initializable {
     public void start(Stage primaryStage) throws IOException {
         if (cinn==0){
 
-        Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Hbox.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/img/style.css").toExternalForm());
         primaryStage.setScene(scene);

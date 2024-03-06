@@ -98,6 +98,7 @@ public class Piechart extends Application {
         ft.play();
     }
     public static void main(String[] args) {
+
         launch(args);
     }
 

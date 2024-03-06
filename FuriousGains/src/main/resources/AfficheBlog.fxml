@@ -44,7 +44,7 @@
                      <top>
                         <Pane prefHeight="92.0" prefWidth="865.0" style="-fx-border-color: #720000; -fx-background-color: #720000;" BorderPane.alignment="CENTER">
                            <children>
-                              <Button fx:id="titleeP" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#modifyP" prefHeight="48.0" prefWidth="263.0" styleClass="buttonFront" text="Annonce Title">
+                              <Button fx:id="titleeP" alignment="TOP_LEFT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#modifyP" prefHeight="48.0" prefWidth="263.0" styleClass="textfield" stylesheets="@img/style.css" text="Annonce Title">
                                  <font>
                                     <Font name="Calibri Bold Italic" size="25.0" />
                                  </font>

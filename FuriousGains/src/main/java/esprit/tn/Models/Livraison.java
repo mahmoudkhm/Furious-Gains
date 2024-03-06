@@ -35,6 +35,9 @@ public class Livraison {
         this.id_client = id_client;
     }
 
+    public static void refreshTable() {
+    }
+
     public int getId_livraison() {
         return id_livraison;
     }
