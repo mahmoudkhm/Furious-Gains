@@ -119,6 +119,28 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
 
         return livraisonList;
     }
+    public int countAdresse(String adresse){
+        int count=0;
+        String query = "SELECT COUNT(*) AS num_livraisons FROM livraison WHERE adresse_livraison LIKE ?";
+
+        PreparedStatement stmt = null;
+        try {
+            stmt = cnx.prepareStatement(query);
+            stmt.setString(1, "%" + adresse + "%");
+
+            ResultSet rs = stmt.executeQuery() ;
+                if (rs.next()) {
+                    count = rs.getInt("num_livraisons");
+                    System.out.println("Nombre de livraisons avec l'adresse dans  "+adresse+" est :" + count);
+                }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return count;
+    }
     public Livraison getOneByiD(String statut) {
         Livraison c = null;
         String req = "SELECT * FROM `livraison`  WHERE statut_livraison like ? ";
