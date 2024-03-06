@@ -9,7 +9,7 @@ import esprit.tn.Models.Livraison;
 import esprit.tn.Services.LivraisonService;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
+import java.util.Comparator;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -54,6 +54,7 @@ public class Staliv implements Initializable {
             e.printStackTrace();
         }
     }
+
 
 
 }

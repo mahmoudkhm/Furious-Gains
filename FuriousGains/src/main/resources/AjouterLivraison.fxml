@@ -117,6 +117,10 @@
          </image>
       </ImageView>
       <DatePicker fx:id="DateLivraisonTF" layoutX="436.0" layoutY="155.0" prefHeight="26.0" prefWidth="150.0" />
-      <Button fx:id="payer_button" layoutX="695.0" layoutY="487.0" mnemonicParsing="false" onAction="#payer" text="payer" />
+      <Button fx:id="payer_button" layoutX="494.0" layoutY="483.0" mnemonicParsing="false" onAction="#payer" prefHeight="34.0" prefWidth="94.0" style="-fx-background-color: #133946;" text="Payer" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

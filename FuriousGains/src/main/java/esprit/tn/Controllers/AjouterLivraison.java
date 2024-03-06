@@ -86,7 +86,7 @@ public class AjouterLivraison {
            }else
                {Livraison livraison= new Livraison(Integer.parseInt(IdCommandeTF.getText()),dateliv,StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText()));
                    ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),dateliv,StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
-                   sms.sms(livraison,"Votre Livraison est le:","+21621174221");
+                   sms.sms(livraison,"\n Furious Gains:","+21621174221");
                }
        }
        else
