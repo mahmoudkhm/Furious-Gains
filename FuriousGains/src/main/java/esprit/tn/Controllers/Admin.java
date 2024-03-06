@@ -14,7 +14,11 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class Admin {
+    @FXML
+    private Button blogB;
 
+    @FXML
+    private Button AjouterAnnonce1;
     @FXML
     private TitledPane butt;
     @FXML
@@ -89,6 +93,24 @@ public class Admin {
         if (event.getSource() == this.ajres) {
             try {
                 fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterReservation.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.blogB) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AfficherAnnonce.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.AjouterAnnonce1) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterAnnonce.fxml"));
                 viewPages.getChildren().removeAll(new Node[0]);
                 viewPages.getChildren().setAll(new Node[]{fxml});
             } catch (IOException e) {

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="532.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.ModifierAvis">
+   <children>
+      <BorderPane prefHeight="532.0" prefWidth="811.0">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="195.0" layoutY="183.0" text="note">
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="165.0" layoutY="231.0" text="id_user">
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="162.0" layoutY="283.0" text="id_produit">
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="304.0" layoutY="31.0" prefHeight="46.0" prefWidth="220.0" text="Ajouter Avis">
+                     <font>
+                        <Font name="Viner Hand ITC" size="27.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="429.0" layoutY="420.0" mnemonicParsing="false" onAction="#AfficherAvis" prefHeight="33.0" prefWidth="108.0" style="-fx-background-color: #F1E967;" text="Avis">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="noteTF" layoutX="267.0" layoutY="177.0" promptText="NOTE" />
+                  <TextField fx:id="id_userTF" layoutX="267.0" layoutY="218.0" promptText="Id user" />
+                  <Button layoutX="165.0" layoutY="413.0" mnemonicParsing="false" onAction="#ModifierAvisTF" prefHeight="33.0" prefWidth="118.0" style="-fx-background-color: #F1E967;" text="MODIFER">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="id_produitTF" layoutX="267.0" layoutY="277.0" promptText="id produit" />
+                  <Label layoutX="186.0" layoutY="133.0" text="id_avis">
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="idAvisM" layoutX="267.0" layoutY="127.0" onAction="#handleComboBoxSelection" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+         </center>
+         <left>
+            <VBox prefHeight="459.0" prefWidth="216.0" style="-fx-background-color: #133946;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="82.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Furious-Gains/FuriousGains/src/main/resources/img/logo2.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="51.0" prefWidth="31.0" />
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="Profile" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="Produit" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="  Evénement" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="Nutrition" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="  Livraison" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="  Blog" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold" size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

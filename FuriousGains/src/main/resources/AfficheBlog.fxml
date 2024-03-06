@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AfficheBlog">
+   <children>
+      <ImageView fitHeight="179.0" fitWidth="170.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../piDev-Java-rocketDev2023-gestionUser/build/classes/Image/LogoGymBlack.png" />
+         </image>
+         <effect>
+            <Glow level="0.5" />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="48.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../piDev-Java-rocketDev2023-gestionUser/build/classes/Image/author.png" />
+         </image>
+      </ImageView>
+      <BorderPane layoutX="114.0" layoutY="85.0" prefHeight="548.0" prefWidth="784.0">
+         <top>
+            <Label prefHeight="44.0" prefWidth="163.0" text="User Name" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Calibri Bold Italic" size="20.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <HBox fx:id="VV" prefHeight="475.0" prefWidth="1100.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane fx:id="PP" prefHeight="519.0" prefWidth="563.0" style="-fx-border-color: #DCDCDC; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <top>
+                        <Pane prefHeight="92.0" prefWidth="865.0" style="-fx-border-color: #720000; -fx-background-color: #720000;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="titleeP" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#modifyP" prefHeight="48.0" prefWidth="263.0" styleClass="buttonFront" text="Annonce Title">
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="25.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="postowner" layoutX="378.0" layoutY="24.0" prefHeight="44.0" prefWidth="125.0" text="Post Owner" textFill="WHITE">
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="20.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="53.0" fitWidth="51.0" layoutX="485.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../piDev-Java-rocketDev2023-gestionUser/src/Images/comment_3.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Pane>
+                     </top>
+                     <bottom>
+                        <Pane prefHeight="166.0" prefWidth="445.0" style="-fx-border-color: #DCDCDC;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="descP" alignment="TOP_LEFT" layoutX="1.0" prefHeight="166.0" prefWidth="501.0" style="-fx-border-color: #DCDCDC; -fx-border-width: 1 0 0 0;" text="Post Description " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Calibri Italic" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" top="10.0" />
+                                 </padding>
+                              </Label>
+                              <Button fx:id="suppPost" layoutX="505.0" layoutY="14.0" mnemonicParsing="false" onAction="#DeleteP" styleClass="buttonNext">
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../../piDev-Java-rocketDev2023-gestionUser/src/Images/icons8-delete-trash-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </bottom>
+                     <effect>
+                        <DropShadow>
+                           <input>
+                              <InnerShadow />
+                           </input>
+                        </DropShadow>
+                     </effect>
+                     <left>
+                        <ImageView fx:id="PicP" fitHeight="294.0" fitWidth="559.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../../../../../piDev-Java-rocketDev2023-gestionUser/src/Image/32d58670c3f402e464f334fd9c77277b.jpg" />
+                           </image>
+                        </ImageView>
+                     </left>
+                  </BorderPane>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="452.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="clear" mnemonicParsing="false" onAction="#clearValue" prefHeight="44.0" prefWidth="29.0" style="-fx-background-color: transparent;" styleClass="buttonNext">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../piDev-Java-rocketDev2023-gestionUser/build/classes/Images/icons8-close-30.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Calibri Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="val1" mnemonicParsing="false" onAction="#val1" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: transparent;" styleClass="star" text="1">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8-star-filled-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Calibri Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="val2" layoutX="10.0" layoutY="38.0" mnemonicParsing="false" onAction="#val2" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: transparent;" styleClass="star" text="2">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8-star-filled-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Calibri Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="val3" layoutX="76.0" layoutY="38.0" mnemonicParsing="false" onAction="#val3" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: transparent;" styleClass="star" text="3">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8-star-filled-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Calibri Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="val4" layoutX="142.0" layoutY="38.0" mnemonicParsing="false" onAction="#val4" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: transparent;" styleClass="star" text="4">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8-star-filled-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Calibri Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="val5" layoutX="208.0" layoutY="38.0" mnemonicParsing="false" onAction="#val5" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: transparent;" styleClass="star" text="5">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8-star-filled-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Calibri Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="rateP" alignment="CENTER" prefHeight="23.0" prefWidth="115.0" text="Post Rate" textAlignment="JUSTIFY">
+                     <font>
+                        <Font name="Calibri Italic" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

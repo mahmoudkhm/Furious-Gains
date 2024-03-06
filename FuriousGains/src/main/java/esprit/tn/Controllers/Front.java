@@ -23,6 +23,9 @@ public class Front {
     private Button blogB;
 
     @FXML
+    private Button AjouterAnnonce1;
+
+    @FXML
     private Button eventB;
 
     @FXML
@@ -44,7 +47,8 @@ public class Front {
 
     @FXML
     private Button afficherB;
-
+    @FXML
+    private Button blogBAnnonce1;
     @FXML
     private TitledPane butt;
     int clickCount ;
@@ -112,6 +116,24 @@ public class Front {
                     throw new RuntimeException(e);
                 }
             }
+        if (event.getSource() == this.blogB) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/ShowPosts.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e){
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.AjouterAnnonce1) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterAnnonce.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
         }
 
 

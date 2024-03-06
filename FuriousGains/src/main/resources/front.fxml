@@ -166,12 +166,12 @@
                                  <children>
                                     <VBox layoutX="-4.0" layoutY="-1.0" prefHeight="143.0" prefWidth="326.0" stylesheets="@img/style.css">
                                        <children>
-                                          <Button fx:id="blogB" mnemonicParsing="false" onAction="#afficher" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #133946;" text="Annonce" textFill="WHITE">
+                                          <Button fx:id="blogB" mnemonicParsing="false" onAction="#afficher" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #133946;" text="Liste des Annonces" textFill="WHITE">
                                              <font>
                                                 <Font name="Times New Roman Bold" size="20.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="blogB1" mnemonicParsing="false" onAction="#afficher" prefHeight="37.0" prefWidth="321.0" style="-fx-background-color: #133946;" text="Avis" textFill="WHITE">
+                                          <Button fx:id="AjouterAnnonce1" mnemonicParsing="false" onAction="#afficher" prefHeight="37.0" prefWidth="321.0" style="-fx-background-color: #133946;" text="Ajouter une annonce" textFill="WHITE">
                                              <font>
                                                 <Font name="Times New Roman Bold" size="20.0" />
                                              </font>
