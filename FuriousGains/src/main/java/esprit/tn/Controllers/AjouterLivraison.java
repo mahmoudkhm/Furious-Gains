@@ -12,12 +12,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+
+import static java.time.Duration.*;
 
 public class AjouterLivraison {
     @FXML
@@ -87,6 +91,15 @@ public class AjouterLivraison {
                {Livraison livraison= new Livraison(Integer.parseInt(IdCommandeTF.getText()),dateliv,StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText()));
                    ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),dateliv,StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
                    sms.sms(livraison,"\n Furious Gains:","+21621174221");
+                   boolean  oeuvreAdded = true;
+
+                   if (oeuvreAdded) {
+                       Notifications.create()
+                               .title("Notification Title")
+                               .text("Livraison AJOUTEE")
+
+                               .showInformation();
+                   }
                }
        }
        else
