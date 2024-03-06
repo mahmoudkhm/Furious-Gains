@@ -19,7 +19,8 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
 
     @Override
     public void ajouter(Evenement evenement) {
-        String req = "INSERT INTO Evenement (nom_event, lieu_event, prix_event, nb_participation, date_event, heure_event, description) VALUES ('" + evenement.getNom_event() + "', '" + evenement.getLieu_event() + "', '" + evenement.getPrix_event() + "', '" + evenement.getNb_participation() + "', '" + evenement.getDate_event() + "', '" + evenement.getHeure_event() +    "', '" + evenement.getDescription() + "')";
+        String req = "INSERT INTO Evenement (nom_event, lieu_event, prix_event, nb_participation, date_event, heure_event, description) VALUES ('" + evenement.getNom_event() + "', '" + evenement.getLieu_event() + "', '" + evenement.getPrix_event() + "', '" + evenement.getNb_participation() + "', '" + new java.sql.Date(evenement.getDate_event().getTime())
+                + "', '" + evenement.getHeure_event() +    "', '" + evenement.getDescription() + "')";
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -45,7 +46,8 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
             es.setString(2, evenement.getLieu_event());
             es.setFloat(3, evenement.getPrix_event());
             es.setInt(4, evenement.getNb_participation());
-            es.setString(5, evenement.getDate_event());
+            es.setDate(5, new java.sql.Date(evenement.getDate_event().getTime()));
+
             es.setString(6, evenement.getHeure_event());
 
             es.setString(7, evenement.getDescription());
@@ -106,7 +108,7 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
                 evenement.setLieu_event(rs.getString("lieu_event"));
                 evenement.setPrix_event(rs.getFloat("prix_event"));
                 evenement.setNb_participation(rs.getInt("Nb_participation"));
-                evenement.setDate_event(rs.getString("Date_event"));
+                evenement.setDate_event(rs.getDate("Date_event"));
                 evenement.setHeure_event(rs.getString("heure_event"));
                 evenement.setDescription(rs.getString("Description"));
                 evenements.add(evenement);
@@ -123,6 +125,7 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
     }
 
 
+
     public Evenement getOneByCin(int id) {
         Evenement ev = null;
         String req = "SELECT * FROM evenement WHERE id_event = ?";
@@ -136,7 +139,7 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
                             es.getString("lieu_event"),
                             es.getFloat("prix_event"),
                             es.getInt("nb_participation"),
-                            es.getString("date_event"),
+                            es.getDate("date_event"),
                             es.getString("heure_event"),
                             es.getString("description"));
 
@@ -167,7 +170,7 @@ public class EvenementService implements InterfaceFuriousGains <Evenement > {
                     evenement.setLieu_event(rs.getString("lieu_event"));
                     evenement.setPrix_event(rs.getFloat("lieu_event"));
                     evenement.setNb_participation(rs.getInt("nb_participation"));
-                    evenement.setDate_event(rs.getString("date_event"));
+                    evenement.setDate_event(rs.getDate("date_event"));
                     evenement.setHeure_event(rs.getString("heure_event"));
                     evenement.setDescription(rs.getString("description"));
 

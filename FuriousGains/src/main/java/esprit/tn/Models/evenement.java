@@ -11,14 +11,14 @@ Evenement {
     private String lieu_event;
     private float prix_event;
     private int nb_participation;
-    private String date_event;
+    private Date date_event;
     private String heure_event;
     //private String image_event;
     private String description;
 
     public Evenement() {}
 
-    public Evenement(int id_event, String nom_event, String lieu_event, float prix_event, int nb_participation, String date_event, String heure_event, String description) {
+    public Evenement(int id_event, String nom_event, String lieu_event, float prix_event, int nb_participation,Date date_event, String heure_event, String description) {
         this.id_event = id_event;
         this.nom_event = nom_event;
         this.lieu_event = lieu_event;
@@ -30,7 +30,7 @@ Evenement {
         this.description = description;
     }
 
-    public Evenement(String nom_event, String lieu_event, float prix_event, int nb_participation, String date_event, String heure_event, String description) {
+    public Evenement(String nom_event, String lieu_event, float prix_event, int nb_participation, Date date_event, String heure_event, String description) {
         this.nom_event = nom_event;
         this.lieu_event = lieu_event;
         this.prix_event = prix_event;
@@ -83,14 +83,13 @@ Evenement {
     }
 
 
-    public String getDate_event() {
+    public Date getDate_event() {
         return date_event;
     }
 
-    public void setDate_event(String date_event) {
+    public void setDate_event(Date date_event) {
         this.date_event = date_event;
     }
-
 
     public String getHeure_event() {
         return heure_event;

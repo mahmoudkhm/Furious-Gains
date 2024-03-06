@@ -9,18 +9,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public class ModifierEvenement {
     @FXML
-    private TextField dateTF;
+    private DatePicker mydatepicker1;
 
     @FXML
     private TextField descriptionTF;
@@ -46,19 +48,17 @@ public class ModifierEvenement {
 
     @FXML
     void ModifierTF(ActionEvent event) {
+        LocalDate localDate = (LocalDate)this.mydatepicker1.getValue();
+        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        Date dateevent =  Date.from(instant);
         Alert alertType;
-        if (!nom_eventTF.getText().isEmpty() && !lieu_eventTF.getText().isEmpty() && !prix_eventTF.getText().isEmpty() && !nb_participantsTF.getText().isEmpty() && !idM.getValue().isEmpty() && !dateTF.getText().isEmpty() && !heureTF.getText().isEmpty() && !descriptionTF.getText().isEmpty()) {
+        if (!nom_eventTF.getText().isEmpty() && !lieu_eventTF.getText().isEmpty() && !prix_eventTF.getText().isEmpty() && !nb_participantsTF.getText().isEmpty() && !idM.getValue().isEmpty()  && !heureTF.getText().isEmpty() && !descriptionTF.getText().isEmpty()) {
                 if (this.nom_eventTF.getText().matches("[0-9]+")) {
                     alertType = new Alert(Alert.AlertType.ERROR);
                     alertType.setTitle("Error");
                     alertType.setHeaderText("nom de l'evenement  doit  etre string non number !");
                     alertType.show();
-                } else if (this.dateTF.getText().matches("[A-Z]+")) {
-                    alertType = new Alert(Alert.AlertType.ERROR);
-                    alertType.setTitle("Error");
-                    alertType.setHeaderText("date doit etre  number non string !");
-                    alertType.show();
-                } else if (this.heureTF.getText().matches("[A-Z]+")) {
+                }  else if (this.heureTF.getText().matches("[A-Z]+")) {
                     alertType = new Alert(Alert.AlertType.ERROR);
                     alertType.setTitle("Error");
                     alertType.setHeaderText("heure doit  etre string non number !");
@@ -81,13 +81,12 @@ public class ModifierEvenement {
                                 int id_event = Integer.parseInt(idM.getValue());
                                 String nom_event = nom_eventTF.getText();
                                 String lieu_event = lieu_eventTF.getText();
-                                String date = dateTF.getText();
 
                                 float prix_event = Float.parseFloat(prix_eventTF.getText());
                                 int nb_participation = Integer.parseInt(nb_participantsTF.getText());
                                 String heure = heureTF.getText();
                                 String description = descriptionTF.getText();
-                                Evenement evenement = new Evenement(id_event, nom_event, lieu_event, prix_event, nb_participation, date, heure, description);
+                                Evenement evenement = new Evenement(id_event, nom_event, lieu_event, prix_event, nb_participation, dateevent, heure, description);
                                 EvenementService es = new EvenementService();
                                 es.modifier(evenement);
                                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/AfficherEvenement.fxml"));
@@ -159,7 +158,11 @@ public class ModifierEvenement {
             lieu_eventTF.setText(String.valueOf(e.getLieu_event()));
             prix_eventTF.setText(String.valueOf(e.getPrix_event()));
             nb_participantsTF.setText(String.valueOf(e.getNb_participation()));
-            dateTF.setText(String.valueOf(e.getDate_event()));
+            Date date = e.getDate_event();
+            Instant instant = Instant.ofEpochMilli(date.getTime());
+            ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
+            LocalDate localDate = zdt.toLocalDate();
+            this.mydatepicker1.setValue(localDate);
             heureTF.setText(String.valueOf(e.getHeure_event()));
             descriptionTF.setText(String.valueOf(e.getDescription()));
 

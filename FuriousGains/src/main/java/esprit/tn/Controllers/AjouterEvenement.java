@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -16,13 +17,13 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.time.LocalDate;
 
 
 public class AjouterEvenement {
@@ -30,7 +31,7 @@ public class AjouterEvenement {
 
 
     @FXML
-    private TextField Date_eventTF;
+    private DatePicker mydatepicker;
 
     @FXML
     private TextField DescriptionTF;
@@ -51,6 +52,10 @@ public class AjouterEvenement {
     private TextField nom_eventTF;
     @FXML
     private TextField emailField;
+
+
+
+
     private final EvenementService es = new EvenementService();
 
     @FXML
@@ -58,6 +63,9 @@ public class AjouterEvenement {
         String nom = nom_eventTF.getText();
         String lieu = Lieu_eventTF.getText();
         String description = DescriptionTF.getText();
+        LocalDate localDate = (LocalDate)this.mydatepicker.getValue();
+        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        java.util.Date date_event =  Date.from(instant);
 
         if (nom.isEmpty() || lieu.isEmpty() || description.isEmpty()) {
             afficherAlerte("Veuillez remplir tous les champs !");
@@ -80,9 +88,9 @@ public class AjouterEvenement {
         try {
 
 
-            Evenement e = new Evenement(nom, lieu, Float.parseFloat(Prix_EventTF.getText()), Integer.parseInt(Nb_participantsTF.getText()),Date_eventTF.getText(), Heure_eventTF.getText(), description);
+            Evenement e = new Evenement(nom, lieu, Float.parseFloat(Prix_EventTF.getText()), Integer.parseInt(Nb_participantsTF.getText()), date_event, Heure_eventTF.getText(), description);
             es.ajouter(e);
-            Evenement newEvent = new Evenement(nom_eventTF.getText(),Lieu_eventTF.getText(),Float.parseFloat(Prix_EventTF.getText()),Integer.parseInt(Nb_participantsTF.getText()),Date_eventTF.getText(),Heure_eventTF.getText(),DescriptionTF.getText());
+            Evenement newEvent = new Evenement(nom_eventTF.getText(),Lieu_eventTF.getText(),Float.parseFloat(Prix_EventTF.getText()),Integer.parseInt(Nb_participantsTF.getText()),date_event,Heure_eventTF.getText(),DescriptionTF.getText());
             //sendNotificationEmailToAllUsers(e);
             sendNotificationEmailToAllUsers(newEvent);
             // afficherAlerte("Événement ajouté avec succès !");

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -8,77 +9,108 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="532.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AjouterEvenement">
+<AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #0F056B;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AjouterEvenement">
    <children>
-      <AnchorPane prefHeight="532.0" prefWidth="284.0" style="-fx-background-color: #133946;">
-         <children>
-            <ImageView fitHeight="82.0" fitWidth="137.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/logo1-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <Label layoutY="122.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Profil" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="5.0" layoutY="352.0" prefHeight="44.0" prefWidth="291.0" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="164.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Produit" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="208.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Evenement" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="252.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="nutrition " textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="296.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Livraison" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="340.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="Blog" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <Label layoutX="382.0" layoutY="55.0" prefHeight="18.0" prefWidth="66.0" text="Nom_event" />
-      <TextField fx:id="nom_eventTF" layoutX="484.0" layoutY="51.0" promptText="nom_evenement" />
-      <Label layoutX="382.0" layoutY="96.0" prefHeight="18.0" prefWidth="66.0" text="Lieu_event" />
-      <TextField fx:id="Lieu_eventTF" layoutX="484.0" layoutY="93.0" promptText="lieu_evenement" />
-      <Label layoutX="382.0" layoutY="136.0" prefHeight="18.0" prefWidth="66.0" text="Prix_event" />
-      <TextField fx:id="Prix_EventTF" layoutX="484.0" layoutY="132.0" promptText="prix_evenement" />
-      <Label layoutX="382.0" layoutY="182.0" prefHeight="18.0" prefWidth="86.0" text="Nb_participants" />
-      <TextField fx:id="Nb_participantsTF" layoutX="484.0" layoutY="179.0" promptText="nombre de participants" />
-      <Label layoutX="382.0" layoutY="224.0" prefHeight="18.0" prefWidth="86.0" text="Date_event" />
-      <TextField fx:id="Date_eventTF" layoutX="484.0" layoutY="220.0" promptText="date_evenements" />
-      <Label layoutX="382.0" layoutY="266.0" prefHeight="18.0" prefWidth="86.0" text="Heure_event" />
-      <TextField fx:id="Heure_eventTF" layoutX="484.0" layoutY="262.0" promptText="heure_evenements" />
-      <Label layoutX="382.0" layoutY="313.0" prefHeight="18.0" prefWidth="86.0" text="Description" />
-      <TextField fx:id="DescriptionTF" layoutX="484.0" layoutY="309.0" promptText="description" />
-      <Button layoutX="484.0" layoutY="390.0" mnemonicParsing="false" onAction="#AjouterTF" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #F1E967;" text="Ajouter">
+      <Label layoutX="558.0" layoutY="138.0" prefHeight="18.0" prefWidth="86.0" text="Nom_event" textFill="#c6ec09">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="nom_eventTF" layoutX="663.0" layoutY="135.0" promptText="nom_evenement" />
+      <Label layoutX="558.0" layoutY="192.0" prefHeight="20.0" prefWidth="78.0" text="Lieu_event" textFill="#e1fa06">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="Lieu_eventTF" layoutX="668.0" layoutY="189.0" promptText="lieu_evenement" />
+      <TextField fx:id="Prix_EventTF" layoutX="668.0" layoutY="242.0" promptText="prix_evenement" />
+      <TextField fx:id="Nb_participantsTF" layoutX="668.0" layoutY="293.0" promptText="nombre de participants" />
+      <Label layoutX="493.0" layoutY="348.0" prefHeight="18.0" prefWidth="86.0" />
+      <TextField fx:id="Heure_eventTF" layoutX="668.0" layoutY="400.0" promptText="heure_evenements" />
+      <TextField fx:id="DescriptionTF" layoutX="668.0" layoutY="445.0" promptText="description" />
+      <Button layoutX="512.0" layoutY="579.0" mnemonicParsing="false" onAction="#AjouterTF" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #F1E967;" text="Ajouter">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="657.0" layoutY="389.0" mnemonicParsing="false" onAction="#afficherevenement" prefHeight="33.0" prefWidth="130.0" style="-fx-background-color: #F1E967;" text=" Evenements">
+      <Button layoutX="701.0" layoutY="579.0" mnemonicParsing="false" onAction="#afficherevenement" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: #F1E967;" text=" Evenements">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="emailField" layoutX="485.0" layoutY="349.0" />
-      <Button layoutX="356.0" layoutY="436.0" mnemonicParsing="false" onAction="#mail" text="mail" />
+      <DatePicker fx:id="mydatepicker" layoutX="663.0" layoutY="344.0" prefHeight="26.0" prefWidth="160.0" promptText="date" />
+      <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="509.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Capture.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="700.0" layoutY="579.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Capture1.PNG" />
+         </image>
+      </ImageView>
+      <Label layoutX="558.0" layoutY="299.0" prefHeight="18.0" prefWidth="103.0" text="nb_participants" textFill="#f2f20d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="558.0" layoutY="245.0" prefHeight="20.0" prefWidth="78.0" text="prix_event" textFill="#d8e706">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="569.0" layoutY="348.0" prefHeight="18.0" prefWidth="66.0" text="Date" textFill="#e1f408">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="564.0" layoutY="403.0" prefHeight="20.0" prefWidth="86.0" text="heure_event" textFill="#d0e10d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="569.0" layoutY="448.0" prefHeight="20.0" prefWidth="78.0" text="Description" textFill="#dcef09">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="291.0" layoutY="14.0" prefHeight="49.0" prefWidth="490.0" text="Ajouter un evenement sportif" textAlignment="CENTER" textFill="#dcef09">
+         <font>
+            <Font name="Blackadder ITC" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="18.0" fitWidth="25.0" layoutX="534.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Capture4.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="25.0" layoutX="532.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Captureee.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="19.0" layoutX="533.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Capture8.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="19.0" layoutX="532.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Capture777.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="19.0" layoutX="532.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/roube.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="19.0" layoutX="532.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/localisation.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="25.0" layoutX="524.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/nom.PNG" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

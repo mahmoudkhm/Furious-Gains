@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) {
         EvenementService es = new EvenementService();
-          es.ajouter(new Evenement("roube", "ariana", 400, 55,"29/02/2002", "4h", "kk"));
+        //  es.ajouter(new Evenement("roube", "ariana", 400, 55,"29/02/2002", "4h", "kk"));
        // es.supprimer(1);
       // System.out.println( es.affichage());
        ReservationService rs = new ReservationService();

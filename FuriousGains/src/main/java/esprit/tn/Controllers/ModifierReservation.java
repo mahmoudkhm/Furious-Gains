@@ -1,5 +1,4 @@
 package esprit.tn.Controllers;
-
 import esprit.tn.Models.Reservation;
 import esprit.tn.Services.ReservationService;
 import javafx.collections.FXCollections;
@@ -12,10 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-
-
-
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
