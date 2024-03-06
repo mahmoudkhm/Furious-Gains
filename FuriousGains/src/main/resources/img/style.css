@@ -1,0 +1,451 @@
+/*.search-box{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+
+.right-bar{
+    -fx-background-color: #D3D3D3;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.chosen-fruit-card{
+    -fx-background-color: #708090;
+    -fx-background-radius: 30;
+}
+
+.comboBox{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-radius: 30;
+}
+
+.add-btn{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.free-delivery-card{
+    -fx-background-color: #D3D3D3;
+    -fx-background-radius: 30;
+}
+
+.shopping-online-card{
+    -fx-background-color: #BAEAC3;
+    -fx-background-radius: 30;
+}
+
+.fruit-item{
+    -fx-background-color: #FFFFFF;
+        -fx-background-radius: 30;
+}
+.bg-form{
+    -fx-background-color:linear-gradient(to top right,#0e5e6f,#3a8891);
+}
+.textfield{
+    -fx-background-color:transparent;
+    -fx-text-inner-color:#fff;
+    -fx-border-color:#f2deba;
+    -fx-border-width:0px 0px .4px 0px ;
+     
+    
+}
+.textfield:focused{
+    -fx-border-color:#fb6363;
+    -fx-border-width:0px 0px 2px .0px;
+    
+  
+    
+    
+}
+.login-btn:hover{
+     -fx-background-color:linear-gradient(to bottom right,#f2deba,ffefd6);
+    
+    -fx-background-radius:8px;
+     -fx-text-fill:#fff;
+     -fx-font-size :14px;
+     -fx-cursor:hand;
+    
+}
+.create-btn:hover{
+     -fx-background-color:linear-gradient(to bottom right,#3861c2,#4284d0);
+    
+    -fx-background-radius:8px;
+     -fx-text-fill:#fff;
+     -fx-font-size :14px;
+     -fx-cursor:hand;
+    
+    
+}
+.ajouter-btn:hover{
+     -fx-background-color:linear-gradient(to bottom right,#3862c2,#4284d0);
+    
+    -fx-background-radius:8px;
+     -fx-text-fill:#fff;
+     -fx-font-size :14px;
+     -fx-cursor:hand;
+    
+    
+}
+.modifier-btn:hover{
+     -fx-background-color:linear-gradient(to bottom right,#3862c2,#4284d0);
+    
+    -fx-background-radius:8px;
+     -fx-text-fill:#fff;
+     -fx-font-size :14px;
+     -fx-cursor:hand;
+    
+    
+}
+.supprimer-btn:hover{
+     -fx-background-color:linear-gradient(to bottom right,#3862c2,#4284d0);
+    
+    -fx-background-radius:8px;
+     -fx-text-fill:#fff;
+     -fx-font-size :14px;
+     -fx-cursor:hand;
+    
+    
+}
+.afficher-btn:hover{
+     -fx-background-color:linear-gradient(to bottom right,#3862c2,#4284d0);
+    
+    -fx-background-radius:8px;
+     -fx-text-fill:#fff;
+     -fx-font-size :14px;
+     -fx-cursor:hand;
+    
+    
+}
+.uplod-btn:hover{
+     -fx-background-color:linear-gradient(to bottom right,#3862c2,#4284d0);
+    
+    -fx-background-radius:8px;
+     -fx-text-fill:#fff;
+     -fx-font-size :14px;
+     -fx-cursor:hand;
+    
+    
+}
+.hyperlink{-fx-underline:false;
+          -fx-text-fill:#fb6363;
+          -fx-border-color:transparent;
+           -fx-border-width:0px;
+}
+.search-box{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+
+.right-bar{
+    -fx-background-color: #D3D3D3;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.chosen-fruit-card{
+    -fx-background-color: #708090;
+    -fx-background-radius: 30;
+}
+
+.comboBox{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-radius: 30;
+}
+
+.add-btn{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.free-delivery-card{
+    -fx-background-color: #D3D3D3;
+    -fx-background-radius: 30;
+}
+
+.shopping-online-card{
+    -fx-background-color: #BAEAC3;
+    -fx-background-radius: 30;
+}
+
+.fruit-item{
+    -fx-background-color: #FFFFFF;
+        -fx-background-radius: 30;
+}
+.root{
+    -fx-background-color:#EAEEF4;
+}
+
+.side_ankerpane{
+    -fx-background-color:#353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.inner_pane{
+    -fx-background-color:#748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+
+}
+.most_inner_pane{
+    -fx-background-color:#6780E2;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+
+#btn_workbench{
+    -fx-background-color:#141313;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: #141313;
+}
+.btn_workbench11{
+    -fx-background-color:#353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: #353A56;
+}
+.pane_1{
+    -fx-background-color:#748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+.progress{
+    -fx-background-color:#ffffff;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #ffffff;
+}
+.pane_11{
+    -fx-background-color:#ffffff;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #ffffff;
+}
+.pane_111{
+    -fx-background-color:#FD9999;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #FD9999;
+
+}*/
+.afficherB{
+    -fx-background-color:#133946;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #133946;
+}
+
+.root{
+    -fx-background-color:#EAEEF4;
+}
+
+.side_ankerpane{
+    -fx-background-color:#353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.profil{
+    -fx-background-color:#353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.inner_pane{
+    -fx-background-color:#748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+
+}
+.most_inner_pane{
+    -fx-background-color:#6780E2;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+
+.btn_workbench{
+    -fx-background-color:#141313;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: #141313;
+}
+.btn_workbench:hover{
+    -fx-background-color: #2f333f;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: #2f333f;
+    -fx-background-radius:8px;
+    -fx-cursor:hand;
+}
+.btn_workbench11{
+    -fx-background-color:#353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: #353A56;
+    -fx-cursor:hand;
+}
+.btn_workbench11:hover{
+    -fx-background-color:#404564FF;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: #404564FF;
+    -fx-background-radius:8px;
+    -fx-cursor:hand;
+}
+.profilB {
+    -fx-background-color:#F1E967;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color:  #F1E967;
+    -fx-font-family: "Times New Roman Bold";
+    -fx-font-size: 18.0;
+    -fx-cursor:hand;
+}
+.pane_1{
+    -fx-background-color:#748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+.progress{
+    -fx-background-color:#ffffff;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #ffffff;
+}
+.pane_11{
+    -fx-background-color:#ffffff;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #ffffff;
+}
+.pane_111{
+    -fx-background-color:#FD9999;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #FD9999;
+
+}
+.pane_1111{
+    -fx-background-color:#353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #353A56;
+}
+.textfield{
+    -fx-background-color:transparent;
+    -fx-text-inner-color:#fff;
+    -fx-border-color: #313030;
+    -fx-border-width:0px 0px .4px 0px ;
+
+
+}
+.textfield:focused{
+    -fx-border-color: #3c4931;
+    -fx-border-width:0px 0px 2px .0px;
+
+}
+
+.titled-pane > .title {
+    -fx-text-fill: white;
+    -fx-border-style: solid;
+    -fx-font-family: "Times New Roman Bold";
+    -fx-font-size: 18.0;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color:  #121212;
+    -fx-border-color: #133946;
+
+}
+
+.titled-pane > .content > .button {
+    /*-fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-background-color: transparent;*/
+    -fx-background-color:#121212;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-border-style: solid;
+    -fx-border-color: #121212;
+}
+
+.titled-pane > .content > .button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.titled-pane > .content > .button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}

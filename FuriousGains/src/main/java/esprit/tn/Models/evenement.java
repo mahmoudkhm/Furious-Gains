@@ -1,22 +1,23 @@
 package esprit.tn.Models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-public class evenement {
+public class Evenement {
     private int id_event;
     private String nom_event;
 
-    private int lieu_event;
+    private String lieu_event;
     private float prix_event;
     private int nb_participation;
     private Date date_event;
     private String heure_event;
-    private String image_event;
+    //private String image_event;
     private String description;
 
-    public evenement() {}
+    public Evenement() {}
 
-    public evenement(int id_event, String nom_event, int lieu_event, float prix_event, int nb_participation, Date date_event, String heure_event, String image_event, String description) {
+    public Evenement(int id_event, String nom_event, String lieu_event, float prix_event, int nb_participation,Date date_event, String heure_event, String description) {
         this.id_event = id_event;
         this.nom_event = nom_event;
         this.lieu_event = lieu_event;
@@ -24,18 +25,18 @@ public class evenement {
         this.nb_participation = nb_participation;
         this.date_event = date_event;
         this.heure_event = heure_event;
-        this.image_event = image_event;
+
         this.description = description;
     }
 
-    public evenement(String nom_event, int lieu_event, float prix_event, int nb_participation, Date date_event, String heure_event, String image_event, String description) {
+    public Evenement(String nom_event, String lieu_event, float prix_event, int nb_participation, Date date_event, String heure_event, String description) {
         this.nom_event = nom_event;
         this.lieu_event = lieu_event;
         this.prix_event = prix_event;
         this.nb_participation = nb_participation;
         this.date_event = date_event;
         this.heure_event = heure_event;
-        this.image_event = image_event;
+
         this.description = description;
     }
 
@@ -55,11 +56,11 @@ public class evenement {
         this.nom_event = nom_event;
     }
 
-    public int getLieu_event() {
+    public String getLieu_event() {
         return lieu_event;
     }
 
-    public void setLieu_event(int lieu_event) {
+    public void setLieu_event(String lieu_event) {
         this.lieu_event = lieu_event;
     }
 
@@ -71,6 +72,7 @@ public class evenement {
         this.prix_event = prix_event;
     }
 
+
     public int getNb_participation() {
         return nb_participation;
     }
@@ -78,6 +80,7 @@ public class evenement {
     public void setNb_participation(int nb_participation) {
         this.nb_participation = nb_participation;
     }
+
 
     public Date getDate_event() {
         return date_event;
@@ -95,13 +98,8 @@ public class evenement {
         this.heure_event = heure_event;
     }
 
-    public String getImage_event() {
-        return image_event;
-    }
 
-    public void setImage_event(String image_event) {
-        this.image_event = image_event;
-    }
+
 
     public String getDescription() {
         return description;
@@ -113,7 +111,7 @@ public class evenement {
 
     @Override
     public String toString() {
-        return "evenement{" +
+        return "Evenement{" +
                 "id_event=" + id_event +
                 ", nom_event='" + nom_event + '\'' +
                 ", lieu_event=" + lieu_event +
@@ -121,7 +119,7 @@ public class evenement {
                 ", nb_participation=" + nb_participation +
                 ", date_event=" + date_event +
                 ", heure_event='" + heure_event + '\'' +
-                ", image_event='" + image_event + '\'' +
+
                 ", description='" + description + '\'' +
                 '}';
     }

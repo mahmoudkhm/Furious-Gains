@@ -5,7 +5,6 @@ public class Categorie {
     private String nom_categorie;
     private String type_categorie;
 
-
     public Categorie() {}
 
     public Categorie(int id_categorie, String nom_categorie, String type_categorie) {

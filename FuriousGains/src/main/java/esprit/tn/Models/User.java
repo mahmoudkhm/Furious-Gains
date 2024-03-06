@@ -1,42 +1,97 @@
 package esprit.tn.Models;
 
 
+import java.util.Date;
 
 public class User  {
     private int id_user;
     private int cin;
-    private int num_tel;
     private String nom;
     private String prenom;
+    private Date dateuser;
+
+    private int num_tel;
     private String adresse;
     private String email;
     private String password;
     private String role;
+    private String image;
+    private Boolean ban;
+    private int id_code_promo;
 
     public User() {}
 
-    public User(int id_user, int cin, int num_tel, String nom, String prenom, String adresse, String email, String password, String role) {
+
+    public User(int id_user, int cin, String nom, String prenom, Date dateuser, int num_tel, String adresse, String email, String password, String role, String image, int id_code_promo) {
         this.id_user = id_user;
         this.cin = cin;
-        this.num_tel = num_tel;
         this.nom = nom;
         this.prenom = prenom;
+        this.num_tel = num_tel;
+        this.dateuser = dateuser;
         this.adresse = adresse;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.image = image;
+        this.id_code_promo = id_code_promo;
     }
 
-    public User(int cin, int num_tel, String nom, String prenom, String adresse, String email, String password, String role) {
+    public User(int cin, String nom, String prenom, Date dateuser, int num_tel, String adresse, String email, String image, int id_code_promo) {
         this.cin = cin;
-        this.num_tel = num_tel;
         this.nom = nom;
         this.prenom = prenom;
+        this.dateuser = dateuser;
+        this.num_tel = num_tel;
+        this.adresse = adresse;
+        this.email = email;
+        this.image = image;
+        this.id_code_promo = id_code_promo;
+    }
+
+    public User(int cin, String nom, String prenom, Date dateuser, int num_tel, String adresse, String email, String password, String role, String image, int id_code_promo) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.num_tel = num_tel;
+        this.dateuser = dateuser;
         this.adresse = adresse;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.image = image;
+        this.id_code_promo = id_code_promo;
     }
+
+    public User(int cin, String nom, String prenom, Date dateuser, int num_tel, String adresse, String email, String role, String image, int id_code_promo) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateuser = dateuser;
+        this.num_tel = num_tel;
+        this.adresse = adresse;
+        this.email = email;
+        this.role = role;
+        this.image = image;
+        this.id_code_promo = id_code_promo;
+    }
+
+    public Date getDateuser() {
+        return dateuser;
+    }
+
+    public void setDateuser(Date dateuser) {
+        this.dateuser = dateuser;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 
     public int getId_user() {
         return id_user;
@@ -110,18 +165,29 @@ public class User  {
         this.role = role;
     }
 
+    public int getId_code_promo() {
+        return id_code_promo;
+    }
+
+    public void setId_code_promo(int id_code_promo) {
+        this.id_code_promo = id_code_promo;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id_user=" + id_user +
                 ", cin=" + cin +
-                ", num_tel=" + num_tel +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
+                ", num_tel=" + num_tel +
+                ", dateuser=" + dateuser +
                 ", adresse='" + adresse + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", image='" + image + '\'' +
+                ", id_code_promo=" + id_code_promo +
                 '}';
     }
 }

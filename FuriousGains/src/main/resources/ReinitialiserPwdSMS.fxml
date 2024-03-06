@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.ReinitialiserPwdSMS">
+   <children>
+      <ImageView fitHeight="544.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Login.png" />
+         </image>
+      </ImageView>
+      <ImageView cache="true" fitHeight="438.0" fitWidth="400.0" layoutX="100.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Login1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="202.0" fitWidth="206.0" layoutX="202.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/ic1.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="adresse" layoutX="143.0" layoutY="302.0" prefHeight="36.0" prefWidth="312.0" promptText="entrer votre numero" styleClass="textfield" stylesheets="@img/style.css" />
+      <Button layoutX="144.0" layoutY="394.0" mnemonicParsing="false" onAction="#Send" prefHeight="27.0" prefWidth="312.0" style="-fx-background-color: linear-gradient(to bottom right,#1A2A49,#143668);" text="Envoyer" textFill="WHITE" />
+      <Label layoutX="144.0" layoutY="154.0" prefHeight="90.0" prefWidth="312.0" text="Veuillez fournir votre numero de telephone" />
+      <Button layoutX="351.0" layoutY="338.0" mnemonicParsing="false" onAction="#envoyerParSMS" style="-fx-underline: underlined; -fx-background-color: transparent;" text="envoyer par Email">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="141.0" layoutY="172.0" prefHeight="90.0" prefWidth="312.0" text=" afin que nous puissions vous envoyer un code." />
+   </children>
+</AnchorPane>

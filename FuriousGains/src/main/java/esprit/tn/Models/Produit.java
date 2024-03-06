@@ -8,7 +8,6 @@ public class Produit {
     private float prix_produit;
     private String description;
     private int id_categorie ;
-    private Categorie categorie;
 
     public Produit(int id_produit, String nom_produit, int quantite, float prix_produit, String description, int id_categorie) {
         this.id_produit = id_produit;
@@ -17,16 +16,14 @@ public class Produit {
         this.prix_produit = prix_produit;
         this.description = description;
         this.id_categorie = id_categorie;
-        //this.categorie=categorie;
     }
 
-    public Produit(String nom_produit, int quantite, float prix_produit, String description, int id_categorie ) {
+    public Produit(String nom_produit, int quantite, float prix_produit, String description, int id_categorie) {
         this.nom_produit = nom_produit;
         this.quantite = quantite;
         this.prix_produit = prix_produit;
         this.description = description;
         this.id_categorie = id_categorie;
-      //  this.categorie=categorie;
     }
 
     public Produit() {}
@@ -79,14 +76,6 @@ public class Produit {
         this.id_categorie = id_categorie;
     }
 
-    public Categorie getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
-
     @Override
     public String toString() {
         return "Produit{" +
@@ -96,7 +85,6 @@ public class Produit {
                 ", prix_produit=" + prix_produit +
                 ", description='" + description + '\'' +
                 ", id_categorie=" + id_categorie +
-                ", categorie=" + categorie +
                 '}';
     }
 }

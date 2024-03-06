@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="532.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AfficherCode">
+   <children>
+      <ListView fx:id="listeCode" layoutX="88.0" layoutY="79.0" onMouseClicked="#on_click" prefHeight="280.0" prefWidth="634.0" />
+      <TextField fx:id="supCode" layoutX="151.0" layoutY="397.0" />
+      <Button layoutX="348.0" layoutY="397.0" mnemonicParsing="false" onAction="#supprimerCode" text="Supprimer" />
+   </children>
+</AnchorPane>
