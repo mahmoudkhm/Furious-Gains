@@ -7,6 +7,7 @@ import esprit.tn.Utils.MyConnexion;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -189,5 +190,39 @@ public class LivraisonService implements InterfaceFuriousGains <Livraison> {
         }
         return u;
     }
+    public List<Livraison> getLivraisonparDate(LocalDate startDate) {
+        List<Livraison> Livraisons = new ArrayList<>();
+
+        // Requête SQL pour récupérer les voitures qui ne sont pas réservées dans les intervalles de dates spécifiés
+        String query = "SELECT * FROM livraison WHERE date_livraison = ?";
+
+        try (PreparedStatement pst = cnx.prepareStatement(query)) {
+            pst.setDate(1, Date.valueOf(startDate));
+
+            ResultSet rs = pst.executeQuery();
+
+            // Parcourir le résultat et créer les objets Voiture correspondants
+            while (rs.next()) {
+               Livraison u = new Livraison(
+                        rs.getInt("id_livraison"),
+                        rs.getInt("id_commande"),
+                        rs.getDate("date_livraison"),
+                        rs.getString("statut_livraison"),
+                        rs.getString("adresse_livraison"),
+                        rs.getFloat("montant_paiement"),
+                        rs.getString("mode_livraison"),
+                        rs.getInt("id_client")
+                );
+                Livraisons.add(u);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return Livraisons;
+    }
+
+
+
 
 }

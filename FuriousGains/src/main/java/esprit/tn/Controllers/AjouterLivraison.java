@@ -4,22 +4,22 @@ import esprit.tn.Models.Livraison;
 import esprit.tn.Models.sms;
 import esprit.tn.Services.LivraisonService;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.*;
 import java.util.Date;
+import java.util.List;
 
 import static java.time.Duration.*;
 
@@ -28,6 +28,9 @@ public class AjouterLivraison {
     private Button payer_button;
     @FXML
     private DatePicker DateLivraisonTF;
+
+    @FXML
+    private Button AjouterAnnonce1;
 
     @FXML
     private TextField AdresseLivraisonTF;
@@ -49,11 +52,94 @@ public class AjouterLivraison {
 
 
     private final LivraisonService ls =new LivraisonService();
-   /* @FXML
-    void AjouterTF(ActionEvent event) {
-        ls.ajouter(new Livraison(Integer.parseInt(IdCommandeTF.getText()),DateLivraisonTF.getText(),StatutLivraisonTF.getText(), AdresseLivraisonTF.getText(), Float.parseFloat( MontantTF.getText()), ModeLivraisonTF.getText(),Integer.parseInt(IdClientTF.getText())));
 
-    }*/
+    @FXML
+    private GridPane gridPane;
+
+    @FXML
+    private DatePicker datePicker;
+
+    @FXML
+    public void initialize() {
+        // Création du bouton pour tout le GridPane
+ // Ajouter le bouton à la première ligne du GridPane
+
+        // Lecture de toutes les voitures
+        List<Livraison> livraisonList = ls.affichage();
+        int rowIndex = 1; // Commencer à partir de la deuxième ligne après le bouton
+        int columnIndex = 0;
+        for (Livraison livraison : livraisonList) {
+            addAnnonceToGridPane(livraison, rowIndex, columnIndex);
+            columnIndex++;
+            if (columnIndex == 3) {
+                rowIndex++;
+                columnIndex = 0;
+            }
+        }
+    }
+    private void addAnnonceToGridPane(Livraison livraison, int rowIndex, int columnIndex) {
+        VBox annonceBox = new VBox();
+        annonceBox.setStyle("-fx-padding: 10px; -fx-border-color: black; -fx-border-width: 1px;");
+
+        Label statut = new Label("statut du livraison: " + livraison.getStatut_livraison());
+        Label adresse = new Label("adresse: " + livraison.getAdresse_livraison());
+        Label montant = new Label("Montant: " + livraison.getMode_livraison());
+        Label modelivraison = new Label("Mode livraison: " + livraison.getMode_livraison());
+        DatePicker datePickerliv = new DatePicker();
+
+        ImageView imageView = new ImageView();
+        imageView.setFitWidth(200);
+        imageView.setPreserveRatio(true);
+        Date date = livraison.getDate_livraison();
+        Instant instant = Instant.ofEpochMilli(date.getTime());
+        ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
+        LocalDate localDate = zdt.toLocalDate();
+        datePickerliv.setValue(localDate);
+
+        Button LivraisonButton = new Button("Livré");
+        LivraisonButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                // Ajoutez ici le code pour gérer le clic sur le bouton "Réserver"
+            }
+        });
+
+        annonceBox.getChildren().addAll(statut, adresse, montant, modelivraison, datePickerliv,LivraisonButton);
+        gridPane.add(annonceBox, columnIndex, rowIndex);
+    }
+    // Méthode pour ajouter une voiture au GridPane
+    @FXML
+    private void ajouterReservationButtonClicked(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/calendrier.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Consulter les réservations");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }@FXML
+    private void searchButtonClicked(ActionEvent event) {
+        LocalDate selectedDate = datePicker.getValue();
+
+        gridPane.getChildren().removeIf(node -> node instanceof VBox);
+
+        List<Livraison> Livraisons =ls.getLivraisonparDate(selectedDate);
+        int rowIndex = 1;
+        int columnIndex = 0;
+        for (Livraison v : Livraisons) {
+            addAnnonceToGridPane(v, rowIndex, columnIndex);
+            columnIndex++;
+            if (columnIndex == 3) {
+                rowIndex++;
+                columnIndex = 0;
+            }
+        }
+    }
+
    @FXML
    void AjouterTF(ActionEvent event) {
        LocalDate localDate = (LocalDate)this.DateLivraisonTF.getValue();
@@ -66,13 +152,12 @@ public class AjouterLivraison {
                alertType.setTitle("Error");
                alertType.setHeaderText("id client doit être un numero et non une chaine!");
                alertType.show();
-           }else if (IdClientTF.getText().matches("[a-z]+")) {
+           } else if (IdClientTF.getText().matches("[a-z]+")) {
                alertType = new Alert(Alert.AlertType.ERROR);
                alertType.setTitle("Error");
                alertType.setHeaderText("id commande doit être un numero et non une chaine! !");
                alertType.show();
-           }
-           else if (this.ModeLivraisonTF.getText().matches("[0-9]+")) {
+           } else if (this.ModeLivraisonTF.getText().matches("[0-9]+")) {
                alertType = new Alert(Alert.AlertType.ERROR);
                alertType.setTitle("Error");
                alertType.setHeaderText("mode de livraison doit etre une chaine et non et numero !");

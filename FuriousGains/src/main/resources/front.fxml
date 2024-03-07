@@ -159,6 +159,11 @@
                                                 <Font name="Times New Roman Bold" size="20.0" />
                                              </font>
                                           </Button>
+                                          <Button fx:id="ajoutLiv" mnemonicParsing="false" onAction="#afficher" prefHeight="36.0" prefWidth="291.0" style="-fx-background-color: #133946;" text="Ajouter Livraison" textFill="WHITE">
+                                             <font>
+                                                <Font name="Times New Roman Bold" size="20.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </VBox>
                                  </children>

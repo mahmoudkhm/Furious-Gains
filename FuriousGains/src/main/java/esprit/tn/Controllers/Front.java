@@ -23,6 +23,10 @@ public class Front {
     private Button blogB;
 
     @FXML
+    private Button ajoutLiv;
+
+
+    @FXML
     private Button AjouterAnnonce1;
 
     @FXML
@@ -47,6 +51,10 @@ public class Front {
 
     @FXML
     private Button afficherB;
+
+
+    @FXML
+    private Button nutritionB1;
     @FXML
     private Button blogBAnnonce1;
     @FXML
@@ -163,6 +171,33 @@ public class Front {
         if (event.getSource() == this.commandajout) {
             try {
                 fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterCommande.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.nutritionB) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AfficherRegime.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.nutritionB1) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AfficherRecette.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.ajoutLiv) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterLivraison.fxml"));
                 viewPages.getChildren().removeAll(new Node[0]);
                 viewPages.getChildren().setAll(new Node[]{fxml});
             } catch (IOException e) {

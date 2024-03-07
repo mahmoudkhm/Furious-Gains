@@ -1,126 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="532.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AjouterLivraison">
+<AnchorPane prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.Controllers.AjouterLivraison">
    <children>
-      <AnchorPane prefHeight="532.0" prefWidth="284.0" style="-fx-background-color: #133946;">
-         <children>
-            <ImageView fitHeight="82.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/logo1-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <Label layoutY="120.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Profil" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="164.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Produit" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="208.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Evénement" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="252.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Nutrition" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="296.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Livraison" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutY="340.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #0F3442;" text="  Blog" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <Label layoutX="321.0" layoutY="158.0" prefHeight="18.0" prefWidth="94.0" text="Date Livraison">
+      <Label layoutX="749.0" layoutY="181.0" prefHeight="18.0" prefWidth="94.0" text="Date Livraison">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="318.0" layoutY="314.0" prefHeight="18.0" prefWidth="94.0" text="Mode Livraison">
+      <Label layoutX="746.0" layoutY="337.0" prefHeight="18.0" prefWidth="94.0" text="Mode Livraison">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="325.0" layoutY="267.0" prefHeight="18.0" prefWidth="71.0" text="Montant">
+      <Label layoutX="753.0" layoutY="290.0" prefHeight="18.0" prefWidth="71.0" text="Montant">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="317.0" layoutY="233.0" prefHeight="18.0" prefWidth="110.0" text="Adresse Livraison">
+      <Label layoutX="745.0" layoutY="256.0" prefHeight="18.0" prefWidth="110.0" text="Adresse Livraison">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="318.0" layoutY="191.0" prefHeight="18.0" prefWidth="94.0" text="Statut Livraison">
+      <Label layoutX="746.0" layoutY="214.0" prefHeight="18.0" prefWidth="94.0" text="Statut Livraison">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="StatutLivraisonTF" layoutX="434.0" layoutY="191.0" promptText="Statut Livraison" />
-      <TextField fx:id="MontantTF" layoutX="434.0" layoutY="262.0" promptText="Montant" />
-      <TextField fx:id="AdresseLivraisonTF" layoutX="434.0" layoutY="227.0" promptText="Adresse Livraison" />
-      <TextField fx:id="ModeLivraisonTF" layoutX="434.0" layoutY="309.0" promptText="Mode Livraison" />
-      <Button layoutX="415.0" layoutY="438.0" mnemonicParsing="false" onAction="#AjouterTF" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #F1E967;" text="Ajouter">
+      <TextField fx:id="StatutLivraisonTF" layoutX="862.0" layoutY="214.0" promptText="Statut Livraison" />
+      <TextField fx:id="MontantTF" layoutX="862.0" layoutY="285.0" promptText="Montant" />
+      <TextField fx:id="AdresseLivraisonTF" layoutX="862.0" layoutY="250.0" promptText="Adresse Livraison" />
+      <TextField fx:id="ModeLivraisonTF" layoutX="862.0" layoutY="332.0" promptText="Mode Livraison" />
+      <Button layoutX="783.0" layoutY="461.0" mnemonicParsing="false" onAction="#AjouterTF" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #F1E967;" text="Ajouter">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="318.0" layoutY="347.0" prefHeight="18.0" prefWidth="94.0" text="Id Client">
+      <Label layoutX="746.0" layoutY="370.0" prefHeight="18.0" prefWidth="94.0" text="Id Client">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="IdCommandeTF" layoutX="434.0" layoutY="112.0" promptText="Id Commande" />
-      <Label layoutX="317.0" layoutY="112.0" prefHeight="18.0" prefWidth="94.0" text="Id Commande">
+      <TextField fx:id="IdCommandeTF" layoutX="862.0" layoutY="135.0" promptText="Id Commande" />
+      <Label layoutX="745.0" layoutY="135.0" prefHeight="18.0" prefWidth="94.0" text="Id Commande">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="IdClientTF" layoutX="431.0" layoutY="343.0" promptText="Id Client" />
-      <Button layoutX="558.0" layoutY="438.0" mnemonicParsing="false" onAction="#afficherlivraison" style="-fx-background-color: #F1E967;" text="Livraisons">
+      <TextField fx:id="IdClientTF" layoutX="859.0" layoutY="366.0" promptText="Id Client" />
+      <Button layoutX="926.0" layoutY="461.0" mnemonicParsing="false" onAction="#afficherlivraison" style="-fx-background-color: #F1E967;" text="Livraisons">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="390.0" layoutY="41.0" text="Ajouter une Livraison" textFill="#133946">
+      <Label layoutX="771.0" layoutY="57.0" text="Ajouter une Livraison" textFill="#133946">
          <font>
             <Font name="Monospaced Bold Italic" size="24.0" />
          </font>
       </Label>
-      <ImageView fitHeight="28.0" fitWidth="27.0" layoutX="449.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="28.0" fitWidth="27.0" layoutX="817.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/ajouter-un-bouton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="33.0" fitWidth="27.0" layoutX="601.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="33.0" fitWidth="27.0" layoutX="969.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/commercialisation.png" />
          </image>
       </ImageView>
-      <DatePicker fx:id="DateLivraisonTF" layoutX="436.0" layoutY="155.0" prefHeight="26.0" prefWidth="150.0" />
-      <Button fx:id="payer_button" layoutX="494.0" layoutY="483.0" mnemonicParsing="false" onAction="#payer" prefHeight="34.0" prefWidth="94.0" style="-fx-background-color: #133946;" text="Payer" textFill="WHITE">
+      <DatePicker fx:id="DateLivraisonTF" layoutX="864.0" layoutY="178.0" prefHeight="26.0" prefWidth="150.0" />
+      <Button fx:id="payer_button" layoutX="857.0" layoutY="509.0" mnemonicParsing="false" onAction="#payer" prefHeight="34.0" prefWidth="94.0" style="-fx-background-color: #133946;" text="Payer" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Button>
+      <StackPane layoutX="14.0" layoutY="132.0" prefHeight="447.0" prefWidth="718.0">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="311.0" prefWidth="268.0">
+               <content>
+                  <GridPane fx:id="gridPane" prefHeight="425.0" prefWidth="562.0">
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <Button onAction="#searchButtonClicked" text="Chercher">
+               <StackPane.margin>
+                  <Insets bottom="400.0" left="540.0" />
+               </StackPane.margin>
+            </Button>
+            <DatePicker fx:id="datePicker" layoutX="50.0" prefHeight="27.0" prefWidth="401.0" promptText="Sélectionnez une date">
+               <StackPane.margin>
+                  <Insets bottom="400.0" />
+               </StackPane.margin>
+            </DatePicker>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

@@ -1,8 +1,10 @@
 package esprit.tn.Controllers;
 
 import esprit.tn.Models.Annonce;
+import esprit.tn.Models.Livraison;
 import esprit.tn.Services.AnnonceService;
 import esprit.tn.Services.AvisService;
+import esprit.tn.Services.LivraisonService;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,10 +22,14 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 
-public class HboxListController {
+public class HboxListLivr {
 
     @FXML
     private GridPane gridPane;
@@ -31,8 +37,7 @@ public class HboxListController {
     @FXML
     private DatePicker datePicker;
 
-    private final AnnonceService as = new AnnonceService();
-    private final AvisService vs = new AvisService();
+    private final LivraisonService ls = new LivraisonService();
     @FXML
     public void initialize() {
         // Création du bouton pour tout le GridPane
@@ -41,11 +46,11 @@ public class HboxListController {
         gridPane.add(ajouterReservationButton, 0, 0, 3, 1); // Ajouter le bouton à la première ligne du GridPane
 
         // Lecture de toutes les voitures
-        List<Annonce> annonceList = as.affichage();
+        List<Livraison> livraisonList = ls.affichage();
         int rowIndex = 1; // Commencer à partir de la deuxième ligne après le bouton
         int columnIndex = 0;
-        for (Annonce a : annonceList) {
-            addAnnonceToGridPane(a, rowIndex, columnIndex);
+        for (Livraison livraison : livraisonList) {
+            addAnnonceToGridPane(livraison, rowIndex, columnIndex);
             columnIndex++;
             if (columnIndex == 3) {
                 rowIndex++;
@@ -53,25 +58,24 @@ public class HboxListController {
             }
         }
     }
-    private void addAnnonceToGridPane(Annonce annonce, int rowIndex, int columnIndex) {
+    private void addAnnonceToGridPane(Livraison livraison, int rowIndex, int columnIndex) {
         VBox annonceBox = new VBox();
         annonceBox.setStyle("-fx-padding: 10px; -fx-border-color: black; -fx-border-width: 1px;");
 
-        Label titreLabel = new Label("Titre: " + annonce.getTitre_annonce());
-        Label descriptionLabel = new Label("Description: " + annonce.getDescription_annonce());
-        Label nomLabel = new Label("Nom: " + annonce.getTitre_annonce());
+        Label statut = new Label("statut du livraison: " + livraison.getStatut_livraison());
+        Label adresse = new Label("adresse: " + livraison.getAdresse_livraison());
+        Label montant = new Label("Montant: " + livraison.getMode_livraison());
+        Label modelivraison = new Label("Mode livraison: " + livraison.getMode_livraison());
+        DatePicker datePickerliv = new DatePicker();
 
         ImageView imageView = new ImageView();
         imageView.setFitWidth(200);
         imageView.setPreserveRatio(true);
-
-        try {
-            File file = new File(annonce.getImage());
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Date date = livraison.getDate_livraison();
+        Instant instant = Instant.ofEpochMilli(date.getTime());
+        ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
+        LocalDate localDate = zdt.toLocalDate();
+        datePickerliv.setValue(localDate);
 
         Button reserverButton = new Button("Réserver");
         reserverButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -81,7 +85,7 @@ public class HboxListController {
             }
         });
 
-        annonceBox.getChildren().addAll(titreLabel, descriptionLabel, nomLabel, imageView, reserverButton);
+        annonceBox.getChildren().addAll(statut, adresse, montant, modelivraison, datePickerliv);
         gridPane.add(annonceBox, columnIndex, rowIndex);
     }
     // Méthode pour ajouter une voiture au GridPane
@@ -107,10 +111,10 @@ public class HboxListController {
         gridPane.getChildren().removeIf(node -> node instanceof VBox);
 
         // Met à jour l'affichage avec les voitures disponibles pour la date sélectionnée
-        List<Annonce> availableCars = null;
+        List<Livraison> availableCars = null;
         int rowIndex = 1;
         int columnIndex = 0;
-        for (Annonce v : availableCars) {
+        for (Livraison v : availableCars) {
             addAnnonceToGridPane(v, rowIndex, columnIndex);
             columnIndex++;
             if (columnIndex == 3) {
