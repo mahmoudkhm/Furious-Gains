@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherCategorie">
+   <children>
+      <ListView fx:id="listView" layoutX="165.0" layoutY="73.0" onMouseClicked="#OnClick" prefHeight="250.0" prefWidth="430.0" />
+      <Text fill="#940e0e" layoutX="248.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CategoryList">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="520.0" layoutY="355.0" mnemonicParsing="false" onAction="#DeleteP" prefHeight="26.0" prefWidth="55.0" text="Delete" />
+      <TextField fx:id="IdSupp" layoutX="230.0" layoutY="355.0" />
+      <Button fx:id="updateFX" layoutX="423.0" layoutY="356.0" mnemonicParsing="false" onMouseClicked="#UpdateRedP" text="Update" />
+      <Label fx:id="labelAjoutP" layoutX="28.0" layoutY="93.0" onMouseClicked="#AjouterP" text="Add Product" />
+      <Label fx:id="labelAfficheP" layoutX="27.0" layoutY="132.0" onMouseClicked="#AfficherP" text="Product List" />
+      <Label layoutX="24.0" layoutY="46.0" prefHeight="35.0" prefWidth="136.0" text="Product Managment" textFill="#940d0d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="170.0" text="Category Managment" textFill="#940d0d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelAjoutC" layoutX="25.0" layoutY="210.0" onMouseClicked="#AjouterC" text="Add Category" />
+      <Label fx:id="labelAfficheC" layoutX="27.0" layoutY="246.0" onMouseClicked="#AfficherC" text="Category List" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetailsProduit">
+   <children>
+      <Label fx:id="labelAjoutP" layoutX="28.0" layoutY="93.0" onMouseClicked="#AjouterP" text="Add Product" />
+      <Label fx:id="labelAfficheP" layoutX="27.0" layoutY="132.0" onMouseClicked="#AfficherP" text="Product List" />
+      <Label layoutX="24.0" layoutY="46.0" prefHeight="35.0" prefWidth="135.0" text="Product Managment" textFill="#940d0d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="211.0" text="Category Managment" textFill="#940d0d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelAjoutC" layoutX="25.0" layoutY="246.0" onMouseClicked="#AjouterC" text="Add Category" />
+      <Label fx:id="labelAfficheC" layoutX="27.0" layoutY="288.0" onMouseClicked="#AfficherC" text="Category List" />
+      <Label fx:id="updateFX" layoutX="27.0" layoutY="173.0" onMouseClicked="#UpdateRedP" text="Update Product" />
+      <ListView fx:id="listView" layoutX="321.0" layoutY="297.0" onMouseClicked="#Onclick" prefHeight="118.0" prefWidth="258.0" />
+      <ImageView fx:id="imgP" fitHeight="220.0" fitWidth="258.0" layoutX="321.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../java/assets/BioTech.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="idSupp" layoutX="321.0" layoutY="460.0" prefHeight="26.0" prefWidth="147.0" />
+      <Button layoutX="515.0" layoutY="461.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+   </children>
+</AnchorPane>
