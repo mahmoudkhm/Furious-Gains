@@ -204,6 +204,15 @@ public class Front {
                 throw new RuntimeException(e);
             }
         }
+        if (event.getSource() == this.produitB) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/GestionP.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
         }
 
 

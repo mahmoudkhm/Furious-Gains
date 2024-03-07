@@ -38,6 +38,12 @@ public class Admin {
     private Button afficherB;
 
     @FXML
+    private Button Categorie;
+
+    @FXML
+    private Button produitB;
+
+    @FXML
     private AnchorPane viewPages;
 
     @FXML
@@ -111,6 +117,24 @@ public class Admin {
         if (event.getSource() == this.AjouterAnnonce1) {
             try {
                 fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterAnnonce.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.produitB) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterProduit.fxml"));
+                viewPages.getChildren().removeAll(new Node[0]);
+                viewPages.getChildren().setAll(new Node[]{fxml});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (event.getSource() == this.Categorie) {
+            try {
+                fxml = (Parent) FXMLLoader.load(getClass().getResource("/AjouterCategorie.fxml"));
                 viewPages.getChildren().removeAll(new Node[0]);
                 viewPages.getChildren().setAll(new Node[]{fxml});
             } catch (IOException e) {
