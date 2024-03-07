@@ -3,20 +3,20 @@ package esprit.tn.Models;
 public class Categorie {
     private int id_categorie;
     private String nom_categorie;
-    private String type_categorie;
+    private String descriptionC;
 
 
     public Categorie() {}
 
-    public Categorie(int id_categorie, String nom_categorie, String type_categorie) {
+    public Categorie(int id_categorie, String nom_categorie, String descriptionC) {
         this.id_categorie = id_categorie;
         this.nom_categorie = nom_categorie;
-        this.type_categorie = type_categorie;
+        this.descriptionC = descriptionC;
     }
 
-    public Categorie(String nom_categorie, String type_categorie) {
+    public Categorie(String nom_categorie, String descriptionC) {
         this.nom_categorie = nom_categorie;
-        this.type_categorie = type_categorie;
+        this.descriptionC = descriptionC;
     }
 
     public int getId_categorie() {
@@ -35,12 +35,12 @@ public class Categorie {
         this.nom_categorie = nom_categorie;
     }
 
-    public String getType_categorie() {
-        return type_categorie;
+    public String getDescriptionC() {
+        return descriptionC;
     }
 
-    public void setType_categorie(String type_categorie) {
-        this.type_categorie = type_categorie;
+    public void setDescriptionC(String descriptionC) {
+        this.descriptionC = descriptionC;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Categorie {
         return "Categorie{" +
                 "id_categorie=" + id_categorie +
                 ", nom_categorie='" + nom_categorie + '\'' +
-                ", type_categorie='" + type_categorie + '\'' +
+                ", descriptionC='" + descriptionC + '\'' +
                 '}';
     }
 }

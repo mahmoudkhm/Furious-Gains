@@ -1,8 +1,7 @@
-package services;
+package esprit.tn.services;
 
 import esprit.tn.Interfaces.InterfaceFuriousGains;
 import esprit.tn.Models.Categorie;
-import esprit.tn.Models.Produit;
 import esprit.tn.Utils.MyConnexion;
 
 import java.sql.*;
@@ -15,7 +14,7 @@ public class CategorieService implements InterfaceFuriousGains <Categorie> {
     @Override
     public void ajouter(Categorie c) {
         try {
-            String req = "INSERT INTO categorie (nom_categorie,type_categorie) VALUES ('"+c.getNom_categorie()+"','"+c.getType_categorie()+"')";
+            String req = "INSERT INTO categorie (nom_categorie,descriptionC) VALUES ('"+c.getNom_categorie()+"','"+c.getDescriptionC()+"')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Categorie Added successfully!");
@@ -32,7 +31,7 @@ public class CategorieService implements InterfaceFuriousGains <Categorie> {
             PreparedStatement ps = cnx.prepareStatement(sql);
 
             ps.setString(1, c.getNom_categorie());
-            ps.setString(2,c.getType_categorie());
+            ps.setString(2,c.getDescriptionC());
             ps.setInt(3,c.getId_categorie());
 
 
@@ -70,7 +69,7 @@ public class CategorieService implements InterfaceFuriousGains <Categorie> {
                 Categorie c = new Categorie();
                 c.setId_categorie(rs.getInt(1));
                 c.setNom_categorie(rs.getString(2));
-                c.setType_categorie(rs.getString(3));
+                c.setDescriptionC(rs.getString(3));
 
                 categories.add(c);
             }
